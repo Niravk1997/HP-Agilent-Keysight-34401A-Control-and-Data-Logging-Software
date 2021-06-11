@@ -5,18 +5,18 @@
 
  Connect via GPIB Port: You will need an AR488 GPIB Arduino Adapter if you wish to connect via the 34401A's GPIB port. 
 
-#### [Download]()
+#### [Download](https://github.com/Niravk1997/HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software/releases)
 
-#### [User Manual]()
+#### [User Manual](https://github.com/Niravk1997/HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software/blob/main/User%20Manual/HP%2034401A%20Software%20User%20Manual.pdf)
 
 #### [AR488 Adapter](https://github.com/Twilight-Logic/AR488)
 
 
 #### The main software window
-![HP 34401A Software]()
+![HP 34401A Software](https://github.com/Niravk1997/HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software/blob/main/Images/HP%2034401A%20Main%20Window%20(RS-232).gif)
 
 #### Interactive Graphing Module
-![HP 34401A Graph Module]()
+![HP 34401A Graph Module](https://github.com/Niravk1997/HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software/blob/main/Images/Hp%2034401A%20Graph%20Window.gif)
 
 **Features:**
 
@@ -34,19 +34,19 @@
 - Capture up to 280 measurement samples in 2 seconds (GPIB Port). Serial Port can only capture up to 60 measurement samples in 2 seconds.
 
 #### Create Math Waveform
-![HP 34401A  Math Waveform]()
+![HP 34401A  Math Waveform](https://github.com/Niravk1997/HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software/blob/main/Images/Math%20Waveform.gif)
 
 #### Histogram Waveform
-![HP 34401A Histogram]()
+![HP 34401A Histogram](https://github.com/Niravk1997/HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software/blob/main/Images/Histogram.gif)
 
 #### Graph Markers
-![HP 34401A Markers]()
+![HP 34401A Markers](https://github.com/Niravk1997/HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software/blob/main/Images/Graph%20Markers.gif)
 
 #### Measurement Table
-![HP 34401A Table]()
+![HP 34401A Table](https://github.com/Niravk1997/HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software/blob/main/Images/Measurement%20Table.gif)
 
 #### Fast Measurement Display
-![HP 34401A Table]()
+![HP 34401A Table](https://github.com/Niravk1997/HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software/blob/main/Images/Fast%20Display.gif)
 
-#### Connect via AR488 Arduino GPIB Adapater
-![HP 34401A Software]()
+#### Connect via AR488 Arduino GPIB Adapter
+![HP 34401A Software](https://github.com/Niravk1997/HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software/blob/main/Images/HP%2034401A%20Main%20Window%20(AR488).gif)
