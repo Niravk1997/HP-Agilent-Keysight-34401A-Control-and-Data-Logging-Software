@@ -42,6 +42,9 @@
 #### Graph Markers
 ![HP 34401A Markers](https://github.com/Niravk1997/HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software/blob/main/Images/Graph%20Markers.gif)
 
+#### N Sample Graph
+![HP 34401A N Sample Graph](https://github.com/Niravk1997/HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software/blob/main/Images/N_Sample_Graph_Demo_2.gif)
+
 #### Measurement Table
 ![HP 34401A Table](https://github.com/Niravk1997/HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software/blob/main/Images/Measurement%20Table.gif)
 
