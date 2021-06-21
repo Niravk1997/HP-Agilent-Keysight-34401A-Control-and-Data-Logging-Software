@@ -4681,7 +4681,7 @@ namespace HP_34401A
         {
             if (new int[] { 0, 1, 2, 3, 4, 5, 6, 7 }.Contains(Measurement_Selected))
             {
-                (bool isValid_Num, double Null_Value) = Text_Num(Null_Value_Text_Input.Text, false, false);
+                (bool isValid_Num, double Null_Value) = Text_Num(Null_Value_Text_Input.Text, true, false);
                 if (isValid_Num == true)
                 {
                     this.Null_Value = Null_Value;
