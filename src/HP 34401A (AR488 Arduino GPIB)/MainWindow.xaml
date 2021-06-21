@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HP_34401A"
         mc:Ignorable="d"
-        Title="HP 34401A" Height="670" Width="625" Closed="Main_Window_Closed">
+        Title="HP 34401A" Height="670" Width="630" Closed="Main_Window_Closed">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -15,7 +15,7 @@
             <RowDefinition Height="100"/>
             <RowDefinition Height="85"/>
             <RowDefinition Height="95"/>
-            <RowDefinition Height="92"/>
+            <RowDefinition Height="95"/>
             <RowDefinition Height="80"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="25"/>
@@ -28,6 +28,7 @@
                 <MenuItem x:Name="Connect" Header="Connect" IsCheckable="False" IsChecked="False" Click="Connect_Click"/>
                 <MenuItem x:Name="Stop_Sampling" Header="Sampling" IsCheckable="True" IsChecked="True" Click="Stop_Sampling_Click" IsEnabled="False"/>
                 <MenuItem x:Name="Sampling_Only" Header="Sampling Only" IsCheckable="True" IsChecked="False" IsEnabled="False" Click="Sampling_Only_Click"/>
+                <MenuItem x:Name="Local_Exit" Header="Local Exit" IsCheckable="False" IsEnabled="False" Click="Local_Exit_Click"/>
                 <MenuItem x:Name="Exit" Header="Exit" IsCheckable="False" IsChecked="False" Click="Exit_Click"/>
             </MenuItem>
             <MenuItem Header="Display Panel" IsCheckable="False" IsChecked="False">
@@ -202,6 +203,7 @@
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
+                <MenuItem x:Name="Randomize_Display_Panel_Colors" Header="Randomize Display Colors" IsCheckable="False" Click="Randomize_Display_Colors"/>
                 <MenuItem Header="Background Color" IsCheckable="False" IsChecked="False">
                     <MenuItem x:Name="Background_White" Header="White" IsCheckable="True" IsChecked="False" Click="Background_White_Click">
                         <MenuItem.Icon>
@@ -269,6 +271,16 @@
                     <ToolTip>Show Measurement Data on the Graph.</ToolTip>
                 </MenuItem.ToolTip>
                 <MenuItem x:Name="ShowMeasurementGraph" Header="Show Graph" IsCheckable="True" IsChecked="False" Click="ShowMeasurementGraph_Click"/>
+                <MenuItem Header="N Sample Graph" IsCheckable="False">
+                    <MenuItem x:Name="Show_N_Sample_Graph" IsCheckable="True" IsChecked="False">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox x:Name="N_Sample_Graph_Text" Text="60" Width="50" MinWidth="50" MaxWidth="50"/>
+                                <Button x:Name="N_Sample_Graph_Button" Content="Create" Width="50" Margin="10,0,0,0" Click="N_Sample_Graph_Button_Click"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                </MenuItem>
                 <MenuItem x:Name="AddDataGraph" Header="Add Data to Graphs" IsCheckable="True" IsChecked="False" Click="AddDataGraph_Click"/>
             </MenuItem>
             <MenuItem Header="Table" IsCheckable="False" IsChecked="False">
@@ -846,6 +858,27 @@
                                 </StackPanel>
                             </Button>
                         </Border>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Null">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="65"/>
+                            <ColumnDefinition Width="65"/>
+                            <ColumnDefinition Width="65"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="65"/>
+                            <ColumnDefinition Width="65"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button x:Name="Null_On_Button" Content="Null On" BorderThickness="0" Grid.Row="0" Grid.Column="0" Margin="3,1,3,1" Click="Null_On_Button_Click"/>
+                        <Button x:Name="Null_Off_Query_Button" Content="Null Off" BorderThickness="0" Grid.Row="0" Grid.Column="1" Margin="3,1,3,1" Click="Null_Off_Query_Button_Click"/>
+                        <Button x:Name="Null_Status_Query_Button" Content="Null ?" BorderThickness="0" Grid.Row="0" Grid.Column="2" Margin="3,1,3,1" Click="Null_Status_Query_Button_Click"/>
+                        <TextBox  x:Name="Null_Value_Text_Input" Text="" Grid.Row="0" Grid.Column="3" Margin="3,1,3,1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="16"/>
+                        <Button x:Name="Null_Set_Button" Content="Set" BorderThickness="0" Grid.Row="0" Grid.Column="4" Margin="3,1,3,1" Click="Null_Set_Button_Click"/>
+                        <Button x:Name="Null_Query_Set_Value_Button" Content="Value ?" BorderThickness="0" Grid.Row="0" Grid.Column="5" Margin="3,1,3,1" Click="Null_Query_Set_Value_Button_Click"/>
                     </Grid>
                 </TabItem>
             </TabControl>

@@ -21,6 +21,7 @@ using System.Speech.Synthesis;
 using System.Windows.Threading;
 using System.Text.RegularExpressions;
 using System.Globalization;
+using System.Reflection;
 
 namespace HP_34401A
 {
@@ -47,6 +48,9 @@ namespace HP_34401A
     {
         //Reference to the graph window
         Graphing_Window HP34401A_Graph_Window;
+
+        //Reference to the N graph Window
+        N_Sample_Graph_Window HP34401A_N_Graph_Window;
 
         //Reference to Measurement Table
         Measurement_Data_Table HP34401A_Table;
@@ -80,6 +84,9 @@ namespace HP_34401A
         bool isSamplingOnly = false;
         bool isUpdateSpeed_Changed = false;
 
+        //User set Null Value
+        double Null_Value = 0;
+
         //User decides whether to save data to text file or not
         //to save output log or not
         bool saveOutputLog = false;
@@ -89,6 +96,7 @@ namespace HP_34401A
         bool save_to_Table = false;
         //to add data to graphs
         bool save_to_Graph = false;
+        bool Save_to_N_Graph = false;
 
         //Data is stored in these queues, waiting for it to be written to text files
         BlockingCollection<string> save_data_VDC = new BlockingCollection<string>();
@@ -174,6 +182,7 @@ namespace HP_34401A
             Check_Speech_MIN_MAX_Timer();
             Continuous_Voice_Measurement();
             Save_measurements_to_files_Timer();
+            Load_Main_Window_Settings();
             insert_Log("Click the Config Menu then click Connect.", 5);
             insert_Log("USB to Serial Adapter and a Null Modem Cable/Adapter are required.", 5);
             insert_Log("This software only works with HP Agilent Keysight 34401A", 5);
@@ -433,6 +442,7 @@ namespace HP_34401A
                 Data_process();
                 saveMeasurements_Timer.Enabled = true;
                 Sampling_Only.IsEnabled = true;
+                Local_Exit.IsEnabled = true;
                 DataLogger.IsEnabled = true;
             }
         }
@@ -645,7 +655,7 @@ namespace HP_34401A
 
         private void Speedup_Interval()
         {
-            if (UpdateSpeed > 1000)
+            if (UpdateSpeed > 2000)
             {
                 DataTimer.Interval = 0.01;
             }
@@ -1081,7 +1091,7 @@ namespace HP_34401A
                         Process_Data.Start();
                     } while (isSamplingOnly == true & DataSampling == true);
                 }
-                if (isUpdateSpeed_Changed == true) 
+                if (isUpdateSpeed_Changed == true)
                 {
                     isUpdateSpeed_Changed = false;
                     insert_Log("Update Speed has been set to " + (UpdateSpeed / 1000) + " seconds.", 0);
@@ -1120,7 +1130,7 @@ namespace HP_34401A
             {
                 measurements.Add(data);
                 Total_Samples++;
-                if (saveMeasurements == true || save_to_Table == true || save_to_Graph == true)
+                if (saveMeasurements == true || save_to_Table == true || save_to_Graph == true || Save_to_N_Graph == true)
                 {
                     Process_Measurement_Data(data);
                 }
@@ -1199,6 +1209,19 @@ namespace HP_34401A
                 {
                     insert_Log("Could not add data to Graph Window.", 2);
                     insert_Log("This could happen if the graph window was opened or closed recently.", 2);
+                }
+            }
+
+            if (Save_to_N_Graph == true)
+            {
+                try
+                {
+                    HP34401A_N_Graph_Window.Data_Queue.Add(Date + "," + data);
+                }
+                catch (Exception)
+                {
+                    insert_Log("Could not add data to N Sample Graph Window.", 2);
+                    insert_Log("This could happen if the N Sample Graph Window was opened or closed recently.", 2);
                 }
             }
         }
@@ -1320,7 +1343,7 @@ namespace HP_34401A
                     Thread.Sleep(100);
                     string Display_Query = HP34401A.ReadLine().Trim();
                     bool isValid_Display_Query = double.TryParse(Display_Query, out double Display_Query_Value);
-                    if (isValid_Display_Query == true) 
+                    if (isValid_Display_Query == true)
                     {
                         if (Display_Query_Value == 1)
                         {
@@ -1329,13 +1352,13 @@ namespace HP_34401A
                         else if (Display_Query_Value == 0)
                         {
                             insert_Log("VFD Display is OFF", 0);
-                        } 
+                        }
                         else
                         {
                             insert_Log("VFD Display: " + Display_Query, 0);
                         }
-                    } 
-                    else 
+                    }
+                    else
                     {
                         insert_Log("VFD Display: " + Display_Query, 0);
                     }
@@ -1376,7 +1399,7 @@ namespace HP_34401A
                     {
                         insert_Log("ACV ACI Bandwidth: " + (decimal)DET_BAND_Query_Value + "Hz", 0);
                     }
-                    else 
+                    else
                     {
                         insert_Log("ACV ACI Bandwidth: " + DET_BAND_Query, 0);
                     }
@@ -1390,7 +1413,7 @@ namespace HP_34401A
                     {
                         insert_Log("Period Aperture: " + (decimal)PER_APER_Query_Value, 0);
                     }
-                    else 
+                    else
                     {
                         insert_Log("Period Aperture: " + PER_APER_Query, 0);
                     }
@@ -1424,7 +1447,7 @@ namespace HP_34401A
                         {
                             insert_Log("Auto Zero is OFF", 0);
                         }
-                        else 
+                        else
                         {
                             insert_Log("Auto Zero: " + AutoZero_Query, 0);
                         }
@@ -1516,12 +1539,12 @@ namespace HP_34401A
                         {
                             insert_Log(Command.ToUpper() + " is OFF", 0);
                         }
-                        else 
+                        else
                         {
                             insert_Log(Command.ToUpper() + " " + Auto_Range_Query, 0);
                         }
                     }
-                    else 
+                    else
                     {
                         insert_Log(Command.ToUpper() + " " + Auto_Range_Query, 0);
                     }
@@ -1567,6 +1590,69 @@ namespace HP_34401A
                     {
                         insert_Log(NPLC_Command + "  " + NPLC_Query, 0);
                     }
+                    break;
+                case "NULL ON":
+                    HP34401A.WriteLine("CALCulate:FUNCtion NULL");
+                    Thread.Sleep(100);
+                    HP34401A.WriteLine("CALCulate:STATe ON");
+                    Thread.Sleep(100);
+                    break;
+                case "NULL OFF":
+                    HP34401A.WriteLine("CALCulate:STATe OFF");
+                    Thread.Sleep(100);
+                    break;
+                case "NULL?":
+                    HP34401A.WriteLine("CALCulate:FUNCtion?");
+                    Thread.Sleep(100);
+                    string Math_Function_Query = HP34401A.ReadLine().Trim();
+                    Thread.Sleep(100);
+                    HP34401A.WriteLine("CALCulate:STATe?");
+                    Thread.Sleep(100);
+                    string Math_Function_State_Query = HP34401A.ReadLine().Trim();
+                    bool is_Math_Function_State_Value_valid = double.TryParse(Math_Function_State_Query, out double Null_State_value);
+                    if (is_Math_Function_State_Value_valid == true)
+                    {
+                        if (Null_State_value == 0)
+                        {
+                            insert_Log(Math_Function_Query + " function is not active.", 0);
+                        }
+                        else if (Null_State_value == 1)
+                        {
+                            insert_Log(Math_Function_Query + " function is active.", 0);
+                        }
+                        else
+                        {
+                            insert_Log("Math Function: " + Math_Function_Query + " State: " + Math_Function_State_Query, 0);
+                        }
+                    }
+                    else
+                    {
+                        insert_Log("Math Function: " + Math_Function_Query + " State: " + Math_Function_State_Query, 0);
+                    }
+                    break;
+                case "NULL_SET":
+                    HP34401A.WriteLine("CALCulate:NULL:OFFSet " + (decimal)Null_Value);
+                    Thread.Sleep(100);
+                    insert_Log("Null Value has been set to " + (decimal)Null_Value, 0);
+                    break;
+                case "NULL_SET_QUERY":
+                    HP34401A.WriteLine("CALCulate:NULL:OFFSet?");
+                    Thread.Sleep(100);
+                    string Null_Set_Value_Query = HP34401A.ReadLine().Trim();
+                    bool is_Null_Set_Value_valid = double.TryParse(Null_Set_Value_Query, out double Null_set_value);
+                    if (is_Null_Set_Value_valid == true)
+                    {
+                        insert_Log("Query Null Set Value: " + (decimal)Null_set_value, 0);
+                    }
+                    else
+                    {
+                        insert_Log("Query Null Set Value: " + Null_Set_Value_Query, 0);
+                    }
+                    break;
+                case "LOCAL_EXIT":
+                    HP34401A.WriteLine("SYSTem:LOCal");
+                    Thread.Sleep(200);
+                    Application.Current.Dispatcher.Invoke(() => { Application.Current.Shutdown(); }, DispatcherPriority.Send);
                     break;
                 default:
                     HP34401A.WriteLine(Command);
@@ -1865,11 +1951,13 @@ namespace HP_34401A
             if (Sampling_Only.IsChecked == true)
             {
                 isSamplingOnly = true;
+                Local_Exit.IsEnabled = false;
                 lockControls();
             }
             else
             {
                 isSamplingOnly = false;
+                Local_Exit.IsEnabled = true;
                 unlockControls();
             }
             if (isSamplingOnly == true)
@@ -2158,8 +2246,11 @@ namespace HP_34401A
         {
             this.Dispatcher.Invoke(() =>
             {
+                if (HP34401A_Graph_Window == null & HP34401A_N_Graph_Window == null)
+                {
+                    AddDataGraph.IsChecked = false;
+                }
                 save_to_Graph = false;
-                AddDataGraph.IsChecked = false;
                 ShowMeasurementGraph.IsChecked = false;
                 insert_Log("HP34401A Graph Module has been closed.", 0);
             });
@@ -2175,6 +2266,12 @@ namespace HP_34401A
                     HP34401A_Graph_Window.Measurement_Unit = Measurement_Unit;
                     HP34401A_Graph_Window.Graph_Y_Axis_Label = Graph_Y_Axis_Label;
                     HP34401A_Graph_Window.Graph_Reset = true;
+                }
+                if (HP34401A_N_Graph_Window != null)
+                {
+                    HP34401A_N_Graph_Window.Measurement_Unit = Measurement_Unit;
+                    HP34401A_N_Graph_Window.Graph_Y_Axis_Label = Graph_Y_Axis_Label;
+                    HP34401A_N_Graph_Window.Graph_Reset = true;
                 }
             }
             catch (Exception)
@@ -2194,8 +2291,95 @@ namespace HP_34401A
             else
             {
                 save_to_Graph = false;
+            }
+            if (AddDataGraph.IsChecked == true & HP34401A_N_Graph_Window != null)
+            {
+                Save_to_N_Graph = true;
+                AddDataGraph.IsChecked = true;
+            }
+            else
+            {
+                Save_to_N_Graph = false;
+            }
+            if (HP34401A_Graph_Window == null & HP34401A_N_Graph_Window == null)
+            {
+                save_to_Graph = false;
+                Save_to_N_Graph = false;
                 AddDataGraph.IsChecked = false;
             }
+        }
+
+        private void N_Sample_Graph_Button_Click(object sender, RoutedEventArgs e)
+        {
+            (bool isValidNum, double N_Sample_Value) = Text_Num(N_Sample_Graph_Text.Text, false, true);
+            if (isValidNum == true)
+            {
+                if (N_Sample_Value >= 10)
+                {
+                    if (HP34401A_N_Graph_Window == null)
+                    {
+                        Create_HP34401A_N_Sample_Graph_Window((int)N_Sample_Value);
+                        Show_N_Sample_Graph.IsChecked = true;
+                        AddDataGraph.IsChecked = true;
+                        Save_to_N_Graph = true;
+                        insert_Log("HP34401A N Sample Graph Module has been opened.", 0);
+                    }
+                }
+                else
+                {
+                    insert_Log("N Sample Graph Creation Value must be a positive integer greater than 10.", 2);
+                }
+            }
+            else
+            {
+                insert_Log("N Sample Graph Creation Value must be a positive integer greater than 10.", 2);
+            }
+        }
+
+        private void Create_HP34401A_N_Sample_Graph_Window(int N_Samples)
+        {
+            try
+            {
+                (string Measurement_Unit, string Graph_Y_Axis_Label) = MeasurementUnit_String();
+                Thread Waveform_Thread = new Thread(new ThreadStart(() =>
+                {
+                    HP34401A_N_Graph_Window = new N_Sample_Graph_Window(N_Samples, Measurement_Unit, Graph_Y_Axis_Label, "HP 34401A " + Serial_COM_Info.COM_Port);
+                    HP34401A_N_Graph_Window.Show();
+                    HP34401A_N_Graph_Window.Closed += N_Sample_Close_Graph_Event;
+                    Dispatcher.Run();
+                }));
+                Waveform_Thread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
+                Waveform_Thread.CurrentUICulture = CultureInfo.CreateSpecificCulture("en-US");
+                Waveform_Thread.SetApartmentState(ApartmentState.STA);
+                Waveform_Thread.IsBackground = true;
+                Waveform_Thread.Start();
+            }
+            catch (Exception Ex)
+            {
+                insert_Log(Ex.Message, 1);
+                insert_Log("HP34401A N Sample Graph Window creation failed.", 1);
+            }
+        }
+
+        private void N_Sample_Close_Graph_Event(object sender, EventArgs e)
+        {
+            HP34401A_N_Graph_Window.Dispatcher.InvokeShutdown();
+            HP34401A_N_Graph_Window = null;
+            Close_N_Sample_Graph_Module();
+        }
+
+        private void Close_N_Sample_Graph_Module()
+        {
+            this.Dispatcher.Invoke(() =>
+            {
+                if (HP34401A_Graph_Window == null & HP34401A_N_Graph_Window == null)
+                {
+                    AddDataGraph.IsChecked = false;
+                }
+                Save_to_N_Graph = false;
+                Show_N_Sample_Graph.IsChecked = false;
+                insert_Log("HP34401A N Sample Graph Module has been closed.", 0);
+            });
         }
 
         //-----------------------------------------------------------------------
@@ -3959,7 +4143,7 @@ namespace HP_34401A
                             Speedup_Interval();
                             insert_Log("Set Resolution Value Command Send. " + Resolution_command, 5);
                         }
-                        else 
+                        else
                         {
                             insert_Log("Could not set specified Resolution value.", 2);
                         }
@@ -3978,14 +4162,14 @@ namespace HP_34401A
 
         private string Measurement_Resolution_Value(double Resolution_value)
         {
-            switch (Measurement_Selected) 
+            switch (Measurement_Selected)
             {
                 case 0: //DCV
                     if (VDC_Auto_Border.BorderBrush.ToString() == "#FFFFFFFF")
                     {
                         return ("VOLTage:DC:RESolution " + (decimal)Resolution_value).Trim();
                     }
-                    else 
+                    else
                     {
                         insert_Log("DCV: Cannot set Resolution value, Manual Range not set.", 2);
                         return "null";
@@ -4226,17 +4410,17 @@ namespace HP_34401A
             switch (Measurement_Selected)
             {
                 case 0: //DCV
-                        insert_Log("DCV: NPLC set to " + NPLC_value, 5);
-                        return "VOLTage:DC:NPLCycles " + NPLC_value;
+                    insert_Log("DCV: NPLC set to " + NPLC_value, 5);
+                    return "VOLTage:DC:NPLCycles " + NPLC_value;
                 case 1: //DCI
-                        insert_Log("DCI: NPLC set to " + NPLC_value, 5);
-                        return "CURRent:DC:NPLCycles " + NPLC_value;
+                    insert_Log("DCI: NPLC set to " + NPLC_value, 5);
+                    return "CURRent:DC:NPLCycles " + NPLC_value;
                 case 4: //2 Ohms
-                        insert_Log("2W Ω: NPLC set to " + NPLC_value, 5);
-                        return "RESistance:NPLCycles " + NPLC_value;
+                    insert_Log("2W Ω: NPLC set to " + NPLC_value, 5);
+                    return "RESistance:NPLCycles " + NPLC_value;
                 case 5: //4 Ohms
-                        insert_Log("4W Ω: NPLC set to " + NPLC_value, 5);
-                        return "FRESistance:NPLCycles " + NPLC_value;
+                    insert_Log("4W Ω: NPLC set to " + NPLC_value, 5);
+                    return "FRESistance:NPLCycles " + NPLC_value;
                 default:
                     return "null";
             }
@@ -4442,6 +4626,99 @@ namespace HP_34401A
         }
 
         //-----------------------------------------------------------------------------------------------
+
+        //--------------------------------------------Null Function--------------------------------------
+
+        private void Null_On_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (new int[] { 0, 1, 2, 3, 4, 5, 6, 7 }.Contains(Measurement_Selected))
+            {
+                SerialWriteQueue.Add("NULL ON");
+                lockControls();
+                isUserSendCommand = true;
+                Speedup_Interval();
+                insert_Log("Null On Math Function Command Send.", 5);
+            }
+            else
+            {
+                insert_Log("Null Math Function is only available for DCV, DCI, ACV, ACI, 2/4 Wire Ohms, Freq, Period.", 2);
+            }
+        }
+
+        private void Null_Off_Query_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (new int[] { 0, 1, 2, 3, 4, 5, 6, 7 }.Contains(Measurement_Selected))
+            {
+                SerialWriteQueue.Add("NULL OFF");
+                lockControls();
+                isUserSendCommand = true;
+                Speedup_Interval();
+                insert_Log("Null Off Math Function Command Send.", 5);
+            }
+            else
+            {
+                insert_Log("Null Math Function is only available for DCV, DCI, ACV, ACI, 2/4 Wire Ohms, Freq, Period.", 2);
+            }
+        }
+
+        private void Null_Status_Query_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (new int[] { 0, 1, 2, 3, 4, 5, 6, 7 }.Contains(Measurement_Selected))
+            {
+                SerialWriteQueue.Add("NULL?");
+                lockControls();
+                isUserSendCommand = true;
+                Speedup_Interval();
+                insert_Log("Null Math Function Status Command Send.", 5);
+            }
+            else
+            {
+                insert_Log("Null Math Function is only available for DCV, DCI, ACV, ACI, 2/4 Wire Ohms, Freq, Period.", 2);
+            }
+        }
+
+        private void Null_Set_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (new int[] { 0, 1, 2, 3, 4, 5, 6, 7 }.Contains(Measurement_Selected))
+            {
+                (bool isValid_Num, double Null_Value) = Text_Num(Null_Value_Text_Input.Text, false, false);
+                if (isValid_Num == true)
+                {
+                    this.Null_Value = Null_Value;
+                    SerialWriteQueue.Add("NULL_SET");
+                    lockControls();
+                    isUserSendCommand = true;
+                    Speedup_Interval();
+                    insert_Log("Set Null Value Command Send. Null Value: " + (decimal)Null_Value, 5);
+                }
+                else
+                {
+                    insert_Log("Set Null Value must be a real number. Try again.", 2);
+                }
+            }
+            else
+            {
+                insert_Log("Null Math Function is only available for DCV, DCI, ACV, ACI, 2/4 Wire Ohms, Freq, Period.", 2);
+            }
+        }
+
+        private void Null_Query_Set_Value_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (new int[] { 0, 1, 2, 3, 4, 5, 6, 7 }.Contains(Measurement_Selected))
+            {
+                SerialWriteQueue.Add("NULL_SET_QUERY");
+                lockControls();
+                isUserSendCommand = true;
+                Speedup_Interval();
+                insert_Log("Query Null Value Command Send.", 5);
+            }
+            else
+            {
+                insert_Log("Null Math Function is only available for DCV, DCI, ACV, ACI, 2/4 Wire Ohms, Freq, Period.", 2);
+            }
+        }
+
+        //------------------------------------------------------------------------------------------------
 
         //------------------------------------Auto Zero Query---------------------------------------------
 
@@ -4809,7 +5086,7 @@ namespace HP_34401A
                 Speedup_Interval();
                 insert_Log("Display Text set.", 5);
             }
-            else 
+            else
             {
                 insert_Log("Front Panel Display Text Not Set. Message must be alphanumeric.", 2);
             }
@@ -5737,6 +6014,21 @@ namespace HP_34401A
             }
         }
 
+        private void Randomize_Display_Colors(object sender, RoutedEventArgs e)
+        {
+            Random RGB_Value = new Random();
+            int Value_Red = RGB_Value.Next(0, 255);
+            int Value_Green = RGB_Value.Next(0, 255);
+            int Value_Blue = RGB_Value.Next(0, 255);
+
+            Set_Measurement_Color(Value_Red, Value_Green, Value_Blue);
+            Set_MIN_Color(Value_Red, Value_Green, Value_Blue);
+            Set_MAX_Color(Value_Red, Value_Green, Value_Blue);
+            Set_AVG_Color(Value_Red, Value_Green, Value_Blue);
+
+            insert_Log(Value_Red + "," + Value_Green + "," + Value_Blue + "," + "Measurement_Colors_Selected_RGB", 4);
+        }
+
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             DataTimer.Stop();
@@ -6140,6 +6432,132 @@ namespace HP_34401A
             catch (Exception)
             {
 
+            }
+        }
+
+        private void Local_Exit_Click(object sender, RoutedEventArgs e)
+        {
+            SerialWriteQueue.Add("LOCAL_EXIT");
+            lockControls();
+            isUserSendCommand = true;
+            Speedup_Interval();
+        }
+
+        private void Load_Main_Window_Settings()
+        {
+            try
+            {
+                List<String> Config_Lines = new List<string>();
+                string Software_Location = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\" + "Settings.txt";
+                string[] Config_Parts;
+                using (var readFile = new StreamReader(Software_Location))
+                {
+                    Config_Parts = readFile.ReadLine().Split(',');
+                    Set_Measurement_Color(int.Parse(Config_Parts[0]), int.Parse(Config_Parts[1]), int.Parse(Config_Parts[2]));
+                    Config_Parts = readFile.ReadLine().Split(',');
+                    Set_MIN_Color(int.Parse(Config_Parts[0]), int.Parse(Config_Parts[1]), int.Parse(Config_Parts[2]));
+                    Config_Parts = readFile.ReadLine().Split(',');
+                    Set_MAX_Color(int.Parse(Config_Parts[0]), int.Parse(Config_Parts[1]), int.Parse(Config_Parts[2]));
+                    Config_Parts = readFile.ReadLine().Split(',');
+                    Set_AVG_Color(int.Parse(Config_Parts[0]), int.Parse(Config_Parts[1]), int.Parse(Config_Parts[2]));
+                    Config_Parts = readFile.ReadLine().Split(',');
+                    Initial_Set_Measurement_Prefix(Config_Parts[0].ToUpper().Trim());
+                    insert_Log("Settings.txt file loaded.", 0);
+                }
+
+            }
+            catch (Exception Ex)
+            {
+                insert_Log(Ex.Message, 2);
+                insert_Log("Could not load Settings.txt file, try again.", 2);
+            }
+        }
+
+        private void Set_Measurement_Color(int Red, int Green, int Blue)
+        {
+            Measurement_Color_Checker(9);
+            if ((Red <= 255 & Red >= 0) & (Green <= 255 & Green >= 0) & (Blue <= 255 & Blue >= 0))
+            {
+                Measurement_Value.Foreground = new SolidColorBrush(Color.FromArgb(255, (byte)(Red), (byte)(Green), (byte)(Blue)));
+                Measurement_Scale.Foreground = new SolidColorBrush(Color.FromArgb(255, (byte)(Red), (byte)(Green), (byte)(Blue)));
+                Measurement_Type.Foreground = new SolidColorBrush(Color.FromArgb(255, (byte)(Red), (byte)(Green), (byte)(Blue)));
+            }
+            else
+            {
+                insert_Log("Measurement_Value_Color: RGB Values must be between 0 to 255, try again.", 2);
+            }
+        }
+
+        private void Set_MIN_Color(int Red, int Green, int Blue)
+        {
+            MIN_Color_Checker(9);
+            if ((Red <= 255 & Red >= 0) & (Green <= 255 & Green >= 0) & (Blue <= 255 & Blue >= 0))
+            {
+                MIN_Value.Foreground = new SolidColorBrush(Color.FromArgb(255, (byte)(Red), (byte)(Green), (byte)(Blue)));
+                MIN_Scale.Foreground = new SolidColorBrush(Color.FromArgb(255, (byte)(Red), (byte)(Green), (byte)(Blue)));
+                MIN_Type.Foreground = new SolidColorBrush(Color.FromArgb(255, (byte)(Red), (byte)(Green), (byte)(Blue)));
+                MIN_Label.Foreground = new SolidColorBrush(Color.FromArgb(255, (byte)(Red), (byte)(Green), (byte)(Blue)));
+            }
+            else
+            {
+                insert_Log("MIN_Value_Color: RGB Values must be between 0 to 255, try again.", 2);
+            }
+        }
+
+        private void Set_MAX_Color(int Red, int Green, int Blue)
+        {
+            MAX_Color_Checker(9);
+            if ((Red <= 255 & Red >= 0) & (Green <= 255 & Green >= 0) & (Blue <= 255 & Blue >= 0))
+            {
+                MAX_Value.Foreground = new SolidColorBrush(Color.FromArgb(255, (byte)(Red), (byte)(Green), (byte)(Blue)));
+                MAX_Scale.Foreground = new SolidColorBrush(Color.FromArgb(255, (byte)(Red), (byte)(Green), (byte)(Blue)));
+                MAX_Type.Foreground = new SolidColorBrush(Color.FromArgb(255, (byte)(Red), (byte)(Green), (byte)(Blue)));
+                MAX_Label.Foreground = new SolidColorBrush(Color.FromArgb(255, (byte)(Red), (byte)(Green), (byte)(Blue)));
+            }
+            else
+            {
+                insert_Log("MAX_Value_Color: RGB Values must be between 0 to 255, try again.", 2);
+            }
+        }
+
+        private void Set_AVG_Color(int Red, int Green, int Blue)
+        {
+            AVG_Color_Checker(9);
+            if ((Red <= 255 & Red >= 0) & (Green <= 255 & Green >= 0) & (Blue <= 255 & Blue >= 0))
+            {
+                AVG_Value.Foreground = new SolidColorBrush(Color.FromArgb(255, (byte)(Red), (byte)(Green), (byte)(Blue)));
+                AVG_Scale.Foreground = new SolidColorBrush(Color.FromArgb(255, (byte)(Red), (byte)(Green), (byte)(Blue)));
+                AVG_Type.Foreground = new SolidColorBrush(Color.FromArgb(255, (byte)(Red), (byte)(Green), (byte)(Blue)));
+                AVG_Label.Foreground = new SolidColorBrush(Color.FromArgb(255, (byte)(Red), (byte)(Green), (byte)(Blue)));
+            }
+            else
+            {
+                insert_Log("AVG_Value_Color: RGB Values must be between 0 to 255, try again.", 2);
+            }
+        }
+
+        private void Initial_Set_Measurement_Prefix(string Partial_Prefix)
+        {
+            if (Partial_Prefix == "TRUE")
+            {
+                PSI_Display.IsChecked = true;
+                FSI_Display.IsChecked = false;
+                Partial_SI_Prefix = true;
+                Full_SI_Prefix = false;
+            }
+            else if (Partial_Prefix == "FALSE")
+            {
+                PSI_Display.IsChecked = false;
+                FSI_Display.IsChecked = true;
+                Partial_SI_Prefix = false;
+                Full_SI_Prefix = true;
+            }
+            else
+            {
+                PSI_Display.IsChecked = true;
+                FSI_Display.IsChecked = false;
+                Partial_SI_Prefix = true;
+                Full_SI_Prefix = false;
             }
         }
     }

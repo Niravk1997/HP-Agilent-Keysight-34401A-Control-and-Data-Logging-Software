@@ -129,6 +129,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="N_Sample_Graph_Window.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Math_Waveform.xaml.cs">
@@ -136,6 +140,9 @@
     </Compile>
     <Compile Include="Measurement_Table.xaml.cs">
       <DependentUpon>Measurement_Table.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="N_Sample_Graph_Window.xaml.cs">
+      <DependentUpon>N_Sample_Graph_Window.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

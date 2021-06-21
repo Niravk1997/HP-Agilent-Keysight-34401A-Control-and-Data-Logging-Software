@@ -1,0 +1,1513 @@
+﻿<Window x:Class="HP_34401A.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HP_34401A"
+        mc:Ignorable="d"
+        Title="HP 34401A" Height="670" Width="630" Closed="Main_Window_Closed">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="85"/>
+            <RowDefinition Height="95"/>
+            <RowDefinition Height="95"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0" Grid.Column="0">
+            <MenuItem Header="Config" IsCheckable="False" IsChecked="False" Height="25">
+                <MenuItem.ToolTip>
+                    <ToolTip>Connect to HP 34401A.</ToolTip>
+                </MenuItem.ToolTip>
+                <MenuItem x:Name="Connect" Header="Connect" IsCheckable="False" IsChecked="False" Click="Connect_Click"/>
+                <MenuItem x:Name="Stop_Sampling" Header="Sampling" IsCheckable="True" IsChecked="True" Click="Stop_Sampling_Click" IsEnabled="False"/>
+                <MenuItem x:Name="Sampling_Only" Header="Sampling Only" IsCheckable="True" IsChecked="False" IsEnabled="False" Click="Sampling_Only_Click"/>
+                <MenuItem x:Name="Local_Exit" Header="Local Exit" IsCheckable="False" IsEnabled="False" Click="Local_Exit_Click"/>
+                <MenuItem x:Name="Exit" Header="Exit" IsCheckable="False" IsChecked="False" Click="Exit_Click"/>
+            </MenuItem>
+            <MenuItem Header="Display Panel" IsCheckable="False" IsChecked="False">
+                <MenuItem.ToolTip>
+                    <ToolTip>Options for Display Panel.</ToolTip>
+                </MenuItem.ToolTip>
+                <MenuItem Header="Measurement Color" IsCheckable="False" IsChecked="False">
+                    <MenuItem x:Name="Measurement_Green" Header="Green" IsCheckable="True" IsChecked="False" Click="Measurement_Green_Click">
+                        <MenuItem.Icon>
+                            <Rectangle Fill="#FF00FF17" Width="16" Height="16"></Rectangle>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="Measurement_Blue" Header="Blue" IsCheckable="True" IsChecked="True" Click="Measurement_Blue_Click">
+                        <MenuItem.Icon>
+                            <Rectangle Fill="#FF00C0FF" Width="16" Height="16"></Rectangle>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="Measurement_Red" Header="Red" IsCheckable="True" IsChecked="False" Click="Measurement_Red_Click">
+                        <MenuItem.Icon>
+                            <Rectangle Fill="Red" Width="16" Height="16"></Rectangle>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="Measurement_Yellow" Header="Yellow" IsCheckable="True" IsChecked="False" Click="Measurement_Yellow_Click">
+                        <MenuItem.Icon>
+                            <Rectangle Fill="#FFFFFF00" Width="16" Height="16"></Rectangle>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="Measurement_Orange" Header="Orange" IsCheckable="True" IsChecked="False" Click="Measurement_Orange_Click">
+                        <MenuItem.Icon>
+                            <Rectangle Fill="DarkOrange" Width="16" Height="16"></Rectangle>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="Measurement_Pink" Header="Pink" IsCheckable="True" IsChecked="False" Click="Measurement_Pink_Click">
+                        <MenuItem.Icon>
+                            <Rectangle Fill="DeepPink" Width="16" Height="16"></Rectangle>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="Measurement_White" Header="White" IsCheckable="True" IsChecked="False" Click="Measurement_White_Click">
+                        <MenuItem.Icon>
+                            <Rectangle Fill="White" Width="16" Height="16"></Rectangle>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="Measurement_Black" Header="Black" IsCheckable="True" IsChecked="False" Click="Measurement_Black_Click">
+                        <MenuItem.Icon>
+                            <Rectangle Fill="Black" Width="16" Height="16"></Rectangle>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="MIN Color" IsCheckable="False" IsChecked="False">
+                    <MenuItem x:Name="MIN_Green" Header="Green" IsCheckable="True" IsChecked="False" Click="MIN_Green_Click">
+                        <MenuItem.Icon>
+                            <Rectangle Fill="#FF00FF17" Width="16" Height="16"></Rectangle>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="MIN_Blue" Header="Blue" IsCheckable="True" IsChecked="True" Click="MIN_Blue_Click">
+                        <MenuItem.Icon>
+                            <Rectangle Fill="#FF00C0FF" Width="16" Height="16"></Rectangle>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="MIN_Red" Header="Red" IsCheckable="True" IsChecked="False" Click="MIN_Red_Click">
+                        <MenuItem.Icon>
+                            <Rectangle Fill="Red" Width="16" Height="16"></Rectangle>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="MIN_Yellow" Header="Yellow" IsCheckable="True" IsChecked="False" Click="MIN_Yellow_Click">
+                        <MenuItem.Icon>
+                            <Rectangle Fill="#FFFFFF00" Width="16" Height="16"></Rectangle>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="MIN_Orange" Header="Orange" IsCheckable="True" IsChecked="False" Click="MIN_Orange_Click">
+                        <MenuItem.Icon>
+                            <Rectangle Fill="DarkOrange" Width="16" Height="16"></Rectangle>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="MIN_Pink" Header="Pink" IsCheckable="True" IsChecked="False" Click="MIN_Pink_Click">
+                        <MenuItem.Icon>
+                            <Rectangle Fill="DeepPink" Width="16" Height="16"></Rectangle>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="MIN_White" Header="White" IsCheckable="True" IsChecked="False" Click="MIN_White_Click">
+                        <MenuItem.Icon>
+                            <Rectangle Fill="White" Width="16" Height="16"></Rectangle>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="MIN_Black" Header="Black" IsCheckable="True" IsChecked="False" Click="MIN_Black_Click">
+                        <MenuItem.Icon>
+                            <Rectangle Fill="Black" Width="16" Height="16"></Rectangle>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="MAX Color" IsCheckable="False" IsChecked="False">
+                    <MenuItem x:Name="MAX_Green" Header="Green" IsCheckable="True" IsChecked="False" Click="MAX_Green_Click">
+                        <MenuItem.Icon>
+                            <Rectangle Fill="#FF00FF17" Width="16" Height="16"></Rectangle>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="MAX_Blue" Header="Blue" IsCheckable="True" IsChecked="True" Click="MAX_Blue_Click">
+                        <MenuItem.Icon>
+                            <Rectangle Fill="#FF00C0FF" Width="16" Height="16"></Rectangle>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="MAX_Red" Header="Red" IsCheckable="True" IsChecked="False" Click="MAX_Red_Click">
+                        <MenuItem.Icon>
+                            <Rectangle Fill="Red" Width="16" Height="16"></Rectangle>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="MAX_Yellow" Header="Yellow" IsCheckable="True" IsChecked="False" Click="MAX_Yellow_Click">
+                        <MenuItem.Icon>
+                            <Rectangle Fill="#FFFFFF00" Width="16" Height="16"></Rectangle>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="MAX_Orange" Header="Orange" IsCheckable="True" IsChecked="False" Click="MAX_Orange_Click">
+                        <MenuItem.Icon>
+                            <Rectangle Fill="DarkOrange" Width="16" Height="16"></Rectangle>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="MAX_Pink" Header="Pink" IsCheckable="True" IsChecked="False" Click="MAX_Pink_Click">
+                        <MenuItem.Icon>
+                            <Rectangle Fill="DeepPink" Width="16" Height="16"></Rectangle>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="MAX_White" Header="White" IsCheckable="True" IsChecked="False" Click="MAX_White_Click">
+                        <MenuItem.Icon>
+                            <Rectangle Fill="White" Width="16" Height="16"></Rectangle>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="MAX_Black" Header="Black" IsCheckable="True" IsChecked="False" Click="MAX_Black_Click">
+                        <MenuItem.Icon>
+                            <Rectangle Fill="Black" Width="16" Height="16"></Rectangle>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="AVG Color" IsCheckable="False" IsChecked="False">
+                    <MenuItem x:Name="AVG_Green" Header="Green" IsCheckable="True" IsChecked="False" Click="AVG_Green_Click">
+                        <MenuItem.Icon>
+                            <Rectangle Fill="#FF00FF17" Width="16" Height="16"></Rectangle>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="AVG_Blue" Header="Blue" IsCheckable="True" IsChecked="True" Click="AVG_Blue_Click">
+                        <MenuItem.Icon>
+                            <Rectangle Fill="#FF00C0FF" Width="16" Height="16"></Rectangle>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="AVG_Red" Header="Red" IsCheckable="True" IsChecked="False" Click="AVG_Red_Click">
+                        <MenuItem.Icon>
+                            <Rectangle Fill="Red" Width="16" Height="16"></Rectangle>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="AVG_Yellow" Header="Yellow" IsCheckable="True" IsChecked="False" Click="AVG_Yellow_Click">
+                        <MenuItem.Icon>
+                            <Rectangle Fill="#FFFFFF00" Width="16" Height="16"></Rectangle>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="AVG_Orange" Header="Orange" IsCheckable="True" IsChecked="False" Click="AVG_Orange_Click">
+                        <MenuItem.Icon>
+                            <Rectangle Fill="DarkOrange" Width="16" Height="16"></Rectangle>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="AVG_Pink" Header="Pink" IsCheckable="True" IsChecked="False" Click="AVG_Pink_Click">
+                        <MenuItem.Icon>
+                            <Rectangle Fill="DeepPink" Width="16" Height="16"></Rectangle>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="AVG_White" Header="White" IsCheckable="True" IsChecked="False" Click="AVG_White_Click">
+                        <MenuItem.Icon>
+                            <Rectangle Fill="White" Width="16" Height="16"></Rectangle>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="AVG_Black" Header="Black" IsCheckable="True" IsChecked="False" Click="AVG_Black_Click">
+                        <MenuItem.Icon>
+                            <Rectangle Fill="Black" Width="16" Height="16"></Rectangle>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem x:Name="Randomize_Display_Panel_Colors" Header="Randomize Display Colors" IsCheckable="False" Click="Randomize_Display_Colors"/>
+                <MenuItem Header="Background Color" IsCheckable="False" IsChecked="False">
+                    <MenuItem x:Name="Background_White" Header="White" IsCheckable="True" IsChecked="False" Click="Background_White_Click">
+                        <MenuItem.Icon>
+                            <Rectangle Fill="White" Width="16" Height="16"></Rectangle>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="Background_Black" Header="Black" IsCheckable="True" IsChecked="True" Click="Background_Black_Click">
+                        <MenuItem.Icon>
+                            <Rectangle Fill="Black" Width="16" Height="16"></Rectangle>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="Measurement Display" IsCheckable="False" IsChecked="False">
+                    <MenuItem x:Name="FSI_Display" Header="Full SI Prefixes" IsCheckable="True" IsChecked="False" Click="FSI_Display_Click"/>
+                    <MenuItem x:Name="PSI_Display" Header="Partial SI Prefixes" IsCheckable="True" IsChecked="True" Click="PSI_Display_Click"/>
+                </MenuItem>
+                <MenuItem Header="Average Config" IsCheckable="False" IsChecked="False">
+                    <MenuItem x:Name="Calculate_AVG" Header="Calculate" IsCheckable="True" IsChecked="True" Click="Calculate_AVG_Click"/>
+                    <MenuItem Header="Resolution" IsCheckable="False" IsChecked="False">
+                        <MenuItem x:Name="AVG_Res_2" Header="2" IsCheckable="True" IsChecked="False" Click="AVG_Res_2_Click"/>
+                        <MenuItem x:Name="AVG_Res_3" Header="3" IsCheckable="True" IsChecked="False" Click="AVG_Res_3_Click"/>
+                        <MenuItem x:Name="AVG_Res_4" Header="4" IsCheckable="True" IsChecked="False" Click="AVG_Res_4_Click"/>
+                        <MenuItem x:Name="AVG_Res_5" Header="5" IsCheckable="True" IsChecked="True" Click="AVG_Res_5_Click"/>
+                        <MenuItem x:Name="AVG_Res_6" Header="6" IsCheckable="True" IsChecked="False" Click="AVG_Res_6_Click"/>
+                    </MenuItem>
+                    <MenuItem Header="Factor" IsCheckable="False" IsChecked="False">
+                        <MenuItem x:Name="Factor_50" Header="50" IsCheckable="True" IsChecked="False" Click="Factor_50_Click"/>
+                        <MenuItem x:Name="Factor_100" Header="100" IsCheckable="True" IsChecked="False" Click="Factor_100_Click"/>
+                        <MenuItem x:Name="Factor_200" Header="200" IsCheckable="True" IsChecked="False" Click="Factor_200_Click"/>
+                        <MenuItem x:Name="Factor_400" Header="400" IsCheckable="True" IsChecked="False" Click="Factor_400_Click"/>
+                        <MenuItem x:Name="Factor_800" Header="800" IsCheckable="True" IsChecked="False" Click="Factor_800_Click"/>
+                        <MenuItem x:Name="Factor_1000" Header="1000" IsCheckable="True" IsChecked="True" Click="Factor_1000_Click"/>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem x:Name="Show_Display_Error" Header="Show Display Errors" IsCheckable="True" IsChecked="False"/>
+                <MenuItem x:Name="Show_COM_Error" Header="Show COMM Errors" IsCheckable="True" IsChecked="True"/>
+            </MenuItem>
+            <MenuItem x:Name="DataLogger" Header="Data Logger" IsCheckable="False" IsChecked="False" IsEnabled="False">
+                <MenuItem.ToolTip>
+                    <ToolTip>Save Measurement Data to TEXT File.</ToolTip>
+                </MenuItem.ToolTip>
+                <MenuItem x:Name="OpenFolder" Header="Open Data Folder" IsCheckable="False" IsChecked="False" Click="OpenFolder_Click"/>
+                <MenuItem x:Name="SaveOutputLog" Header="Save Output Log" IsCheckable="True" IsChecked="True" Click="SaveOutputLog_Click"/>
+                <MenuItem x:Name="SaveMeasurements" Header="Save Measurements" IsCheckable="True" IsChecked="True" Click="SaveMeasurements_Click"/>
+                <MenuItem x:Name="SaveMeasurements_Interval" Header="Save Measurements Interval" IsCheckable="False" IsChecked="False">
+                    <MenuItem x:Name="SaveMeasurements_Interval_5Sec" Header="5 Seconds" IsCheckable="True" IsChecked="False" Click="SaveMeasurements_Interval_5Sec_Click"/>
+                    <MenuItem x:Name="SaveMeasurements_Interval_10Sec" Header="10 Seconds" IsCheckable="True" IsChecked="False" Click="SaveMeasurements_Interval_10Sec_Click"/>
+                    <MenuItem x:Name="SaveMeasurements_Interval_20Sec" Header="20 Seconds" IsCheckable="True" IsChecked="False" Click="SaveMeasurements_Interval_20Sec_Click"/>
+                    <MenuItem x:Name="SaveMeasurements_Interval_40Sec" Header="40 Seconds" IsCheckable="True" IsChecked="False" Click="SaveMeasurements_Interval_40Sec_Click"/>
+                    <MenuItem x:Name="SaveMeasurements_Interval_1Min" Header="1 Minute" IsCheckable="True" IsChecked="True" Click="SaveMeasurements_Interval_1Min_Click"/>
+                    <MenuItem x:Name="SaveMeasurements_Interval_4Min" Header="4 Minutes" IsCheckable="True" IsChecked="False" Click="SaveMeasurements_Interval_4Min_Click"/>
+                    <MenuItem x:Name="SaveMeasurements_Interval_8Min" Header="8 Minutes" IsCheckable="True" IsChecked="False" Click="SaveMeasurements_Interval_8Min_Click"/>
+                    <MenuItem x:Name="SaveMeasurements_Interval_10Min" Header="10 Minutes" IsCheckable="True" IsChecked="False" Click="SaveMeasurements_Interval_10Min_Click"/>
+                </MenuItem>
+                <MenuItem x:Name="ClearOutputLog" Header="Clear Output Log" IsCheckable="False" IsChecked="False" Click="ClearOutputLog_Click"/>
+                <MenuItem Header="Auto Clear Output Log" IsCheckable="False" IsChecked="False">
+                    <MenuItem x:Name="Auto_Clear_20" Header="20 Logs" IsCheckable="True" IsChecked="True" Click="Auto_Clear_20_Click"/>
+                    <MenuItem x:Name="Auto_Clear_40" Header="40 Logs" IsCheckable="True" IsChecked="False" Click="Auto_Clear_40_Click"/>
+                    <MenuItem x:Name="Auto_Clear_60" Header="60 Logs" IsCheckable="True" IsChecked="False" Click="Auto_Clear_60_Click"/>
+                </MenuItem>
+                <MenuItem x:Name="AutoScroll"  Header="Auto Scroll Output Log" IsCheckable="True" IsChecked="True"/>
+            </MenuItem>
+            <MenuItem Header="Graphs" IsCheckable="False" IsChecked="False">
+                <MenuItem.ToolTip>
+                    <ToolTip>Show Measurement Data on the Graph.</ToolTip>
+                </MenuItem.ToolTip>
+                <MenuItem x:Name="ShowMeasurementGraph" Header="Show Graph" IsCheckable="True" IsChecked="False" Click="ShowMeasurementGraph_Click"/>
+                <MenuItem Header="N Sample Graph" IsCheckable="False">
+                    <MenuItem x:Name="Show_N_Sample_Graph" IsCheckable="True" IsChecked="False">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox x:Name="N_Sample_Graph_Text" Text="60" Width="50" MinWidth="50" MaxWidth="50"/>
+                                <Button x:Name="N_Sample_Graph_Button" Content="Create" Width="50" Margin="10,0,0,0" Click="N_Sample_Graph_Button_Click"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem x:Name="AddDataGraph" Header="Add Data to Graphs" IsCheckable="True" IsChecked="False" Click="AddDataGraph_Click"/>
+            </MenuItem>
+            <MenuItem Header="Table" IsCheckable="False" IsChecked="False">
+                <MenuItem.ToolTip>
+                    <ToolTip>Show Measurement Data on the Table.</ToolTip>
+                </MenuItem.ToolTip>
+                <MenuItem x:Name="ShowTable" Header="Show Measurement Table" IsCheckable="True" IsChecked="False" Click="ShowTable_Click"/>
+                <MenuItem x:Name="AddDataTable" Header="Add Data to Table" IsCheckable="True" IsChecked="False" Click="AddDataTable_Click"/>
+            </MenuItem>
+            <MenuItem Header="Speech" IsCheckable="False" IsChecked="False">
+                <MenuItem.ToolTip>
+                    <ToolTip>Options for Speech Synthesizer.</ToolTip>
+                </MenuItem.ToolTip>
+                <MenuItem x:Name="EnableSpeech" Header="Enable Speech" IsCheckable="True" IsChecked="False" Click="EnableSpeech_Click"/>
+                <MenuItem Header="Voice Gender" IsCheckable="False" IsChecked="False">
+                    <MenuItem x:Name="VoiceMale" Header="Male" IsCheckable="True" IsChecked="True" Click="VoiceMale_Click"/>
+                    <MenuItem x:Name="VoiceFemale" Header="Female" IsCheckable="True" IsChecked="False" Click="VoiceFemale_Click"/>
+                </MenuItem>
+                <MenuItem Header="Voice Speed" IsCheckable="False" IsChecked="False">
+                    <MenuItem x:Name="VoiceSlow" Header="Slow" IsCheckable="True" IsChecked="False" Click="VoiceSlow_Click"/>
+                    <MenuItem x:Name="VoiceMedium" Header="Medium" IsCheckable="True" IsChecked="True" Click="VoiceMedium_Click"/>
+                    <MenuItem x:Name="VoiceFast" Header="Fast" IsCheckable="True" IsChecked="False" Click="VoiceFast_Click"/>
+                    <MenuItem x:Name="VoiceVeryFast" Header="Faster" IsCheckable="True" IsChecked="False" Click="VoiceVeryFast_Click"/>
+                    <MenuItem x:Name="VoiceFastest" Header="Fastest" IsCheckable="True" IsChecked="False" Click="VoiceFastest_Click"/>
+                </MenuItem>
+                <MenuItem Header="Volume" IsCheckable="False" IsChecked="False">
+                    <MenuItem x:Name="Voice_Volume_10" Header="10%" IsCheckable="True" IsChecked="False" Click="Voice_Volume_10_Click"/>
+                    <MenuItem x:Name="Voice_Volume_20" Header="20%" IsCheckable="True" IsChecked="False" Click="Voice_Volume_20_Click"/>
+                    <MenuItem x:Name="Voice_Volume_30" Header="30%" IsCheckable="True" IsChecked="False" Click="Voice_Volume_30_Click"/>
+                    <MenuItem x:Name="Voice_Volume_40" Header="40%" IsCheckable="True" IsChecked="False" Click="Voice_Volume_40_Click"/>
+                    <MenuItem x:Name="Voice_Volume_50" Header="50%" IsCheckable="True" IsChecked="False" Click="Voice_Volume_50_Click"/>
+                    <MenuItem x:Name="Voice_Volume_60" Header="60%" IsCheckable="True" IsChecked="False" Click="Voice_Volume_60_Click"/>
+                    <MenuItem x:Name="Voice_Volume_70" Header="70%" IsCheckable="True" IsChecked="False" Click="Voice_Volume_70_Click"/>
+                    <MenuItem x:Name="Voice_Volume_80" Header="80%" IsCheckable="True" IsChecked="False" Click="Voice_Volume_80_Click"/>
+                    <MenuItem x:Name="Voice_Volume_90" Header="90%" IsCheckable="True" IsChecked="False" Click="Voice_Volume_90_Click"/>
+                    <MenuItem x:Name="Voice_Volume_100" Header="100%" IsCheckable="True" IsChecked="True" Click="Voice_Volume_100_Click"/>
+                </MenuItem>
+                <MenuItem Header="Precision" IsCheckable="False" IsChecked="False">
+                    <MenuItem x:Name="Voice_Precision_0" Header="0" IsCheckable="True" IsChecked="False" Click="Voice_Precision_0_Click"/>
+                    <MenuItem x:Name="Voice_Precision_1" Header="1" IsCheckable="True" IsChecked="True" Click="Voice_Precision_1_Click"/>
+                    <MenuItem x:Name="Voice_Precision_2" Header="2" IsCheckable="True" IsChecked="False" Click="Voice_Precision_2_Click"/>
+                    <MenuItem x:Name="Voice_Precision_3" Header="3" IsCheckable="True" IsChecked="False" Click="Voice_Precision_3_Click"/>
+                    <MenuItem x:Name="Voice_Precision_4" Header="4" IsCheckable="True" IsChecked="False" Click="Voice_Precision_4_Click"/>
+                    <MenuItem x:Name="Voice_Precision_5" Header="5" IsCheckable="True" IsChecked="False" Click="Voice_Precision_5_Click"/>
+                    <MenuItem x:Name="Voice_Precision_6" Header="6" IsCheckable="True" IsChecked="False" Click="Voice_Precision_6_Click"/>
+                    <MenuItem x:Name="Voice_Precision_7" Header="7" IsCheckable="True" IsChecked="False" Click="Voice_Precision_7_Click"/>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="About" IsCheckable="False" IsChecked="False">
+                <MenuItem.ToolTip>
+                    <ToolTip>Info about this Software.</ToolTip>
+                </MenuItem.ToolTip>
+                <MenuItem x:Name="DeviceSupport" Header="Device Support" IsCheckable="False" IsChecked="False" Click="DeviceSupport_Click"/>
+                <MenuItem x:Name="Credits" Header="Credits" IsCheckable="False" IsChecked="False" Click="Credits_Click"/>
+            </MenuItem>
+        </Menu>
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="52"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="25"/>
+            </Grid.RowDefinitions>
+            <Border x:Name="DisplayPanel_Background" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="6" Background="Black"/>
+            <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,-10,0,0">
+                <Label x:Name="Measurement_Value" Content="0" Foreground="#FF00C0FF" FontSize="72" Padding="0"/>
+                <Label x:Name="Measurement_Scale" Content="" Foreground="#FF00C0FF" FontSize="72" Padding="0" Margin="10,0,0,0"/>
+                <Label x:Name="Measurement_Type" Content="VDC" Foreground="#FF00C0FF" FontSize="72" Padding="0"/>
+            </StackPanel>
+            <Label x:Name="MIN_Label" Grid.Row="1" Grid.Column="0" Content="MIN:" Foreground="#FF00C0FF" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0" MouseDoubleClick="Reset_Click_MIN_MAX_AVG"/>
+            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-10,0,0,0">
+                <Label x:Name="MIN_Value" Content="0" Foreground="#FF00C0FF" FontSize="18" Padding="0" MouseDoubleClick="Reset_Click_MIN_MAX_AVG"/>
+                <Label x:Name="MIN_Scale" Content="" Foreground="#FF00C0FF" FontSize="18" Padding="0" Margin="2,0,0,0" MouseDoubleClick="Reset_Click_MIN_MAX_AVG"/>
+                <Label x:Name="MIN_Type" Content="VDC" Foreground="#FF00C0FF" FontSize="18" Padding="0" MouseDoubleClick="Reset_Click_MIN_MAX_AVG"/>
+            </StackPanel>
+            <Label x:Name="MAX_Label" Grid.Row="1" Grid.Column="2" Content="MAX:" Foreground="#FF00C0FF" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0" MouseDoubleClick="Reset_Click_MIN_MAX_AVG"/>
+            <StackPanel Grid.Row="1" Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-8,0,0,0">
+                <Label x:Name="MAX_Value" Content="0" Foreground="#FF00C0FF" FontSize="18" Padding="0" MouseDoubleClick="Reset_Click_MIN_MAX_AVG"/>
+                <Label x:Name="MAX_Scale" Content="" Foreground="#FF00C0FF" FontSize="18" Padding="0" Margin="2,0,0,0" MouseDoubleClick="Reset_Click_MIN_MAX_AVG"/>
+                <Label x:Name="MAX_Type" Content="VDC" Foreground="#FF00C0FF" FontSize="18" Padding="0" MouseDoubleClick="Reset_Click_MIN_MAX_AVG"/>
+            </StackPanel>
+            <Label x:Name="AVG_Label" Grid.Row="1" Grid.Column="4" Content="AVG:" Foreground="#FF00C0FF" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0" MouseDoubleClick="Reset_Click_MIN_MAX_AVG"/>
+            <StackPanel Grid.Row="1" Grid.Column="5" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-12,0,0,0">
+                <Label x:Name="AVG_Value" Content="0" Foreground="#FF00C0FF" FontSize="18" Padding="0" MouseDoubleClick="Reset_Click_MIN_MAX_AVG"/>
+                <Label x:Name="AVG_Scale" Content="" Foreground="#FF00C0FF" FontSize="18" Padding="0" Margin="2,0,0,0" MouseDoubleClick="Reset_Click_MIN_MAX_AVG"/>
+                <Label x:Name="AVG_Type" Content="VDC" Foreground="#FF00C0FF" FontSize="18" Padding="0" MouseDoubleClick="Reset_Click_MIN_MAX_AVG"/>
+            </StackPanel>
+        </Grid>
+        <GroupBox x:Name="Measurements" Grid.Row="2" Grid.Column="0" Margin="5,0,5,5" IsEnabled="False">
+            <GroupBox.Header>
+                <TextBlock FontWeight="DemiBold" Margin="0,0,0,0">Measurements</TextBlock>
+            </GroupBox.Header>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Border x:Name="VDC_Border" Grid.Row="0" Grid.Column="0" BorderThickness="2" BorderBrush="#00CE30" Margin="10,0,10,0">
+                    <Button x:Name="VDC_Button" BorderThickness="0" Click="VDC_Button_Click">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <Label Content="&#x2393;" FontSize="30" Margin="0,-11,0,0" Padding="0"/>
+                            <Label Content="DC V" Margin="0,2,0,0" Padding="0"/>
+                        </StackPanel>
+                    </Button>
+                </Border>
+                <Border x:Name="ADC_Border" Grid.Row="1" Grid.Column="0" BorderThickness="2" BorderBrush="White" Margin="10,0,10,0">
+                    <Button x:Name="ADC_Button" BorderThickness="0" Click="ADC_Button_Click">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <Label Content="&#x2393;" FontSize="30" Margin="0,-11,0,0" Padding="0"/>
+                            <Label Content="DC I" Margin="0,2,0,0" Padding="0"/>
+                        </StackPanel>
+                    </Button>
+                </Border>
+                <Border x:Name="VAC_Border" Grid.Row="0" Grid.Column="1" BorderThickness="2" BorderBrush="White" Margin="10,0,10,0">
+                    <Button x:Name="VAC_Button" Margin="0,0,0,0" BorderThickness="0" Click="VAC_Button_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="~" FontSize="30" Margin="0,-13,0,0" Padding="0"/>
+                            <Label Content="AC V" Margin="0,2,0,0" Padding="0"/>
+                        </StackPanel>
+                    </Button>
+                </Border>
+                <Border x:Name="AAC_Border" Grid.Row="1" Grid.Column="1" BorderThickness="2" BorderBrush="White" Margin="10,0,10,0">
+                    <Button x:Name="AAC_Button" Margin="0,0,0,0" BorderThickness="0" Click="AAC_Button_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="~" FontSize="30" Margin="0,-13,0,0" Padding="0"/>
+                            <Label Content="AC I" Margin="0,2,0,0" Padding="0"/>
+                        </StackPanel>
+                    </Button>
+                </Border>
+                <Border x:Name="TwoOhms_Border" Grid.Row="0" Grid.Column="2" BorderThickness="2" BorderBrush="White" Margin="10,0,10,0">
+                    <Button x:Name="TwoOhms_Button" BorderThickness="0" Click="TwoOhms_Button_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="2 Wire" FontSize="12" Margin="0,2,0,0" Padding="0"/>
+                            <Label Content="Ω" FontSize="22" Margin="3,-6,0,0" Padding="0"/>
+                        </StackPanel>
+                    </Button>
+                </Border>
+                <Border x:Name="FourOhms_Border" Grid.Row="1" Grid.Column="2" BorderThickness="2" BorderBrush="White" Margin="10,0,10,0">
+                    <Button x:Name="FourOhms_Button" BorderThickness="0" Click="FourOhms_Button_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="4 Wire" FontSize="12" Margin="0,2,0,0" Padding="0"/>
+                            <Label Content="Ω" FontSize="22" Margin="3,-6,0,0" Padding="0"/>
+                        </StackPanel>
+                    </Button>
+                </Border>
+                <Border x:Name="FREQ_Border" Grid.Row="0" Grid.Column="3" BorderThickness="2" BorderBrush="White" Margin="10,0,10,0">
+                    <Button x:Name="FREQ_Button" BorderThickness="0" Click="FREQ_Button_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="ƒ" FontSize="18" Margin="0,-5,0,0" Padding="0"/>
+                            <Label Content="FREQ" Margin="1,1,0,0" Padding="0"/>
+                        </StackPanel>
+                    </Button>
+                </Border>
+                <Border x:Name="PER_Border" Grid.Row="1" Grid.Column="3" BorderThickness="2" BorderBrush="White" Margin="10,0,10,0">
+                    <Button x:Name="PER_Button" BorderThickness="0" Click="PER_Button_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="T" FontSize="18" Margin="0,-3,0,0" Padding="0"/>
+                            <Label Content="PERIOD" Margin="2,2,0,0" Padding="0"/>
+                        </StackPanel>
+                    </Button>
+                </Border>
+                <Border x:Name="DIODE_Border" Grid.Row="0" Grid.Column="4" BorderThickness="2" BorderBrush="White" Margin="10,0,10,0">
+                    <Button x:Name="DIODE_Button" BorderThickness="0" Click="DIODE_Button_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="−" FontSize="20" Margin="0,-4,0,0" Padding="0"/>
+                            <Label Content="ᐅ" FontSize="20" Margin="-4,-3,-3,0" Padding="0"/>
+                            <Label Content="|" FontSize="13" Margin="0,1,-2,0" Padding="0"/>
+                            <Label Content="−" FontSize="21" Margin="-2,-5,0,0" Padding="0"/>
+                            <Label Content="Diode" Margin="2,2,0,0" Padding="0"/>
+                        </StackPanel>
+                    </Button>
+                </Border>
+                <Border x:Name="CONT_Border" Grid.Row="1" Grid.Column="4" BorderThickness="2" BorderBrush="White" Margin="10,0,10,0">
+                    <Button x:Name="CONT_Button" BorderThickness="0" Click="CONT_Button_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="🕪" FontSize="20" Margin="0,-4,0,0" Padding="0"/>
+                            <Label Content="Cont" Margin="2,2,0,0" Padding="0"/>
+                        </StackPanel>
+                    </Button>
+                </Border>
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="Range" Grid.Row="3" Grid.Column="0" Margin="5,0,5,5" IsEnabled="False">
+            <GroupBox.Header>
+                <TextBlock FontWeight="DemiBold" Margin="0,0,0,0">Range</TextBlock>
+            </GroupBox.Header>
+            <TabControl>
+                <TabItem x:Name="VDC_Tab" Header="&#x2393;DC V" IsSelected="True">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Border x:Name="VDC_Auto_Border" Grid.Row="0" Grid.Column="0" BorderThickness="2" BorderBrush="#00CE30" Margin="10,0,10,0">
+                            <Button x:Name="VDC_Auto_Button" BorderThickness="0" Click="VDC_Auto_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Auto" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="VDC_100mV_Border" Grid.Row="0" Grid.Column="1" BorderThickness="2" BorderBrush="White" Margin="10,0,10,0">
+                            <Button x:Name="VDC_100mV_Button" Margin="0,0,0,0" BorderThickness="0" Click="VDC_100mV_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="100 mV" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="VDC_1V_Border" Grid.Row="0" Grid.Column="2" BorderThickness="2" BorderBrush="White" Margin="10,0,10,0">
+                            <Button x:Name="VDC_1V_Button" BorderThickness="0" Click="VDC_1V_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="1 V" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="VDC_10V_Border" Grid.Row="0" Grid.Column="3" BorderThickness="2" BorderBrush="White" Margin="10,0,10,0">
+                            <Button x:Name="VDC_10V_Button" BorderThickness="0" Click="VDC_10V_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="10 V" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="VDC_100V_Border" Grid.Row="0" Grid.Column="4" BorderThickness="2" BorderBrush="White" Margin="10,0,10,0">
+                            <Button x:Name="VDC_100V_Button" BorderThickness="0" Click="VDC_100V_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="100 V" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="VDC_1000V_Border" Grid.Row="0" Grid.Column="5" BorderThickness="2" BorderBrush="White" Margin="10,0,10,0">
+                            <Button x:Name="VDC_1000V_Button" BorderThickness="0" Click="VDC_1000V_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="1000 V" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="ADC_Tab" Header="&#x2393;DC I" IsSelected="False">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Border x:Name="ADC_Auto_Border" Grid.Row="0" Grid.Column="0" BorderThickness="2" BorderBrush="#00CE30" Margin="10,0,10,0">
+                            <Button x:Name="ADC_Auto_Button" BorderThickness="0" Click="ADC_Auto_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Auto" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="ADC_10mA_Border" Grid.Row="0" Grid.Column="1" BorderThickness="2" BorderBrush="White" Margin="10,0,10,0">
+                            <Button x:Name="ADC_10mA_Button" Margin="0,0,0,0" BorderThickness="0" Click="ADC_10mA_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="10 mA" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="ADC_100mA_Border" Grid.Row="0" Grid.Column="2" BorderThickness="2" BorderBrush="White" Margin="10,0,10,0">
+                            <Button x:Name="ADC_100mA_Button" BorderThickness="0" Click="ADC_100mA_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="100 mA" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="ADC_1A_Border" Grid.Row="0" Grid.Column="3" BorderThickness="2" BorderBrush="White" Margin="10,0,10,0">
+                            <Button x:Name="ADC_1A_Button" BorderThickness="0" Click="ADC_1A_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="1 A" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="ADC_3A_Border" Grid.Row="0" Grid.Column="4" BorderThickness="2" BorderBrush="White" Margin="10,0,10,0">
+                            <Button x:Name="ADC_3A_Button" BorderThickness="0" Click="ADC_3A_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="3 A" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="VAC_Tab" Header="~AC V" IsSelected="False">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Border x:Name="VAC_Auto_Border" Grid.Row="0" Grid.Column="0" BorderThickness="2" BorderBrush="#00CE30" Margin="10,0,10,0">
+                            <Button x:Name="VAC_Auto_Button" BorderThickness="0" Click="VAC_Auto_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Auto" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="VAC_100mV_Border" Grid.Row="0" Grid.Column="1" BorderThickness="2" BorderBrush="White" Margin="10,0,10,0">
+                            <Button x:Name="VAC_30mV_Button" Margin="0,0,0,0" BorderThickness="0" Click="VAC_100mV_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="100 mV" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="VAC_1V_Border" Grid.Row="0" Grid.Column="2" BorderThickness="2" BorderBrush="White" Margin="10,0,10,0">
+                            <Button x:Name="VAC_1V_Button" BorderThickness="0" Click="VAC_1V_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="1 V" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="VAC_10V_Border" Grid.Row="0" Grid.Column="3" BorderThickness="2" BorderBrush="White" Margin="10,0,10,0">
+                            <Button x:Name="VAC_10V_Button" BorderThickness="0" Click="VAC_10V_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="10 V" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="VAC_100V_Border" Grid.Row="0" Grid.Column="4" BorderThickness="2" BorderBrush="White" Margin="10,0,10,0">
+                            <Button x:Name="VAC_100V_Button" BorderThickness="0" Click="VAC_100V_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="100 V" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="VAC_1000V_Border" Grid.Row="0" Grid.Column="5" BorderThickness="2" BorderBrush="White" Margin="10,0,10,0">
+                            <Button x:Name="VAC_1000V_Button" BorderThickness="0" Click="VAC_1000V_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="1000 V" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="AAC_Tab" Header="~AC I" IsSelected="False">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Border x:Name="AAC_Auto_Border" Grid.Row="0" Grid.Column="0" BorderThickness="2" BorderBrush="#00CE30" Margin="10,0,10,0">
+                            <Button x:Name="AAC_Auto_Button" BorderThickness="0" Click="AAC_Auto_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Auto" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="AAC_1A_Border" Grid.Row="0" Grid.Column="1" BorderThickness="2" BorderBrush="White" Margin="10,0,10,0">
+                            <Button x:Name="AAC_1A_Button" Margin="0,0,0,0" BorderThickness="0" Click="AAC_1A_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="1 A" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="AAC_3A_Border" Grid.Row="0" Grid.Column="2" BorderThickness="2" BorderBrush="White" Margin="10,0,10,0">
+                            <Button x:Name="AAC_3A_Button" BorderThickness="0" Click="AAC_3A_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="3 A" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="Ohms_Tab" Header="2/4 Wire Ω" IsSelected="False">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Border x:Name="Ohms_Auto_Border" Grid.Row="0" Grid.Column="0" BorderThickness="2" BorderBrush="#00CE30" Margin="5,0,5,0">
+                            <Button x:Name="Ohms_Auto_Button" BorderThickness="0" Click="Ohms_Auto_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Auto" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="Ohms_100_Border" Grid.Row="0" Grid.Column="1" BorderThickness="2" BorderBrush="White" Margin="5,0,5,0">
+                            <Button x:Name="Ohms_100_Button" Margin="0,0,0,0" BorderThickness="0" Click="Ohms_100_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="100 Ω" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="Ohms_1K_Border" Grid.Row="0" Grid.Column="2" BorderThickness="2" BorderBrush="White" Margin="5,0,5,0">
+                            <Button x:Name="Ohms_1K_Button" BorderThickness="0" Click="Ohms_1K_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="1K Ω" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="Ohms_10K_Border" Grid.Row="0" Grid.Column="3" BorderThickness="2" BorderBrush="White" Margin="5,0,5,0">
+                            <Button x:Name="Ohms_10K_Button" BorderThickness="0" Click="Ohms_10K_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="10K Ω" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="Ohms_100K_Border" Grid.Row="0" Grid.Column="4" BorderThickness="2" BorderBrush="White" Margin="5,0,5,0">
+                            <Button x:Name="Ohms_100K_Button" BorderThickness="0" Click="Ohms_100K_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="100K Ω" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="Ohms_1M_Border" Grid.Row="0" Grid.Column="5" BorderThickness="2" BorderBrush="White" Margin="5,0,5,0">
+                            <Button x:Name="Ohms_1M_Button" BorderThickness="0" Click="Ohms_1M_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="1M Ω" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="Ohms_10M_Border" Grid.Row="0" Grid.Column="6" BorderThickness="2" BorderBrush="White" Margin="5,0,5,0">
+                            <Button x:Name="Ohms_10M_Button" BorderThickness="0" Click="Ohms_10M_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="10M Ω" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="Ohms_100M_Border" Grid.Row="0" Grid.Column="7" BorderThickness="2" BorderBrush="White" Margin="5,0,5,0">
+                            <Button x:Name="Ohms_100M_Button" BorderThickness="0" Click="Ohms_100M_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="100M Ω" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="FREQ_PER_Tab" Header="FREQ/PER" IsSelected="False">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Border x:Name="FREQ_PER_Auto_Border" Grid.Row="0" Grid.Column="0" BorderThickness="2" BorderBrush="#00CE30" Margin="10,0,10,0">
+                            <Button x:Name="FREQ_PER_Auto_Button" BorderThickness="0" Click="FREQ_PER_Auto_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Auto" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="FREQ_PER_100mV_Border" Grid.Row="0" Grid.Column="1" BorderThickness="2" BorderBrush="White" Margin="10,0,10,0">
+                            <Button x:Name="FREQ_PER_30mV_Button" Margin="0,0,0,0" BorderThickness="0" Click="FREQ_PER_100mV_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="100 mV" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="FREQ_PER_1V_Border" Grid.Row="0" Grid.Column="2" BorderThickness="2" BorderBrush="White" Margin="10,0,10,0">
+                            <Button x:Name="FREQ_PER_1V_Button" BorderThickness="0" Click="FREQ_PER_1V_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="1 V" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="FREQ_PER_10V_Border" Grid.Row="0" Grid.Column="3" BorderThickness="2" BorderBrush="White" Margin="10,0,10,0">
+                            <Button x:Name="FREQ_PER_10V_Button" BorderThickness="0" Click="FREQ_PER_10V_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="10 V" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="FREQ_PER_100V_Border" Grid.Row="0" Grid.Column="4" BorderThickness="2" BorderBrush="White" Margin="10,0,10,0">
+                            <Button x:Name="FREQ_PER_100V_Button" BorderThickness="0" Click="FREQ_PER_100V_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="100 V" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="FREQ_PER_1000V_Border" Grid.Row="0" Grid.Column="5" BorderThickness="2" BorderBrush="White" Margin="10,0,10,0">
+                            <Button x:Name="FREQ_PER_1000V_Button" BorderThickness="0" Click="FREQ_PER_1000V_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="1000 V" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Range Queries">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Border x:Name="Range_Query_Border" Grid.Row="0" Grid.Column="0" BorderThickness="2" BorderBrush="White" Margin="10,0,10,0">
+                            <Button x:Name="Range_Query_Button" BorderThickness="0" Click="Range_Query_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Current Range ?" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="Range_Auto_Query_Border" Grid.Row="0" Grid.Column="1" BorderThickness="2" BorderBrush="White" Margin="10,0,10,0">
+                            <Button x:Name="Range_Auto_Query_Button" BorderThickness="0" Click="Range_Auto_Query_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Range Auto ?" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Meas Queries">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Border x:Name="Meas_Query_Border" Grid.Row="0" Grid.Column="0" BorderThickness="2" BorderBrush="White" Margin="10,0,10,0">
+                            <Button x:Name="Meas_Query_Button" BorderThickness="0" Click="Meas_Query_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Measurement ?" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="Meas_Config_Query_Border" Grid.Row="0" Grid.Column="1" BorderThickness="2" BorderBrush="White" Margin="10,0,10,0">
+                            <Button x:Name="Meas_Config_Query_Button" BorderThickness="0" Click="Meas_Config_Query_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Measurement Config ?" Margin="0,-1,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Null">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="65"/>
+                            <ColumnDefinition Width="65"/>
+                            <ColumnDefinition Width="65"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="65"/>
+                            <ColumnDefinition Width="65"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button x:Name="Null_On_Button" Content="Null On" BorderThickness="0" Grid.Row="0" Grid.Column="0" Margin="3,1,3,1" Click="Null_On_Button_Click"/>
+                        <Button x:Name="Null_Off_Query_Button" Content="Null Off" BorderThickness="0" Grid.Row="0" Grid.Column="1" Margin="3,1,3,1" Click="Null_Off_Query_Button_Click"/>
+                        <Button x:Name="Null_Status_Query_Button" Content="Null ?" BorderThickness="0" Grid.Row="0" Grid.Column="2" Margin="3,1,3,1" Click="Null_Status_Query_Button_Click"/>
+                        <TextBox  x:Name="Null_Value_Text_Input" Text="" Grid.Row="0" Grid.Column="3" Margin="3,1,3,1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="16"/>
+                        <Button x:Name="Null_Set_Button" Content="Set" BorderThickness="0" Grid.Row="0" Grid.Column="4" Margin="3,1,3,1" Click="Null_Set_Button_Click"/>
+                        <Button x:Name="Null_Query_Set_Value_Button" Content="Value ?" BorderThickness="0" Grid.Row="0" Grid.Column="5" Margin="3,1,3,1" Click="Null_Query_Set_Value_Button_Click"/>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </GroupBox>
+        <GroupBox x:Name="Meter_Config" Grid.Row="4" IsEnabled="False">
+            <GroupBox.Header>
+                <TextBlock FontWeight="DemiBold" Margin="0,0,0,0">Config</TextBlock>
+            </GroupBox.Header>
+            <TabControl>
+                <TabItem Header="Resolution" IsSelected="True">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="145"/>
+                            <ColumnDefinition Width="145"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="110"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Border x:Name="Res_Max_Border" Grid.Row="0" Grid.Column="0" BorderThickness="2" BorderBrush="White" Margin="5,0,5,0">
+                            <Button x:Name="Res_Max_Button" Margin="0,0,0,0" BorderThickness="0" Click="Res_Max_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Max (N Digit ▼)" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="Res_Min_Border" Grid.Row="0" Grid.Column="1" BorderThickness="2" BorderBrush="White" Margin="5,0,5,0">
+                            <Button x:Name="Res_Min_Button" BorderThickness="0" Click="Res_Min_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Min (N Digit ▲)" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Horizontal" Margin="6,0,0,0">
+                            <TextBox x:Name="Resolution_Set_Text" Text="" FontSize="16" TextAlignment="Center" VerticalContentAlignment="Center" Width="130" MaxWidth="130" Padding="0,0,0,0" Margin="0,3,10,3"/>
+                            <Button x:Name="Resolution_Set_Button" Content="Set" FontSize="16" Margin="0,2,0,2" Padding="10,0,10,0" BorderThickness="0" Click="Resolution_Set_Button_Click"/>
+                        </StackPanel>
+                        <Border x:Name="Digit_Query_Border" Grid.Row="0" Grid.Column="3" BorderThickness="2" BorderBrush="White" Margin="5,0,5,0">
+                            <Button x:Name="Digit_Query_Button" BorderThickness="0" Click="Digit_Query_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Resolution?" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="NPLC">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Border x:Name="NPLC_002_Border" Grid.Row="0" Grid.Column="0" BorderThickness="2" BorderBrush="White" Margin="5,0,5,0">
+                            <Button x:Name="NPLC_002_Button" BorderThickness="0" Click="NPLC_002_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="0.02" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="NPLC_02_Border" Grid.Row="0" Grid.Column="1" BorderThickness="2" BorderBrush="White" Margin="5,0,5,0">
+                            <Button x:Name="NPLC_02_Button" BorderThickness="0" Click="NPLC_02_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="0.2" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="NPLC_1_Border" Grid.Row="0" Grid.Column="2" BorderThickness="2" BorderBrush="White" Margin="5,0,5,0">
+                            <Button x:Name="NPLC_1_Button" BorderThickness="0" Click="NPLC_1_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="1" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="NPLC_10_Border" Grid.Row="0" Grid.Column="3" BorderThickness="2" BorderBrush="#00CE30" Margin="5,0,5,0">
+                            <Button x:Name="NPLC_10_Button" BorderThickness="0" Click="NPLC_10_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="10" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="NPLC_100_Border" Grid.Row="0" Grid.Column="4" BorderThickness="2" BorderBrush="White" Margin="5,0,5,0">
+                            <Button x:Name="NPLC_100_Button" BorderThickness="0" Click="NPLC_100_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="100" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="NPLC_Query_Border" Grid.Row="0" Grid.Column="5" BorderThickness="2" BorderBrush="White" Margin="5,0,5,0">
+                            <Button x:Name="NPLC_Query_Button" BorderThickness="0" Click="NPLC_Query_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="NPLC?" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Auto Zero">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="0" Grid.Column="0" BorderThickness="0" BorderBrush="#00CE30" Margin="5,0,5,0">
+                            <Button x:Name="AZ_On_Button" BorderThickness="0" Click="AZ_On_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Auto Zero On" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="1" BorderThickness="0" BorderBrush="#00CE30" Margin="5,0,5,0">
+                            <Button x:Name="AZ_Off_Button" BorderThickness="0" Click="AZ_Off_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Auto Zero Off" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="2" BorderThickness="0" BorderBrush="#00CE30" Margin="5,0,5,0">
+                            <Button x:Name="AZ_Once_Button" BorderThickness="0" Click="AZ_Once_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Auto Zero Once" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="3" BorderThickness="0" BorderBrush="#00CE30" Margin="5,0,5,0">
+                            <Button x:Name="AZ_Query_Button" BorderThickness="0" Click="AZ_Query_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Auto Zero ?" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Impedance">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="1.2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="0" Grid.Column="0" BorderThickness="0" BorderBrush="#00CE30" Margin="5,0,5,0">
+                            <Button x:Name="Impedance_On_Button" BorderThickness="0" Click="Impedance_On_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Impedance On" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="1" BorderThickness="0" BorderBrush="#00CE30" Margin="5,0,5,0">
+                            <Button x:Name="Impedance_Off_Button" BorderThickness="0" Click="Impedance_Off_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Impedance Off" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="2" BorderThickness="0" BorderBrush="#00CE30" Margin="5,0,5,0">
+                            <Button x:Name="Impedance_Query_Button" BorderThickness="0" Click="Impedance_Query_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Input Impedance ?" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="AC:BAND">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="1.5*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="0" Grid.Column="0" BorderThickness="0" BorderBrush="#00CE30" Margin="5,0,5,0">
+                            <Button x:Name="DET_BAND_3_Button" BorderThickness="0" Click="DET_BAND_3_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="3" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="1" BorderThickness="0" BorderBrush="#00CE30" Margin="5,0,5,0">
+                            <Button x:Name="DET_BAND_20_Button" BorderThickness="0" Click="DET_BAND_20_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="20" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="2" BorderThickness="0" BorderBrush="#00CE30" Margin="5,0,5,0">
+                            <Button x:Name="DET_BAND_200_Button" BorderThickness="0" Click="DET_BAND_200_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="200" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="3" BorderThickness="0" BorderBrush="#00CE30" Margin="5,0,5,0">
+                            <Button x:Name="DET_BAND_Query_Button" BorderThickness="0" Click="DET_BAND_Query_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Detector Bandwidth ?" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="FREQ">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="1.5*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="0" Grid.Column="0" BorderThickness="0" BorderBrush="#00CE30" Margin="5,0,5,0">
+                            <Button x:Name="FREQ_APER_001_Button" BorderThickness="0" Click="FREQ_APER_001_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="0.01" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="1" BorderThickness="0" BorderBrush="#00CE30" Margin="5,0,5,0">
+                            <Button x:Name="FREQ_APER_01_Button" BorderThickness="0" Click="FREQ_APER_01_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="0.1" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="2" BorderThickness="0" BorderBrush="#00CE30" Margin="5,0,5,0">
+                            <Button x:Name="FREQ_APER_1_Button" BorderThickness="0" Click="FREQ_APER_1_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="1" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="3" BorderThickness="0" BorderBrush="#00CE30" Margin="5,0,5,0">
+                            <Button x:Name="FREQ_APER_Query_Button" BorderThickness="0" Click="FREQ_APER_Query_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Frequency Aperture ?" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="PER">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="1.5*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="0" Grid.Column="0" BorderThickness="0" BorderBrush="#00CE30" Margin="5,0,5,0">
+                            <Button x:Name="PER_APER_001_Button" BorderThickness="0" Click="PER_APER_001_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="0.01" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="1" BorderThickness="0" BorderBrush="#00CE30" Margin="5,0,5,0">
+                            <Button x:Name="PER_APER_01_Button" BorderThickness="0" Click="PER_APER_01_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="0.1" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="2" BorderThickness="0" BorderBrush="#00CE30" Margin="5,0,5,0">
+                            <Button x:Name="PER_APER_1_Button" BorderThickness="0" Click="PER_APER_1_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="1" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="3" BorderThickness="0" BorderBrush="#00CE30" Margin="5,0,5,0">
+                            <Button x:Name="PER_APER_Query_Button" BorderThickness="0" Click="PER_APER_Query_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Period Aperture ?" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Trigger">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.6*"/>
+                            <ColumnDefinition Width="0.6*"/>
+                            <ColumnDefinition Width="0.6*"/>
+                            <ColumnDefinition Width="0.62*"/>
+                            <ColumnDefinition Width="0.62*"/>
+                            <ColumnDefinition Width="0.8*"/>
+                            <ColumnDefinition Width="0.9*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Border x:Name="Trigger_Immediate_Border" Grid.Row="0" Grid.Column="0" BorderThickness="2" BorderBrush="#00CE30" Margin="5,0,5,0">
+                            <Button x:Name="Trigger_Immediate_Button" BorderThickness="0" Click="Trigger_Immediate_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="IMM" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="Trigger_External_Border" Grid.Row="0" Grid.Column="1" BorderThickness="2" BorderBrush="White" Margin="5,0,5,0">
+                            <Button x:Name="Trigger_External_Button" BorderThickness="0" Click="Trigger_External_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="EXT" FontSize="16" Margin="0,-3,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border x:Name="Trigger_Query_Border" Grid.Row="0" Grid.Column="2" BorderThickness="2" BorderBrush="White" Margin="5,0,5,0">
+                            <Button x:Name="Trigger_Query_Button" BorderThickness="0" Click="Trigger_Query_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="TRIG?" FontSize="16" Margin="0,-3,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="3" BorderThickness="2" BorderBrush="White" Margin="5,0,5,0">
+                            <Button x:Name="Trig_Delay_0_Button" BorderThickness="0" Click="Trig_Delay_0_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Delay 0" FontSize="16" Margin="0,-3,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="4" BorderThickness="2" BorderBrush="White" Margin="5,0,5,0">
+                            <Button x:Name="Trig_Delay_Query_Button" BorderThickness="0" Click="Trig_Delay_Query_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Delay ?" FontSize="16" Margin="0,-3,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="5" BorderThickness="2" BorderBrush="White" Margin="5,0,5,0">
+                            <Button x:Name="Trig_Delay_ON_Button" BorderThickness="0" Click="Trig_Delay_ON_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Delay ON" FontSize="16" Margin="0,-3,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="6" BorderThickness="2" BorderBrush="White" Margin="5,0,5,0">
+                            <Button x:Name="Trig_Delay_ON_Query_Button" BorderThickness="0" Click="Trig_Delay_ON_Query_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Delay ON ?" FontSize="16" Margin="0,-3,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Display">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="65"/>
+                            <ColumnDefinition Width="65"/>
+                            <ColumnDefinition Width="75"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="0" Grid.Column="0" BorderThickness="0" BorderBrush="#00CE30" Margin="5,0,5,0">
+                            <Button x:Name="Disp_On_Button" BorderThickness="0" Click="Disp_On_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="On" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="1" BorderThickness="0" BorderBrush="#00CE30" Margin="5,0,5,0">
+                            <Button x:Name="Disp_Off_Button" BorderThickness="0" Click="Disp_Off_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Off" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="2" BorderThickness="0" BorderBrush="#00CE30" Margin="5,0,5,0">
+                            <Button x:Name="Disp_Query_Button" BorderThickness="0" Click="Disp_Query_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="DISP?" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <TextBox Grid.Row="0" Grid.Column="3" x:Name="Display_Set_Text" Text="" FontSize="16" TextAlignment="Center" VerticalContentAlignment="Center" Width="230" MaxWidth="230" Padding="0,0,0,0" Margin="0,0,0,0"/>
+                        <Border Grid.Row="0" Grid.Column="4" BorderThickness="0" BorderBrush="#00CE30" Margin="5,0,5,0">
+                            <Button x:Name="Disp_MSG_Set_Button" BorderThickness="0" Click="Disp_MSG_Set_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Set" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="5" BorderThickness="0" BorderBrush="#00CE30" Margin="5,0,5,0">
+                            <Button x:Name="Disp_MSG_Clear_Button" BorderThickness="0" Click="Disp_MSG_Clear_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Clear" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Queries">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1.2*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="0.9*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="0.9*"/>
+                            <ColumnDefinition Width="1.3*"/>
+                            <ColumnDefinition Width="0.7*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="0" Grid.Column="0" BorderThickness="0" Margin="5,0,5,0">
+                            <Button x:Name="ERROR_Query_Button" BorderThickness="0" Click="ERROR_Query_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="ERROR ?" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="1" BorderThickness="0" Margin="5,0,5,0">
+                            <Button x:Name="TERM_Query_Button" BorderThickness="0" Click="TERM_Query_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="TERM ?" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="2" BorderThickness="0" Margin="5,0,5,0">
+                            <Button x:Name="BEEP_Once_Button" BorderThickness="0" Click="BEEP_Once_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="BEEP" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="3" BorderThickness="0" Margin="5,0,5,0">
+                            <Button x:Name="IDN_Query_Button" BorderThickness="0" Click="IDN_Query_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="IDN ?" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="4" BorderThickness="0" Margin="5,0,5,0">
+                            <Button x:Name="STB_Query_Button" BorderThickness="0" Click="STB_Query_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="STB ?" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="5" BorderThickness="0" Margin="5,0,5,0">
+                            <Button x:Name="SCPI_VER_Query_Button" BorderThickness="0" Click="SCPI_VER_Query_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="SCPI:VER ?" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="7" BorderThickness="0" Margin="5,0,5,0">
+                            <Button x:Name="CLS_Query_Button" BorderThickness="0" Click="CLS_Query_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="CLS" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Cal">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="0" Grid.Column="0" BorderThickness="0" Margin="5,0,5,0">
+                            <Button x:Name="CAL_NUM_Query_Button" BorderThickness="0" Click="CAL_NUM_Query_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="CAL Count ?" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="1" BorderThickness="0" Margin="5,0,5,0">
+                            <Button x:Name="CAL_SEC_Query_Button" BorderThickness="0" Click="CAL_SEC_Query_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Secure State ?" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="2" BorderThickness="0" Margin="5,0,5,0">
+                            <Button x:Name="CAL_MSG_Query_Button" BorderThickness="0" Click="CAL_MSG_Query_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="CAL Message ?" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="3" BorderThickness="0" Margin="5,0,5,0">
+                            <Button x:Name="CAL_VAL_Query_Button" BorderThickness="0" Click="CAL_VAL_Query_Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="CAL Value ?" FontSize="16" Margin="0,-2,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </GroupBox>
+        <Grid Grid.Row="5" Grid.Column="0" Margin="5,0,5,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="215"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <GroupBox x:Name="Speech_Box" Grid.Row="0" Grid.Column="0">
+                <GroupBox.Header>
+                    <TextBlock FontWeight="DemiBold" Margin="0,0,0,0">Speech Synthesizer</TextBlock>
+                </GroupBox.Header>
+                <TabControl>
+                    <TabItem Header="Continuous" IsSelected="False">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                            <Label Content="Voice Measurement every"/>
+                            <TextBox x:Name="Speech_Continuous_Value" Text="" MinWidth="35" MaxWidth="35" Height="22" VerticalContentAlignment="Center"/>
+                            <Label Content="minutes."/>
+                            <Border x:Name="Speech_Continuous_Set_Border" BorderThickness="2" BorderBrush="White" Margin="5,0,0,0">
+                                <Button x:Name="Speech_Continuous_Set_Button" Content="Set" Width="45" BorderThickness="0" Click="Speech_Continuous_Set_Button_Click"/>
+                            </Border>
+                            <Border x:Name="Speech_Continuous_Clear_Border" BorderThickness="2" BorderBrush="White" Margin="5,0,0,0">
+                                <Button x:Name="Speech_Continuous_Clear_Button" Content="Clear" Width="45" BorderThickness="0" Click="Speech_Continuous_Clear_Button_Click"/>
+                            </Border>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem Header="Min" IsSelected="False">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                            <Label Content="Voice when Measurement &lt;"/>
+                            <TextBox x:Name="Speech_MIN_Value" Text="" MinWidth="80" MaxWidth="80" Height="22" VerticalContentAlignment="Center"/>
+                            <Border x:Name="Speech_MIN_Border" BorderThickness="2" BorderBrush="White" Margin="5,0,0,0">
+                                <Button x:Name="Speech_MIN_Button" Content="Set" Width="45" BorderThickness="0" Click="Speech_MIN_Button_Click"/>
+                            </Border>
+                            <Border x:Name="Speech_MIN_Clear_Border" BorderThickness="2" BorderBrush="White" Margin="5,0,0,0">
+                                <Button x:Name="Speech_MIN_Clear_Button" Content="Clear" Width="45" BorderThickness="0" Click="Speech_MIN_Clear_Button_Click"/>
+                            </Border>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem Header="Max" IsSelected="False">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                            <Label Content="Voice when Measurement &gt;"/>
+                            <TextBox x:Name="Speech_MAX_Value" Text="" MinWidth="80" MaxWidth="80" Height="22" VerticalContentAlignment="Center"/>
+                            <Border x:Name="Speech_MAX_Border" BorderThickness="2" BorderBrush="White" Margin="5,0,0,0">
+                                <Button x:Name="Speech_MAX_Button" Content="Set" Width="45" BorderThickness="0" Click="Speech_MAX_Button_Click"/>
+                            </Border>
+                            <Border x:Name="Speech_MAX_Clear_Border" BorderThickness="2" BorderBrush="White" Margin="5,0,0,0">
+                                <Button x:Name="Speech_MAX_Clear_Button" Content="Clear" Width="45" BorderThickness="0" Click="Speech_MAX_Clear_Button_Click"/>
+                            </Border>
+                        </StackPanel>
+                    </TabItem>
+                </TabControl>
+            </GroupBox>
+            <GroupBox x:Name="UpdateSpeed_Box" Grid.Row="0" Grid.Column="1" IsEnabled="False">
+                <GroupBox.Header>
+                    <TextBlock FontWeight="DemiBold" Margin="0,0,0,0">Update Speed</TextBlock>
+                </GroupBox.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0">
+                        <Label Content="Update Rate (sec):"/>
+                        <TextBox x:Name="UpdateSpeed_Value" Text="1" MinWidth="50" MaxWidth="50" Height="22" VerticalContentAlignment="Center"/>
+                        <Border x:Name="UpdateSpeed_Value_Set_Border" BorderThickness="2" BorderBrush="White" Margin="3,0,0,0">
+                            <Button x:Name="UpdateSpeed_Value_Set_Button" Content="Set" Width="35" BorderThickness="0" Click="UpdateSpeed_Value_Set_Button_Click"/>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Grid.Row="1" Grid.Column="0">
+                        <Border x:Name="UpdateSpeed_Default_Set_Border" BorderThickness="2" BorderBrush="#00CE30" Margin="5,0,0,0">
+                            <Button x:Name="UpdateSpeed_Default_Set_Button" Content="Set Default" Width="90"  Height="25" BorderThickness="0" Click="UpdateSpeed_Default_Set_Button_Click"/>
+                        </Border>
+                        <Border x:Name="UpdateSpeed_Fast_Set_Border" BorderThickness="2" BorderBrush="White" Margin="5,0,0,0">
+                            <Button x:Name="UpdateSpeed_Fast_Set_Button" Content="Set Fast" Width="90"  Height="25" BorderThickness="0" Click="UpdateSpeed_Fast_Set_Button_Click"/>
+                        </Border>
+                    </StackPanel>
+                </Grid>
+            </GroupBox>
+        </Grid>
+        <GroupBox Grid.Row="6" Grid.Column="0" Margin="5,0,5,0">
+            <GroupBox.Header>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Clear" Margin="0,0,5,0" Width="32" Height="19" BorderThickness="0" Click="ClearOutputLog_Click"/>
+                    <TextBlock FontWeight="Bold" Margin="0,2,0,0">Output Log</TextBlock>
+                </StackPanel>
+            </GroupBox.Header>
+            <ScrollViewer x:Name="Output_Log_Scroll" Margin="0,0,0,0" HorizontalScrollBarVisibility="Auto">
+                <TextBlock x:Name="Output_Log" FontSize="12"/>
+            </ScrollViewer>
+        </GroupBox>
+        <StatusBar Grid.Row="7" Grid.Column="0">
+            <StackPanel Orientation="Horizontal" Height="22">
+                <Label Margin="0,-4,0,1" Content="Runtime: "/>
+                <Label x:Name="Runtime_Timer" Margin="-8,-3,0,1" Content="00:00:00"/>
+                <Rectangle Margin="0,0,0,0" Width="1" Height="23" Fill="Gray"/>
+                <Label Margin="0,-4,0,1" Content="Speech:"/>
+                <Label x:Name="Speech_Status" Margin="-8,-3,0,1" Content="Disabled"/>
+                <Rectangle Margin="0,0,0,0" Width="1" Height="23" Fill="Gray"/>
+                <Label Margin="0,-4,0,1" Content="Total Samples:"/>
+                <Label x:Name="Samples_Total" Margin="-5,-3,0,1" Content="0"/>
+                <Rectangle Margin="0,0,0,0" Width="1" Height="23" Fill="Gray"/>
+                <Label Margin="0,-3,0,1" Content="Invalid/Timeout: "/>
+                <Label x:Name="InvalidSamples_Total" Margin="-8,-3,0,1" Content="0"/>
+            </StackPanel>
+        </StatusBar>
+    </Grid>
+</Window>

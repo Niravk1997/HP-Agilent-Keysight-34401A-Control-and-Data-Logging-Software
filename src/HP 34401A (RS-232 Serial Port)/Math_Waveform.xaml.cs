@@ -3203,7 +3203,7 @@ namespace HP_34401A
                             {
                                 Measurement_Data_Copy[i] = Measurement_Data_Copy[i] + Value;
                             }
-                            Create_Waveform_Window("Addition Math Waveform [All Samples]: Samples + " + Value, Value, 0, Measurement_Count_Copy, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                            Create_Waveform_Window("Addition Math Waveform [All Samples]: Samples + " + Value, Value, 0, Measurement_Count_Copy - 1, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
                             Measurement_Data_Copy = null;
                             Measurement_Data_DateTime = null;
                         }
@@ -3233,7 +3233,7 @@ namespace HP_34401A
                             {
                                 Measurement_Data_Copy[i] = Value + Measurement_Data_Copy[i];
                             }
-                            Create_Waveform_Window("Addition Math Waveform [All Samples]: " + Value + " + Samples", Value, 0, Measurement_Count_Copy, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                            Create_Waveform_Window("Addition Math Waveform [All Samples]: " + Value + " + Samples", Value, 0, Measurement_Count_Copy - 1, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
                             Measurement_Data_Copy = null;
                             Measurement_Data_DateTime = null;
                         }
@@ -3284,7 +3284,7 @@ namespace HP_34401A
                             {
                                 Measurement_Data_Copy[i] = Measurement_Data_Copy[i] - Value;
                             }
-                            Create_Waveform_Window("Subtraction Math Waveform [All Samples]: Samples - " + Value, Value, 0, Measurement_Count_Copy, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                            Create_Waveform_Window("Subtraction Math Waveform [All Samples]: Samples - " + Value, Value, 0, Measurement_Count_Copy - 1, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
                             Measurement_Data_Copy = null;
                             Measurement_Data_DateTime = null;
                         }
@@ -3314,7 +3314,7 @@ namespace HP_34401A
                             {
                                 Measurement_Data_Copy[i] = Value - Measurement_Data_Copy[i];
                             }
-                            Create_Waveform_Window("Subtraction Math Waveform [All Samples]: " + Value + " - Samples", Value, 0, Measurement_Count_Copy, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                            Create_Waveform_Window("Subtraction Math Waveform [All Samples]: " + Value + " - Samples", Value, 0, Measurement_Count_Copy - 1, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
                             Measurement_Data_Copy = null;
                             Measurement_Data_DateTime = null;
                         }
@@ -3365,7 +3365,7 @@ namespace HP_34401A
                             {
                                 Measurement_Data_Copy[i] = Measurement_Data_Copy[i] * Value;
                             }
-                            Create_Waveform_Window("Multiplication Math Waveform [All Samples]: Samples * " + Value, Value, 0, Measurement_Count_Copy, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                            Create_Waveform_Window("Multiplication Math Waveform [All Samples]: Samples * " + Value, Value, 0, Measurement_Count_Copy - 1, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
                             Measurement_Data_Copy = null;
                             Measurement_Data_DateTime = null;
                         }
@@ -3395,7 +3395,7 @@ namespace HP_34401A
                             {
                                 Measurement_Data_Copy[i] = Value * Measurement_Data_Copy[i];
                             }
-                            Create_Waveform_Window("Multiplication Math Waveform [All Samples]: " + Value + " * Samples", Value, 0, Measurement_Count_Copy, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                            Create_Waveform_Window("Multiplication Math Waveform [All Samples]: " + Value + " * Samples", Value, 0, Measurement_Count_Copy - 1, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
                             Measurement_Data_Copy = null;
                             Measurement_Data_DateTime = null;
                         }
@@ -3448,7 +3448,7 @@ namespace HP_34401A
                                 {
                                     Measurement_Data_Copy[i] = Measurement_Data_Copy[i] / Value;
                                 }
-                                Create_Waveform_Window("Division Math Waveform [All Samples]: Samples / " + Value, Value, 0, Measurement_Count_Copy, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                                Create_Waveform_Window("Division Math Waveform [All Samples]: Samples / " + Value, Value, 0, Measurement_Count_Copy - 1, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
                                 Measurement_Data_Copy = null;
                                 Measurement_Data_DateTime = null;
                             }
@@ -3482,7 +3482,7 @@ namespace HP_34401A
                                         Measurement_Data_Copy[i] = 0;
                                     }
                                 }
-                                Create_Waveform_Window("Division Math Waveform [All Samples]: " + Value + " / Samples", Value, 0, Measurement_Count_Copy, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                                Create_Waveform_Window("Division Math Waveform [All Samples]: " + Value + " / Samples", Value, 0, Measurement_Count_Copy - 1, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
                                 Measurement_Data_Copy = null;
                                 Measurement_Data_DateTime = null;
                             }
@@ -3538,7 +3538,7 @@ namespace HP_34401A
                             {
                                 Measurement_Data_Copy[i] = Math.Abs((Measurement_Data_Copy[i] - Value) / Value) * 100;
                             }
-                            Create_Waveform_Window("% Error Math Waveform [All Samples]: |(Samples - " + Value + ") / " + Value + "| x 100", Value, 0, Measurement_Count_Copy, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                            Create_Waveform_Window("% Error Math Waveform [All Samples]: |(Samples - " + Value + ") / " + Value + "| x 100", Value, 0, Measurement_Count_Copy - 1, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
                             Measurement_Data_Copy = null;
                             Measurement_Data_DateTime = null;
                         }
@@ -3596,7 +3596,7 @@ namespace HP_34401A
                                 Measurement_Data_Copy[i] = 0;
                             }
                         }
-                        Create_Waveform_Window("DB (All Samples Math Waveform): " + DB_1_Value + " x log" + DB_2_Value + " (Samples / " + DB_3_Value + ")", DB_3_Value, 0, Measurement_Count_Copy, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                        Create_Waveform_Window("DB (All Samples Math Waveform): " + DB_1_Value + " x log" + DB_2_Value + " (Samples / " + DB_3_Value + ")", DB_3_Value, 0, Measurement_Count_Copy - 1, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
                         Measurement_Data_Copy = null;
                         Measurement_Data_DateTime = null;
                     }
@@ -3650,7 +3650,7 @@ namespace HP_34401A
                                 Measurement_Data_Copy[i] = 0;
                             }
                         }
-                        Create_Waveform_Window("DBM (All Samples Math Waveform): " + DBM_1_Value + " x log" + DBM_2_Value + " ((Samples^2 / " + DBM_3_Value + ") / " + DBM_4_Value + ")", DBM_3_Value, 0, Measurement_Count_Copy, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                        Create_Waveform_Window("DBM (All Samples Math Waveform): " + DBM_1_Value + " x log" + DBM_2_Value + " ((Samples^2 / " + DBM_3_Value + ") / " + DBM_4_Value + ")", DBM_3_Value, 0, Measurement_Count_Copy -1, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
                         Measurement_Data_Copy = null;
                         Measurement_Data_DateTime = null;
                     }
@@ -3670,6 +3670,778 @@ namespace HP_34401A
                 if (isValidGraphColor == false)
                 {
                     Insert_Log("Cannot create DBM (All Samples) Math Waveform. Check your Graph Color values.", 1);
+                }
+            }
+        }
+
+        private void Value_Power_AllSample_Button_Click(object sender, RoutedEventArgs e)
+        {
+            (bool isValidGraphColor, int Value_Red, int Value_Green, int Value_Blue) = GraphColor_Math_AllSamples_Check();
+            (bool isValid, double Value) = Text_Num(Value_Power_AllSample_Text.Text, true, false);
+            if (isValidGraphColor == true & isValid == true)
+            {
+                string Graph_Title = GraphTitle_TextBox_Math_AllSamples.Text;
+                string Y_Axis_Title = YAxis_TextBox_Math_AllSamples.Text;
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        int Measurement_Count_Copy = Measurement_Count;
+                        double[] Measurement_Data_Copy = new double[Measurement_Count_Copy];
+                        Array.Copy(Measurement_Data, Measurement_Data_Copy, Measurement_Count_Copy);
+
+                        DateTime[] Measurement_Data_DateTime = new DateTime[Measurement_Count_Copy];
+                        Array.Copy(Measurement_DateTime, Measurement_Data_DateTime, Measurement_Count_Copy);
+
+                        for (int i = 0; i < Measurement_Count_Copy; i++)
+                        {
+                            Measurement_Data_Copy[i] = Math.Pow(Value, Measurement_Data_Copy[i]);
+                            if (double.IsNaN(Measurement_Data_Copy[i]) || double.IsInfinity(Measurement_Data_Copy[i]))
+                            {
+                                Measurement_Data_Copy[i] = 0;
+                            }
+                        }
+                        Create_Waveform_Window("(Value)^(Samples) Math Waveform [All Samples]", Value, 0, Measurement_Count_Copy - 1, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                        Measurement_Data_Copy = null;
+                        Measurement_Data_DateTime = null;
+                    }
+                    catch (Exception Ex)
+                    {
+                        Insert_Log(Ex.Message, 1);
+                        Insert_Log("Cannot create (Value)^(Samples) (All Samples) Math Waveform, try again.", 1);
+                    }
+                });
+            }
+            else
+            {
+                if (isValidGraphColor == false)
+                {
+                    Insert_Log("Cannot create (Value)^(Samples) (All Samples) Math Waveform. Check your Graph Color values.", 1);
+                }
+                if (isValid == false)
+                {
+                    Insert_Log("Cannot create (Value)^(Samples) (All Samples) Math Waveform. Check your Value.", 1);
+                }
+            }
+        }
+
+        private void AllSample_Power_Value_Button_Click(object sender, RoutedEventArgs e)
+        {
+            (bool isValidGraphColor, int Value_Red, int Value_Green, int Value_Blue) = GraphColor_Math_AllSamples_Check();
+            (bool isValid, double Value) = Text_Num(AllSample_Power_Value_Text.Text, true, false);
+            if (isValidGraphColor == true & isValid == true)
+            {
+                string Graph_Title = GraphTitle_TextBox_Math_AllSamples.Text;
+                string Y_Axis_Title = YAxis_TextBox_Math_AllSamples.Text;
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        int Measurement_Count_Copy = Measurement_Count;
+                        double[] Measurement_Data_Copy = new double[Measurement_Count_Copy];
+                        Array.Copy(Measurement_Data, Measurement_Data_Copy, Measurement_Count_Copy);
+
+                        DateTime[] Measurement_Data_DateTime = new DateTime[Measurement_Count_Copy];
+                        Array.Copy(Measurement_DateTime, Measurement_Data_DateTime, Measurement_Count_Copy);
+
+                        for (int i = 0; i < Measurement_Count_Copy; i++)
+                        {
+                            Measurement_Data_Copy[i] = Math.Pow(Measurement_Data_Copy[i], Value);
+                            if (double.IsNaN(Measurement_Data_Copy[i]) || double.IsInfinity(Measurement_Data_Copy[i]))
+                            {
+                                Measurement_Data_Copy[i] = 0;
+                            }
+                        }
+                        Create_Waveform_Window("(Samples)^(Value) Math Waveform [All Samples]", Value, 0, Measurement_Count_Copy - 1, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                        Measurement_Data_Copy = null;
+                        Measurement_Data_DateTime = null;
+                    }
+                    catch (Exception Ex)
+                    {
+                        Insert_Log(Ex.Message, 1);
+                        Insert_Log("Cannot create (Samples)^(Value) (All Samples) Math Waveform, try again.", 1);
+                    }
+                });
+            }
+            else
+            {
+                if (isValidGraphColor == false)
+                {
+                    Insert_Log("Cannot create (Samples)^(Value) (All Samples) Math Waveform. Check your Graph Color values.", 1);
+                }
+                if (isValid == false)
+                {
+                    Insert_Log("Cannot create (Samples)^(Value) (All Samples) Math Waveform. Check your Value.", 1);
+                }
+            }
+        }
+
+        private void Log_AllSample_Button_Click(object sender, RoutedEventArgs e)
+        {
+            (bool isValidGraphColor, int Value_Red, int Value_Green, int Value_Blue) = GraphColor_Math_AllSamples_Check();
+            if (isValidGraphColor == true)
+            {
+                string Graph_Title = GraphTitle_TextBox_Math_AllSamples.Text;
+                string Y_Axis_Title = YAxis_TextBox_Math_AllSamples.Text;
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        int Measurement_Count_Copy = Measurement_Count;
+                        double[] Measurement_Data_Copy = new double[Measurement_Count_Copy];
+                        Array.Copy(Measurement_Data, Measurement_Data_Copy, Measurement_Count_Copy);
+
+                        DateTime[] Measurement_Data_DateTime = new DateTime[Measurement_Count_Copy];
+                        Array.Copy(Measurement_DateTime, Measurement_Data_DateTime, Measurement_Count_Copy);
+
+                        for (int i = 0; i < Measurement_Count_Copy; i++)
+                        {
+                            Measurement_Data_Copy[i] = Math.Log10(Measurement_Data_Copy[i]);
+                            if (double.IsNaN(Measurement_Data_Copy[i]) || double.IsInfinity(Measurement_Data_Copy[i]))
+                            {
+                                Measurement_Data_Copy[i] = 0;
+                            }
+                        }
+                        Create_Waveform_Window("Logarithm Math Waveform [All Samples]", 0, 0, Measurement_Count_Copy - 1, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                        Measurement_Data_Copy = null;
+                        Measurement_Data_DateTime = null;
+                    }
+                    catch (Exception Ex)
+                    {
+                        Insert_Log(Ex.Message, 1);
+                        Insert_Log("Cannot create Logarithm (All Samples) Math Waveform, try again.", 1);
+                    }
+                });
+            }
+            else
+            {
+                if (isValidGraphColor == false)
+                {
+                    Insert_Log("Cannot create Logarithm (All Samples) Math Waveform. Check your Graph Color values.", 1);
+                }
+            }
+        }
+
+        private void Ln_AllSample_Button_Click(object sender, RoutedEventArgs e)
+        {
+            (bool isValidGraphColor, int Value_Red, int Value_Green, int Value_Blue) = GraphColor_Math_AllSamples_Check();
+            if (isValidGraphColor == true)
+            {
+                string Graph_Title = GraphTitle_TextBox_Math_AllSamples.Text;
+                string Y_Axis_Title = YAxis_TextBox_Math_AllSamples.Text;
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        int Measurement_Count_Copy = Measurement_Count;
+                        double[] Measurement_Data_Copy = new double[Measurement_Count_Copy];
+                        Array.Copy(Measurement_Data, Measurement_Data_Copy, Measurement_Count_Copy);
+
+                        DateTime[] Measurement_Data_DateTime = new DateTime[Measurement_Count_Copy];
+                        Array.Copy(Measurement_DateTime, Measurement_Data_DateTime, Measurement_Count_Copy);
+
+                        for (int i = 0; i < Measurement_Count_Copy; i++)
+                        {
+                            Measurement_Data_Copy[i] = Math.Log(Measurement_Data_Copy[i]);
+                            if (double.IsNaN(Measurement_Data_Copy[i]) || double.IsInfinity(Measurement_Data_Copy[i]))
+                            {
+                                Measurement_Data_Copy[i] = 0;
+                            }
+                        }
+                        Create_Waveform_Window("Natural Logarithm Math Waveform [All Samples]", 0, 0, Measurement_Count_Copy - 1, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                        Measurement_Data_Copy = null;
+                        Measurement_Data_DateTime = null;
+                    }
+                    catch (Exception Ex)
+                    {
+                        Insert_Log(Ex.Message, 1);
+                        Insert_Log("Cannot create Natural Logarithm (All Samples) Math Waveform, try again.", 1);
+                    }
+                });
+            }
+            else
+            {
+                if (isValidGraphColor == false)
+                {
+                    Insert_Log("Cannot create Natural Logarithm (All Samples) Math Waveform. Check your Graph Color values.", 1);
+                }
+            }
+        }
+
+        private void Square_AllSample_Button_Click(object sender, RoutedEventArgs e)
+        {
+            (bool isValidGraphColor, int Value_Red, int Value_Green, int Value_Blue) = GraphColor_Math_AllSamples_Check();
+            if (isValidGraphColor == true)
+            {
+                string Graph_Title = GraphTitle_TextBox_Math_AllSamples.Text;
+                string Y_Axis_Title = YAxis_TextBox_Math_AllSamples.Text;
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        int Measurement_Count_Copy = Measurement_Count;
+                        double[] Measurement_Data_Copy = new double[Measurement_Count_Copy];
+                        Array.Copy(Measurement_Data, Measurement_Data_Copy, Measurement_Count_Copy);
+
+                        DateTime[] Measurement_Data_DateTime = new DateTime[Measurement_Count_Copy];
+                        Array.Copy(Measurement_DateTime, Measurement_Data_DateTime, Measurement_Count_Copy);
+
+                        for (int i = 0; i < Measurement_Count_Copy; i++)
+                        {
+                            Measurement_Data_Copy[i] = Math.Sqrt(Measurement_Data_Copy[i]);
+                            if (double.IsNaN(Measurement_Data_Copy[i]) || double.IsInfinity(Measurement_Data_Copy[i]))
+                            {
+                                Measurement_Data_Copy[i] = 0;
+                            }
+                        }
+                        Create_Waveform_Window("Square Root Math Waveform [All Samples]", 0, 0, Measurement_Count_Copy - 1, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                        Measurement_Data_Copy = null;
+                        Measurement_Data_DateTime = null;
+                    }
+                    catch (Exception Ex)
+                    {
+                        Insert_Log(Ex.Message, 1);
+                        Insert_Log("Cannot create Square Root (All Samples) Math Waveform, try again.", 1);
+                    }
+                });
+            }
+            else
+            {
+                if (isValidGraphColor == false)
+                {
+                    Insert_Log("Cannot create Square Root (All Samples) Math Waveform. Check your Graph Color values.", 1);
+                }
+            }
+        }
+
+        private void Abs_AllSample_Button_Click(object sender, RoutedEventArgs e)
+        {
+            (bool isValidGraphColor, int Value_Red, int Value_Green, int Value_Blue) = GraphColor_Math_AllSamples_Check();
+            if (isValidGraphColor == true)
+            {
+                string Graph_Title = GraphTitle_TextBox_Math_AllSamples.Text;
+                string Y_Axis_Title = YAxis_TextBox_Math_AllSamples.Text;
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        int Measurement_Count_Copy = Measurement_Count;
+                        double[] Measurement_Data_Copy = new double[Measurement_Count_Copy];
+                        Array.Copy(Measurement_Data, Measurement_Data_Copy, Measurement_Count_Copy);
+
+                        DateTime[] Measurement_Data_DateTime = new DateTime[Measurement_Count_Copy];
+                        Array.Copy(Measurement_DateTime, Measurement_Data_DateTime, Measurement_Count_Copy);
+
+                        for (int i = 0; i < Measurement_Count_Copy; i++)
+                        {
+                            Measurement_Data_Copy[i] = Math.Abs(Measurement_Data_Copy[i]);
+                            if (double.IsNaN(Measurement_Data_Copy[i]) || double.IsInfinity(Measurement_Data_Copy[i]))
+                            {
+                                Measurement_Data_Copy[i] = 0;
+                            }
+                        }
+                        Create_Waveform_Window("Absolute Value Math Waveform [All Samples]", 0, 0, Measurement_Count_Copy - 1, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                        Measurement_Data_Copy = null;
+                        Measurement_Data_DateTime = null;
+                    }
+                    catch (Exception Ex)
+                    {
+                        Insert_Log(Ex.Message, 1);
+                        Insert_Log("Cannot create Absolute Value (All Samples) Math Waveform, try again.", 1);
+                    }
+                });
+            }
+            else
+            {
+                if (isValidGraphColor == false)
+                {
+                    Insert_Log("Cannot create Absolute Value (All Samples) Math Waveform. Check your Graph Color values.", 1);
+                }
+            }
+        }
+
+        private void Sine_AllSample_Button_Click(object sender, RoutedEventArgs e)
+        {
+            (bool isValidGraphColor, int Value_Red, int Value_Green, int Value_Blue) = GraphColor_Math_AllSamples_Check();
+            if (isValidGraphColor == true)
+            {
+                string Graph_Title = GraphTitle_TextBox_Math_AllSamples.Text;
+                string Y_Axis_Title = YAxis_TextBox_Math_AllSamples.Text;
+                bool inDegrees = Sine_AllSample_Degrees.IsSelected;
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        int Measurement_Count_Copy = Measurement_Count;
+                        double[] Measurement_Data_Copy = new double[Measurement_Count_Copy];
+                        Array.Copy(Measurement_Data, Measurement_Data_Copy, Measurement_Count_Copy);
+
+                        DateTime[] Measurement_Data_DateTime = new DateTime[Measurement_Count_Copy];
+                        Array.Copy(Measurement_DateTime, Measurement_Data_DateTime, Measurement_Count_Copy);
+
+                        for (int i = 0; i < Measurement_Count_Copy; i++)
+                        {
+                            if (inDegrees == true)
+                            {
+                                Measurement_Data_Copy[i] = (Math.Sin(Measurement_Data_Copy[i]) * (180 / Math.PI));
+                            }
+                            else
+                            {
+                                Measurement_Data_Copy[i] = Math.Sin(Measurement_Data_Copy[i]);
+                            }
+                            if (double.IsNaN(Measurement_Data_Copy[i]) || double.IsInfinity(Measurement_Data_Copy[i]))
+                            {
+                                Measurement_Data_Copy[i] = 0;
+                            }
+                        }
+                        Create_Waveform_Window("Sine Math Waveform [All Samples]", 0, 0, Measurement_Count_Copy - 1, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                        Measurement_Data_Copy = null;
+                        Measurement_Data_DateTime = null;
+                    }
+                    catch (Exception Ex)
+                    {
+                        Insert_Log(Ex.Message, 1);
+                        Insert_Log("Cannot create Sine (All Samples) Math Waveform, try again.", 1);
+                    }
+                });
+            }
+            else
+            {
+                if (isValidGraphColor == false)
+                {
+                    Insert_Log("Cannot create Sine (All Samples) Math Waveform. Check your Graph Color values.", 1);
+                }
+            }
+        }
+
+        private void Cosine_AllSample_Button_Click(object sender, RoutedEventArgs e)
+        {
+            (bool isValidGraphColor, int Value_Red, int Value_Green, int Value_Blue) = GraphColor_Math_AllSamples_Check();
+            if (isValidGraphColor == true)
+            {
+                string Graph_Title = GraphTitle_TextBox_Math_AllSamples.Text;
+                string Y_Axis_Title = YAxis_TextBox_Math_AllSamples.Text;
+                bool inDegrees = Cosine_AllSample_Degrees.IsSelected;
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        int Measurement_Count_Copy = Measurement_Count;
+                        double[] Measurement_Data_Copy = new double[Measurement_Count_Copy];
+                        Array.Copy(Measurement_Data, Measurement_Data_Copy, Measurement_Count_Copy);
+
+                        DateTime[] Measurement_Data_DateTime = new DateTime[Measurement_Count_Copy];
+                        Array.Copy(Measurement_DateTime, Measurement_Data_DateTime, Measurement_Count_Copy);
+
+                        for (int i = 0; i < Measurement_Count_Copy; i++)
+                        {
+                            if (inDegrees == true)
+                            {
+                                Measurement_Data_Copy[i] = (Math.Cos(Measurement_Data_Copy[i]) * (180 / Math.PI));
+                            }
+                            else
+                            {
+                                Measurement_Data_Copy[i] = Math.Cos(Measurement_Data_Copy[i]);
+                            }
+                            if (double.IsNaN(Measurement_Data_Copy[i]) || double.IsInfinity(Measurement_Data_Copy[i]))
+                            {
+                                Measurement_Data_Copy[i] = 0;
+                            }
+                        }
+                        Create_Waveform_Window("Cosine Math Waveform [All Samples]", 0, 0, Measurement_Count_Copy - 1, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                        Measurement_Data_Copy = null;
+                        Measurement_Data_DateTime = null;
+                    }
+                    catch (Exception Ex)
+                    {
+                        Insert_Log(Ex.Message, 1);
+                        Insert_Log("Cannot create Cosine (All Samples) Math Waveform, try again.", 1);
+                    }
+                });
+            }
+            else
+            {
+                if (isValidGraphColor == false)
+                {
+                    Insert_Log("Cannot create Cosine (All Samples) Math Waveform. Check your Graph Color values.", 1);
+                }
+            }
+        }
+
+        private void Tangent_AllSample_Button_Click(object sender, RoutedEventArgs e)
+        {
+            (bool isValidGraphColor, int Value_Red, int Value_Green, int Value_Blue) = GraphColor_Math_AllSamples_Check();
+            if (isValidGraphColor == true)
+            {
+                string Graph_Title = GraphTitle_TextBox_Math_AllSamples.Text;
+                string Y_Axis_Title = YAxis_TextBox_Math_AllSamples.Text;
+                bool inDegrees = Tangent_AllSample_Degrees.IsSelected;
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        int Measurement_Count_Copy = Measurement_Count;
+                        double[] Measurement_Data_Copy = new double[Measurement_Count_Copy];
+                        Array.Copy(Measurement_Data, Measurement_Data_Copy, Measurement_Count_Copy);
+
+                        DateTime[] Measurement_Data_DateTime = new DateTime[Measurement_Count_Copy];
+                        Array.Copy(Measurement_DateTime, Measurement_Data_DateTime, Measurement_Count_Copy);
+
+                        for (int i = 0; i < Measurement_Count_Copy; i++)
+                        {
+                            if (inDegrees == true)
+                            {
+                                Measurement_Data_Copy[i] = (Math.Tan(Measurement_Data_Copy[i]) * (180 / Math.PI));
+                            }
+                            else
+                            {
+                                Measurement_Data_Copy[i] = Math.Tan(Measurement_Data_Copy[i]);
+                            }
+                            if (double.IsNaN(Measurement_Data_Copy[i]) || double.IsInfinity(Measurement_Data_Copy[i]))
+                            {
+                                Measurement_Data_Copy[i] = 0;
+                            }
+                        }
+                        Create_Waveform_Window("Tangent Math Waveform [All Samples]", 0, 0, Measurement_Count_Copy - 1, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                        Measurement_Data_Copy = null;
+                        Measurement_Data_DateTime = null;
+                    }
+                    catch (Exception Ex)
+                    {
+                        Insert_Log(Ex.Message, 1);
+                        Insert_Log("Cannot create Tangent (All Samples) Math Waveform, try again.", 1);
+                    }
+                });
+            }
+            else
+            {
+                if (isValidGraphColor == false)
+                {
+                    Insert_Log("Cannot create Tangent (All Samples) Math Waveform. Check your Graph Color values.", 1);
+                }
+            }
+        }
+
+        private void Inverse_Sine_AllSample_Button_Click(object sender, RoutedEventArgs e)
+        {
+            (bool isValidGraphColor, int Value_Red, int Value_Green, int Value_Blue) = GraphColor_Math_AllSamples_Check();
+            if (isValidGraphColor == true)
+            {
+                string Graph_Title = GraphTitle_TextBox_Math_AllSamples.Text;
+                string Y_Axis_Title = YAxis_TextBox_Math_AllSamples.Text;
+                bool inDegrees = Inverse_Sine_AllSample_Degrees.IsSelected;
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        int Measurement_Count_Copy = Measurement_Count;
+                        double[] Measurement_Data_Copy = new double[Measurement_Count_Copy];
+                        Array.Copy(Measurement_Data, Measurement_Data_Copy, Measurement_Count_Copy);
+
+                        DateTime[] Measurement_Data_DateTime = new DateTime[Measurement_Count_Copy];
+                        Array.Copy(Measurement_DateTime, Measurement_Data_DateTime, Measurement_Count_Copy);
+
+                        for (int i = 0; i < Measurement_Count_Copy; i++)
+                        {
+                            if (inDegrees == true)
+                            {
+                                Measurement_Data_Copy[i] = (Math.Asin(Measurement_Data_Copy[i]) * (180 / Math.PI));
+                            }
+                            else
+                            {
+                                Measurement_Data_Copy[i] = Math.Asin(Measurement_Data_Copy[i]);
+                            }
+                            if (double.IsNaN(Measurement_Data_Copy[i]) || double.IsInfinity(Measurement_Data_Copy[i]))
+                            {
+                                Measurement_Data_Copy[i] = 0;
+                            }
+                        }
+                        Create_Waveform_Window("Inverse Sine Math Waveform [All Samples]", 0, 0, Measurement_Count_Copy - 1, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                        Measurement_Data_Copy = null;
+                        Measurement_Data_DateTime = null;
+                    }
+                    catch (Exception Ex)
+                    {
+                        Insert_Log(Ex.Message, 1);
+                        Insert_Log("Cannot create Inverse Sine (All Samples) Math Waveform, try again.", 1);
+                    }
+                });
+            }
+            else
+            {
+                if (isValidGraphColor == false)
+                {
+                    Insert_Log("Cannot create Inverse Sine (All Samples) Math Waveform. Check your Graph Color values.", 1);
+                }
+            }
+        }
+
+        private void Inverse_Cosine_AllSample_Button_Click(object sender, RoutedEventArgs e)
+        {
+            (bool isValidGraphColor, int Value_Red, int Value_Green, int Value_Blue) = GraphColor_Math_AllSamples_Check();
+            if (isValidGraphColor == true)
+            {
+                string Graph_Title = GraphTitle_TextBox_Math_AllSamples.Text;
+                string Y_Axis_Title = YAxis_TextBox_Math_AllSamples.Text;
+                bool inDegrees = Inverse_Cosine_AllSample_Degrees.IsSelected;
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        int Measurement_Count_Copy = Measurement_Count;
+                        double[] Measurement_Data_Copy = new double[Measurement_Count_Copy];
+                        Array.Copy(Measurement_Data, Measurement_Data_Copy, Measurement_Count_Copy);
+
+                        DateTime[] Measurement_Data_DateTime = new DateTime[Measurement_Count_Copy];
+                        Array.Copy(Measurement_DateTime, Measurement_Data_DateTime, Measurement_Count_Copy);
+
+                        for (int i = 0; i < Measurement_Count_Copy; i++)
+                        {
+                            if (inDegrees == true)
+                            {
+                                Measurement_Data_Copy[i] = (Math.Acos(Measurement_Data_Copy[i]) * (180 / Math.PI));
+                            }
+                            else
+                            {
+                                Measurement_Data_Copy[i] = Math.Acos(Measurement_Data_Copy[i]);
+                            }
+                            if (double.IsNaN(Measurement_Data_Copy[i]) || double.IsInfinity(Measurement_Data_Copy[i]))
+                            {
+                                Measurement_Data_Copy[i] = 0;
+                            }
+                        }
+                        Create_Waveform_Window("Inverse Cosine Math Waveform [All Samples]", 0, 0, Measurement_Count_Copy - 1, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                        Measurement_Data_Copy = null;
+                        Measurement_Data_DateTime = null;
+                    }
+                    catch (Exception Ex)
+                    {
+                        Insert_Log(Ex.Message, 1);
+                        Insert_Log("Cannot create Inverse Cosine (All Samples) Math Waveform, try again.", 1);
+                    }
+                });
+            }
+            else
+            {
+                if (isValidGraphColor == false)
+                {
+                    Insert_Log("Cannot create Inverse Cosine (All Samples) Math Waveform. Check your Graph Color values.", 1);
+                }
+            }
+        }
+
+        private void Inverse_Tangent_AllSample_Button_Click(object sender, RoutedEventArgs e)
+        {
+            (bool isValidGraphColor, int Value_Red, int Value_Green, int Value_Blue) = GraphColor_Math_AllSamples_Check();
+            if (isValidGraphColor == true)
+            {
+                string Graph_Title = GraphTitle_TextBox_Math_AllSamples.Text;
+                string Y_Axis_Title = YAxis_TextBox_Math_AllSamples.Text;
+                bool inDegrees = Inverse_Tangent_AllSample_Degrees.IsSelected;
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        int Measurement_Count_Copy = Measurement_Count;
+                        double[] Measurement_Data_Copy = new double[Measurement_Count_Copy];
+                        Array.Copy(Measurement_Data, Measurement_Data_Copy, Measurement_Count_Copy);
+
+                        DateTime[] Measurement_Data_DateTime = new DateTime[Measurement_Count_Copy];
+                        Array.Copy(Measurement_DateTime, Measurement_Data_DateTime, Measurement_Count_Copy);
+
+                        for (int i = 0; i < Measurement_Count_Copy; i++)
+                        {
+                            if (inDegrees == true)
+                            {
+                                Measurement_Data_Copy[i] = (Math.Atan(Measurement_Data_Copy[i]) * (180 / Math.PI));
+                            }
+                            else
+                            {
+                                Measurement_Data_Copy[i] = Math.Atan(Measurement_Data_Copy[i]);
+                            }
+                            if (double.IsNaN(Measurement_Data_Copy[i]) || double.IsInfinity(Measurement_Data_Copy[i]))
+                            {
+                                Measurement_Data_Copy[i] = 0;
+                            }
+                        }
+                        Create_Waveform_Window("Inverse Tangent Math Waveform [All Samples]", 0, 0, Measurement_Count_Copy - 1, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                        Measurement_Data_Copy = null;
+                        Measurement_Data_DateTime = null;
+                    }
+                    catch (Exception Ex)
+                    {
+                        Insert_Log(Ex.Message, 1);
+                        Insert_Log("Cannot create Inverse Tangent (All Samples) Math Waveform, try again.", 1);
+                    }
+                });
+            }
+            else
+            {
+                if (isValidGraphColor == false)
+                {
+                    Insert_Log("Cannot create Inverse Tangent (All Samples) Math Waveform. Check your Graph Color values.", 1);
+                }
+            }
+        }
+
+        private void Hyperbolic_Sine_AllSample_Button_Click(object sender, RoutedEventArgs e)
+        {
+            (bool isValidGraphColor, int Value_Red, int Value_Green, int Value_Blue) = GraphColor_Math_AllSamples_Check();
+            if (isValidGraphColor == true)
+            {
+                string Graph_Title = GraphTitle_TextBox_Math_AllSamples.Text;
+                string Y_Axis_Title = YAxis_TextBox_Math_AllSamples.Text;
+                bool inDegrees = Hyperbolic_Sine_AllSample_Degrees.IsSelected;
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        int Measurement_Count_Copy = Measurement_Count;
+                        double[] Measurement_Data_Copy = new double[Measurement_Count_Copy];
+                        Array.Copy(Measurement_Data, Measurement_Data_Copy, Measurement_Count_Copy);
+
+                        DateTime[] Measurement_Data_DateTime = new DateTime[Measurement_Count_Copy];
+                        Array.Copy(Measurement_DateTime, Measurement_Data_DateTime, Measurement_Count_Copy);
+
+                        for (int i = 0; i < Measurement_Count_Copy; i++)
+                        {
+                            if (inDegrees == true)
+                            {
+                                Measurement_Data_Copy[i] = (Math.Sinh(Measurement_Data_Copy[i]) * (180 / Math.PI));
+                            }
+                            else
+                            {
+                                Measurement_Data_Copy[i] = Math.Sinh(Measurement_Data_Copy[i]);
+                            }
+                            if (double.IsNaN(Measurement_Data_Copy[i]) || double.IsInfinity(Measurement_Data_Copy[i]))
+                            {
+                                Measurement_Data_Copy[i] = 0;
+                            }
+                        }
+                        Create_Waveform_Window("Hyperbolic Sine Math Waveform [All Samples]", 0, 0, Measurement_Count_Copy - 1, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                        Measurement_Data_Copy = null;
+                        Measurement_Data_DateTime = null;
+                    }
+                    catch (Exception Ex)
+                    {
+                        Insert_Log(Ex.Message, 1);
+                        Insert_Log("Cannot create Hyperbolic Sine (All Samples) Math Waveform, try again.", 1);
+                    }
+                });
+            }
+            else
+            {
+                if (isValidGraphColor == false)
+                {
+                    Insert_Log("Cannot create Hyperbolic Sine (All Samples) Math Waveform. Check your Graph Color values.", 1);
+                }
+            }
+        }
+
+        private void Hyperbolic_Cosine_AllSample_Button_Click(object sender, RoutedEventArgs e)
+        {
+            (bool isValidGraphColor, int Value_Red, int Value_Green, int Value_Blue) = GraphColor_Math_AllSamples_Check();
+            if (isValidGraphColor == true)
+            {
+                string Graph_Title = GraphTitle_TextBox_Math_AllSamples.Text;
+                string Y_Axis_Title = YAxis_TextBox_Math_AllSamples.Text;
+                bool inDegrees = Hyperbolic_Cosine_AllSample_Degrees.IsSelected;
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        int Measurement_Count_Copy = Measurement_Count;
+                        double[] Measurement_Data_Copy = new double[Measurement_Count_Copy];
+                        Array.Copy(Measurement_Data, Measurement_Data_Copy, Measurement_Count_Copy);
+
+                        DateTime[] Measurement_Data_DateTime = new DateTime[Measurement_Count_Copy];
+                        Array.Copy(Measurement_DateTime, Measurement_Data_DateTime, Measurement_Count_Copy);
+
+                        for (int i = 0; i < Measurement_Count_Copy; i++)
+                        {
+                            if (inDegrees == true)
+                            {
+                                Measurement_Data_Copy[i] = (Math.Cosh(Measurement_Data_Copy[i]) * (180 / Math.PI));
+                            }
+                            else
+                            {
+                                Measurement_Data_Copy[i] = Math.Cosh(Measurement_Data_Copy[i]);
+                            }
+                            if (double.IsNaN(Measurement_Data_Copy[i]) || double.IsInfinity(Measurement_Data_Copy[i]))
+                            {
+                                Measurement_Data_Copy[i] = 0;
+                            }
+                        }
+                        Create_Waveform_Window("Hyperbolic Cosine Math Waveform [All Samples]", 0, 0, Measurement_Count_Copy - 1, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                        Measurement_Data_Copy = null;
+                        Measurement_Data_DateTime = null;
+                    }
+                    catch (Exception Ex)
+                    {
+                        Insert_Log(Ex.Message, 1);
+                        Insert_Log("Cannot create Hyperbolic Cosine (All Samples) Math Waveform, try again.", 1);
+                    }
+                });
+            }
+            else
+            {
+                if (isValidGraphColor == false)
+                {
+                    Insert_Log("Cannot create Hyperbolic Cosine (All Samples) Math Waveform. Check your Graph Color values.", 1);
+                }
+            }
+        }
+
+        private void Hyperbolic_Tangent_AllSample_Button_Click(object sender, RoutedEventArgs e)
+        {
+            (bool isValidGraphColor, int Value_Red, int Value_Green, int Value_Blue) = GraphColor_Math_AllSamples_Check();
+            if (isValidGraphColor == true)
+            {
+                string Graph_Title = GraphTitle_TextBox_Math_AllSamples.Text;
+                string Y_Axis_Title = YAxis_TextBox_Math_AllSamples.Text;
+                bool inDegrees = Hyperbolic_Tangent_AllSample_Degrees.IsSelected;
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        int Measurement_Count_Copy = Measurement_Count;
+                        double[] Measurement_Data_Copy = new double[Measurement_Count_Copy];
+                        Array.Copy(Measurement_Data, Measurement_Data_Copy, Measurement_Count_Copy);
+
+                        DateTime[] Measurement_Data_DateTime = new DateTime[Measurement_Count_Copy];
+                        Array.Copy(Measurement_DateTime, Measurement_Data_DateTime, Measurement_Count_Copy);
+
+                        for (int i = 0; i < Measurement_Count_Copy; i++)
+                        {
+                            if (inDegrees == true)
+                            {
+                                Measurement_Data_Copy[i] = (Math.Tanh(Measurement_Data_Copy[i]) * (180 / Math.PI));
+                            }
+                            else
+                            {
+                                Measurement_Data_Copy[i] = Math.Tanh(Measurement_Data_Copy[i]);
+                            }
+                            if (double.IsNaN(Measurement_Data_Copy[i]) || double.IsInfinity(Measurement_Data_Copy[i]))
+                            {
+                                Measurement_Data_Copy[i] = 0;
+                            }
+                        }
+                        Create_Waveform_Window("Hyperbolic Tangent Math Waveform [All Samples]", 0, 0, Measurement_Count_Copy - 1, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                        Measurement_Data_Copy = null;
+                        Measurement_Data_DateTime = null;
+                    }
+                    catch (Exception Ex)
+                    {
+                        Insert_Log(Ex.Message, 1);
+                        Insert_Log("Cannot create Hyperbolic Tangent (All Samples) Math Waveform, try again.", 1);
+                    }
+                });
+            }
+            else
+            {
+                if (isValidGraphColor == false)
+                {
+                    Insert_Log("Cannot create Hyperbolic Tangent (All Samples) Math Waveform. Check your Graph Color values.", 1);
                 }
             }
         }
@@ -4152,7 +4924,7 @@ namespace HP_34401A
                             {
                                 Measurement_Data_Copy[i] = Math.Abs((Measurement_Data_Copy[i] - Value) / Value) * 100;
                             }
-                            Create_Waveform_Window("% Error Math Waveform [" + StartValue + ", " + EndValue + "]: |(Samples - " + Value + ") / " + Value + "| x 100", Value, 0, Measurement_Count_Copy, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                            Create_Waveform_Window("% Error Math Waveform [" + StartValue + ", " + EndValue + "]: |(Samples - " + Value + ") / " + Value + "| x 100", Value, StartValue, EndValue, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
                             Measurement_Data_Copy = null;
                             Measurement_Data_DateTime = null;
                         }
@@ -4215,7 +4987,7 @@ namespace HP_34401A
                                 Measurement_Data_Copy[i] = 0;
                             }
                         }
-                        Create_Waveform_Window("DB (N Samples Math Waveform [" + StartValue + ", " + EndValue + "]): " + DB_1_Value + " x log" + DB_2_Value + " (Samples / " + DB_3_Value + ")", DB_3_Value, 0, Measurement_Count_Copy, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                        Create_Waveform_Window("DB (N Samples Math Waveform [" + StartValue + ", " + EndValue + "]): " + DB_1_Value + " x log" + DB_2_Value + " (Samples / " + DB_3_Value + ")", DB_3_Value, StartValue, EndValue, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
                         Measurement_Data_Copy = null;
                         Measurement_Data_DateTime = null;
                     }
@@ -4274,7 +5046,7 @@ namespace HP_34401A
                                 Measurement_Data_Copy[i] = 0;
                             }
                         }
-                        Create_Waveform_Window("DBM (N Samples Math Waveform [" + StartValue + ", " + EndValue + "]): " + DBM_1_Value + " x log" + DBM_2_Value + " ((Samples^2 / " + DBM_3_Value + ") / " + DBM_4_Value + ")", DBM_3_Value, 0, Measurement_Count_Copy, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                        Create_Waveform_Window("DBM (N Samples Math Waveform [" + StartValue + ", " + EndValue + "]): " + DBM_1_Value + " x log" + DBM_2_Value + " ((Samples^2 / " + DBM_3_Value + ") / " + DBM_4_Value + ")", DBM_3_Value, StartValue, EndValue, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
                         Measurement_Data_Copy = null;
                         Measurement_Data_DateTime = null;
                     }
@@ -4298,6 +5070,853 @@ namespace HP_34401A
                 if (isValidGraphColor == false)
                 {
                     Insert_Log("Cannot create DBM (N Samples) Math Waveform. Check your Graph Color values.", 1);
+                }
+            }
+        }
+
+        private void Value_Power_NSample_Button_Click(object sender, RoutedEventArgs e)
+        {
+            (bool IsValidRange, int StartValue, int EndValue) = MathNsamples_Range();
+            (bool isValidGraphColor, int Value_Red, int Value_Green, int Value_Blue) = GraphColor_Math_NSamples_Check();
+            (bool isValid, double Value) = Text_Num(Value_Power_NSample_Text.Text, true, false);
+            if (isValidGraphColor == true & isValid == true & IsValidRange == true)
+            {
+                string Graph_Title = GraphTitle_TextBox_Math_NSamples.Text;
+                string Y_Axis_Title = YAxis_TextBox_Math_NSamples.Text;
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        int Measurement_Count_Copy = (EndValue - StartValue) + 1;
+                        double[] Measurement_Data_Copy = new double[Measurement_Count_Copy];
+                        Array.Copy(Measurement_Data, StartValue, Measurement_Data_Copy, 0, Measurement_Count_Copy);
+
+                        DateTime[] Measurement_Data_DateTime = new DateTime[Measurement_Count_Copy];
+                        Array.Copy(Measurement_DateTime, StartValue, Measurement_Data_DateTime, 0, Measurement_Count_Copy);
+
+                        for (int i = 0; i < Measurement_Count_Copy; i++)
+                        {
+                            Measurement_Data_Copy[i] = Math.Pow(Value, Measurement_Data_Copy[i]);
+                            if (double.IsNaN(Measurement_Data_Copy[i]) || double.IsInfinity(Measurement_Data_Copy[i]))
+                            {
+                                Measurement_Data_Copy[i] = 0;
+                            }
+                        }
+                        Create_Waveform_Window("(Value)^(Samples) Math Waveform [" + StartValue + ", " + EndValue + "]", 0, StartValue, EndValue, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                        Measurement_Data_Copy = null;
+                        Measurement_Data_DateTime = null;
+                    }
+                    catch (Exception Ex)
+                    {
+                        Insert_Log(Ex.Message, 1);
+                        Insert_Log("Cannot create (Value)^(Samples) (N Samples) Math Waveform, try again.", 1);
+                    }
+                });
+            }
+            else
+            {
+                if (isValidGraphColor == false)
+                {
+                    Insert_Log("Cannot create (Value)^(Samples) (N Samples) Math Waveform. Check your Graph Color values.", 1);
+                }
+                if (isValid == false)
+                {
+                    Insert_Log("Cannot create (Value)^(Samples) (N Samples) Math Waveform. Check your Value.", 1);
+                }
+                if (IsValidRange == true)
+                {
+                    Insert_Log("Check N Samples Start and End input values.", 1);
+                }
+            }
+        }
+
+        private void NSample_Power_Value_Button_Click(object sender, RoutedEventArgs e)
+        {
+            (bool IsValidRange, int StartValue, int EndValue) = MathNsamples_Range();
+            (bool isValidGraphColor, int Value_Red, int Value_Green, int Value_Blue) = GraphColor_Math_NSamples_Check();
+            (bool isValid, double Value) = Text_Num(NSample_Power_Value_Text.Text, true, false);
+            if (isValidGraphColor == true & isValid == true & IsValidRange == true)
+            {
+                string Graph_Title = GraphTitle_TextBox_Math_NSamples.Text;
+                string Y_Axis_Title = YAxis_TextBox_Math_NSamples.Text;
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        int Measurement_Count_Copy = (EndValue - StartValue) + 1;
+                        double[] Measurement_Data_Copy = new double[Measurement_Count_Copy];
+                        Array.Copy(Measurement_Data, StartValue, Measurement_Data_Copy, 0, Measurement_Count_Copy);
+
+                        DateTime[] Measurement_Data_DateTime = new DateTime[Measurement_Count_Copy];
+                        Array.Copy(Measurement_DateTime, StartValue, Measurement_Data_DateTime, 0, Measurement_Count_Copy);
+
+                        for (int i = 0; i < Measurement_Count_Copy; i++)
+                        {
+                            Measurement_Data_Copy[i] = Math.Pow(Measurement_Data_Copy[i], Value);
+                            if (double.IsNaN(Measurement_Data_Copy[i]) || double.IsInfinity(Measurement_Data_Copy[i]))
+                            {
+                                Measurement_Data_Copy[i] = 0;
+                            }
+                        }
+                        Create_Waveform_Window("(Samples)^(Value) Math Waveform [" + StartValue + ", " + EndValue + "]", 0, StartValue, EndValue, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                        Measurement_Data_Copy = null;
+                        Measurement_Data_DateTime = null;
+                    }
+                    catch (Exception Ex)
+                    {
+                        Insert_Log(Ex.Message, 1);
+                        Insert_Log("Cannot create (Samples)^(Value) (N Samples) Math Waveform, try again.", 1);
+                    }
+                });
+            }
+            else
+            {
+                if (isValidGraphColor == false)
+                {
+                    Insert_Log("Cannot create (Samples)^(Value) (N Samples) Math Waveform. Check your Graph Color values.", 1);
+                }
+                if (isValid == false)
+                {
+                    Insert_Log("Cannot create (Samples)^(Value) (N Samples) Math Waveform. Check your Value.", 1);
+                }
+                if (IsValidRange == true)
+                {
+                    Insert_Log("Check N Samples Start and End input values.", 1);
+                }
+            }
+        }
+
+        private void Log_NSample_Button_Click(object sender, RoutedEventArgs e)
+        {
+            (bool IsValidRange, int StartValue, int EndValue) = MathNsamples_Range();
+            (bool isValidGraphColor, int Value_Red, int Value_Green, int Value_Blue) = GraphColor_Math_NSamples_Check();
+            if (isValidGraphColor == true & IsValidRange == true)
+            {
+                string Graph_Title = GraphTitle_TextBox_Math_NSamples.Text;
+                string Y_Axis_Title = YAxis_TextBox_Math_NSamples.Text;
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        int Measurement_Count_Copy = (EndValue - StartValue) + 1;
+                        double[] Measurement_Data_Copy = new double[Measurement_Count_Copy];
+                        Array.Copy(Measurement_Data, StartValue, Measurement_Data_Copy, 0, Measurement_Count_Copy);
+
+                        DateTime[] Measurement_Data_DateTime = new DateTime[Measurement_Count_Copy];
+                        Array.Copy(Measurement_DateTime, StartValue, Measurement_Data_DateTime, 0, Measurement_Count_Copy);
+
+                        for (int i = 0; i < Measurement_Count_Copy; i++)
+                        {
+                            Measurement_Data_Copy[i] = Math.Log10(Measurement_Data_Copy[i]);
+                            if (double.IsNaN(Measurement_Data_Copy[i]) || double.IsInfinity(Measurement_Data_Copy[i]))
+                            {
+                                Measurement_Data_Copy[i] = 0;
+                            }
+                        }
+                        Create_Waveform_Window("Logarithm Math Waveform [" + StartValue + ", " + EndValue + "]", 0, StartValue, EndValue, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                        Measurement_Data_Copy = null;
+                        Measurement_Data_DateTime = null;
+                    }
+                    catch (Exception Ex)
+                    {
+                        Insert_Log(Ex.Message, 1);
+                        Insert_Log("Cannot create Logarithm (N Samples) Math Waveform, try again.", 1);
+                    }
+                });
+            }
+            else
+            {
+                if (isValidGraphColor == false)
+                {
+                    Insert_Log("Cannot create Logarithm (N Samples) Math Waveform. Check your Graph Color values.", 1);
+                }
+                if (IsValidRange == true)
+                {
+                    Insert_Log("Check N Samples Start and End input values.", 1);
+                }
+            }
+        }
+
+        private void Ln_NSample_Button_Click(object sender, RoutedEventArgs e)
+        {
+            (bool IsValidRange, int StartValue, int EndValue) = MathNsamples_Range();
+            (bool isValidGraphColor, int Value_Red, int Value_Green, int Value_Blue) = GraphColor_Math_NSamples_Check();
+            if (isValidGraphColor == true & IsValidRange == true)
+            {
+                string Graph_Title = GraphTitle_TextBox_Math_NSamples.Text;
+                string Y_Axis_Title = YAxis_TextBox_Math_NSamples.Text;
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        int Measurement_Count_Copy = (EndValue - StartValue) + 1;
+                        double[] Measurement_Data_Copy = new double[Measurement_Count_Copy];
+                        Array.Copy(Measurement_Data, StartValue, Measurement_Data_Copy, 0, Measurement_Count_Copy);
+
+                        DateTime[] Measurement_Data_DateTime = new DateTime[Measurement_Count_Copy];
+                        Array.Copy(Measurement_DateTime, StartValue, Measurement_Data_DateTime, 0, Measurement_Count_Copy);
+
+                        for (int i = 0; i < Measurement_Count_Copy; i++)
+                        {
+                            Measurement_Data_Copy[i] = Math.Log(Measurement_Data_Copy[i]);
+                            if (double.IsNaN(Measurement_Data_Copy[i]) || double.IsInfinity(Measurement_Data_Copy[i]))
+                            {
+                                Measurement_Data_Copy[i] = 0;
+                            }
+                        }
+                        Create_Waveform_Window("Natural Logarithm Math Waveform [" + StartValue + ", " + EndValue + "]", 0, StartValue, EndValue, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                        Measurement_Data_Copy = null;
+                        Measurement_Data_DateTime = null;
+                    }
+                    catch (Exception Ex)
+                    {
+                        Insert_Log(Ex.Message, 1);
+                        Insert_Log("Cannot create Natural Logarithm (N Samples) Math Waveform, try again.", 1);
+                    }
+                });
+            }
+            else
+            {
+                if (isValidGraphColor == false)
+                {
+                    Insert_Log("Cannot create Natural Logarithm (N Samples) Math Waveform. Check your Graph Color values.", 1);
+                }
+                if (IsValidRange == true)
+                {
+                    Insert_Log("Check N Samples Start and End input values.", 1);
+                }
+            }
+        }
+
+        private void Square_NSample_Button_Click(object sender, RoutedEventArgs e)
+        {
+            (bool IsValidRange, int StartValue, int EndValue) = MathNsamples_Range();
+            (bool isValidGraphColor, int Value_Red, int Value_Green, int Value_Blue) = GraphColor_Math_NSamples_Check();
+            if (isValidGraphColor == true & IsValidRange == true)
+            {
+                string Graph_Title = GraphTitle_TextBox_Math_NSamples.Text;
+                string Y_Axis_Title = YAxis_TextBox_Math_NSamples.Text;
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        int Measurement_Count_Copy = (EndValue - StartValue) + 1;
+                        double[] Measurement_Data_Copy = new double[Measurement_Count_Copy];
+                        Array.Copy(Measurement_Data, StartValue, Measurement_Data_Copy, 0, Measurement_Count_Copy);
+
+                        DateTime[] Measurement_Data_DateTime = new DateTime[Measurement_Count_Copy];
+                        Array.Copy(Measurement_DateTime, StartValue, Measurement_Data_DateTime, 0, Measurement_Count_Copy);
+
+                        for (int i = 0; i < Measurement_Count_Copy; i++)
+                        {
+                            Measurement_Data_Copy[i] = Math.Sqrt(Measurement_Data_Copy[i]);
+                            if (double.IsNaN(Measurement_Data_Copy[i]) || double.IsInfinity(Measurement_Data_Copy[i]))
+                            {
+                                Measurement_Data_Copy[i] = 0;
+                            }
+                        }
+                        Create_Waveform_Window("Square Root Math Waveform [" + StartValue + ", " + EndValue + "]", 0, StartValue, EndValue, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                        Measurement_Data_Copy = null;
+                        Measurement_Data_DateTime = null;
+                    }
+                    catch (Exception Ex)
+                    {
+                        Insert_Log(Ex.Message, 1);
+                        Insert_Log("Cannot create Square Root (N Samples) Math Waveform, try again.", 1);
+                    }
+                });
+            }
+            else
+            {
+                if (isValidGraphColor == false)
+                {
+                    Insert_Log("Cannot create Square Root (N Samples) Math Waveform. Check your Graph Color values.", 1);
+                }
+                if (IsValidRange == true)
+                {
+                    Insert_Log("Check N Samples Start and End input values.", 1);
+                }
+            }
+        }
+
+        private void Abs_NSample_Button_Click(object sender, RoutedEventArgs e)
+        {
+            (bool IsValidRange, int StartValue, int EndValue) = MathNsamples_Range();
+            (bool isValidGraphColor, int Value_Red, int Value_Green, int Value_Blue) = GraphColor_Math_NSamples_Check();
+            if (isValidGraphColor == true & IsValidRange == true)
+            {
+                string Graph_Title = GraphTitle_TextBox_Math_NSamples.Text;
+                string Y_Axis_Title = YAxis_TextBox_Math_NSamples.Text;
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        int Measurement_Count_Copy = (EndValue - StartValue) + 1;
+                        double[] Measurement_Data_Copy = new double[Measurement_Count_Copy];
+                        Array.Copy(Measurement_Data, StartValue, Measurement_Data_Copy, 0, Measurement_Count_Copy);
+
+                        DateTime[] Measurement_Data_DateTime = new DateTime[Measurement_Count_Copy];
+                        Array.Copy(Measurement_DateTime, StartValue, Measurement_Data_DateTime, 0, Measurement_Count_Copy);
+
+                        for (int i = 0; i < Measurement_Count_Copy; i++)
+                        {
+                            Measurement_Data_Copy[i] = Math.Abs(Measurement_Data_Copy[i]);
+                            if (double.IsNaN(Measurement_Data_Copy[i]) || double.IsInfinity(Measurement_Data_Copy[i]))
+                            {
+                                Measurement_Data_Copy[i] = 0;
+                            }
+                        }
+                        Create_Waveform_Window("Absolute Value Math Waveform [" + StartValue + ", " + EndValue + "]", 0, StartValue, EndValue, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                        Measurement_Data_Copy = null;
+                        Measurement_Data_DateTime = null;
+                    }
+                    catch (Exception Ex)
+                    {
+                        Insert_Log(Ex.Message, 1);
+                        Insert_Log("Cannot create Absolute Value (N Samples) Math Waveform, try again.", 1);
+                    }
+                });
+            }
+            else
+            {
+                if (isValidGraphColor == false)
+                {
+                    Insert_Log("Cannot create Absolute Value (N Samples) Math Waveform. Check your Graph Color values.", 1);
+                }
+                if (IsValidRange == true)
+                {
+                    Insert_Log("Check N Samples Start and End input values.", 1);
+                }
+            }
+        }
+
+        private void Sine_NSample_Button_Click(object sender, RoutedEventArgs e)
+        {
+            (bool IsValidRange, int StartValue, int EndValue) = MathNsamples_Range();
+            (bool isValidGraphColor, int Value_Red, int Value_Green, int Value_Blue) = GraphColor_Math_NSamples_Check();
+            if (isValidGraphColor == true & IsValidRange == true)
+            {
+                string Graph_Title = GraphTitle_TextBox_Math_NSamples.Text;
+                string Y_Axis_Title = YAxis_TextBox_Math_NSamples.Text;
+                bool inDegrees = Sine_NSample_Degrees.IsSelected;
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        int Measurement_Count_Copy = (EndValue - StartValue) + 1;
+                        double[] Measurement_Data_Copy = new double[Measurement_Count_Copy];
+                        Array.Copy(Measurement_Data, StartValue, Measurement_Data_Copy, 0, Measurement_Count_Copy);
+
+                        DateTime[] Measurement_Data_DateTime = new DateTime[Measurement_Count_Copy];
+                        Array.Copy(Measurement_DateTime, StartValue, Measurement_Data_DateTime, 0, Measurement_Count_Copy);
+
+                        for (int i = 0; i < Measurement_Count_Copy; i++)
+                        {
+                            if (inDegrees == true)
+                            {
+                                Measurement_Data_Copy[i] = (Math.Sin(Measurement_Data_Copy[i]) * (180 / Math.PI));
+                            }
+                            else
+                            {
+                                Measurement_Data_Copy[i] = Math.Sin(Measurement_Data_Copy[i]);
+                            }
+                            if (double.IsNaN(Measurement_Data_Copy[i]) || double.IsInfinity(Measurement_Data_Copy[i]))
+                            {
+                                Measurement_Data_Copy[i] = 0;
+                            }
+                        }
+                        Create_Waveform_Window("Sine Math Waveform [" + StartValue + ", " + EndValue + "]", 0, StartValue, EndValue, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                        Measurement_Data_Copy = null;
+                        Measurement_Data_DateTime = null;
+                    }
+                    catch (Exception Ex)
+                    {
+                        Insert_Log(Ex.Message, 1);
+                        Insert_Log("Cannot create Sine (N Samples) Math Waveform, try again.", 1);
+                    }
+                });
+            }
+            else
+            {
+                if (isValidGraphColor == false)
+                {
+                    Insert_Log("Cannot create Sine (N Samples) Math Waveform. Check your Graph Color values.", 1);
+                }
+                if (IsValidRange == true)
+                {
+                    Insert_Log("Check N Samples Start and End input values.", 1);
+                }
+            }
+        }
+
+        private void Cosine_NSample_Button_Click(object sender, RoutedEventArgs e)
+        {
+            (bool IsValidRange, int StartValue, int EndValue) = MathNsamples_Range();
+            (bool isValidGraphColor, int Value_Red, int Value_Green, int Value_Blue) = GraphColor_Math_NSamples_Check();
+            if (isValidGraphColor == true & IsValidRange == true)
+            {
+                string Graph_Title = GraphTitle_TextBox_Math_NSamples.Text;
+                string Y_Axis_Title = YAxis_TextBox_Math_NSamples.Text;
+                bool inDegrees = Cosine_NSample_Degrees.IsSelected;
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        int Measurement_Count_Copy = (EndValue - StartValue) + 1;
+                        double[] Measurement_Data_Copy = new double[Measurement_Count_Copy];
+                        Array.Copy(Measurement_Data, StartValue, Measurement_Data_Copy, 0, Measurement_Count_Copy);
+
+                        DateTime[] Measurement_Data_DateTime = new DateTime[Measurement_Count_Copy];
+                        Array.Copy(Measurement_DateTime, StartValue, Measurement_Data_DateTime, 0, Measurement_Count_Copy);
+
+                        for (int i = 0; i < Measurement_Count_Copy; i++)
+                        {
+                            if (inDegrees == true)
+                            {
+                                Measurement_Data_Copy[i] = (Math.Cos(Measurement_Data_Copy[i]) * (180 / Math.PI));
+                            }
+                            else
+                            {
+                                Measurement_Data_Copy[i] = Math.Cos(Measurement_Data_Copy[i]);
+                            }
+                            if (double.IsNaN(Measurement_Data_Copy[i]) || double.IsInfinity(Measurement_Data_Copy[i]))
+                            {
+                                Measurement_Data_Copy[i] = 0;
+                            }
+                        }
+                        Create_Waveform_Window("Cosine Math Waveform [" + StartValue + ", " + EndValue + "]", 0, StartValue, EndValue, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                        Measurement_Data_Copy = null;
+                        Measurement_Data_DateTime = null;
+                    }
+                    catch (Exception Ex)
+                    {
+                        Insert_Log(Ex.Message, 1);
+                        Insert_Log("Cannot create Cosine (N Samples) Math Waveform, try again.", 1);
+                    }
+                });
+            }
+            else
+            {
+                if (isValidGraphColor == false)
+                {
+                    Insert_Log("Cannot create Cosine (N Samples) Math Waveform. Check your Graph Color values.", 1);
+                }
+                if (IsValidRange == true)
+                {
+                    Insert_Log("Check N Samples Start and End input values.", 1);
+                }
+            }
+        }
+
+        private void Tangent_NSample_Button_Click(object sender, RoutedEventArgs e)
+        {
+            (bool IsValidRange, int StartValue, int EndValue) = MathNsamples_Range();
+            (bool isValidGraphColor, int Value_Red, int Value_Green, int Value_Blue) = GraphColor_Math_NSamples_Check();
+            if (isValidGraphColor == true & IsValidRange == true)
+            {
+                string Graph_Title = GraphTitle_TextBox_Math_NSamples.Text;
+                string Y_Axis_Title = YAxis_TextBox_Math_NSamples.Text;
+                bool inDegrees = Tangent_NSample_Degrees.IsSelected;
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        int Measurement_Count_Copy = (EndValue - StartValue) + 1;
+                        double[] Measurement_Data_Copy = new double[Measurement_Count_Copy];
+                        Array.Copy(Measurement_Data, StartValue, Measurement_Data_Copy, 0, Measurement_Count_Copy);
+
+                        DateTime[] Measurement_Data_DateTime = new DateTime[Measurement_Count_Copy];
+                        Array.Copy(Measurement_DateTime, StartValue, Measurement_Data_DateTime, 0, Measurement_Count_Copy);
+
+                        for (int i = 0; i < Measurement_Count_Copy; i++)
+                        {
+                            if (inDegrees == true)
+                            {
+                                Measurement_Data_Copy[i] = (Math.Tan(Measurement_Data_Copy[i]) * (180 / Math.PI));
+                            }
+                            else
+                            {
+                                Measurement_Data_Copy[i] = Math.Tan(Measurement_Data_Copy[i]);
+                            }
+                            if (double.IsNaN(Measurement_Data_Copy[i]) || double.IsInfinity(Measurement_Data_Copy[i]))
+                            {
+                                Measurement_Data_Copy[i] = 0;
+                            }
+                        }
+                        Create_Waveform_Window("Tangent Math Waveform [" + StartValue + ", " + EndValue + "]", 0, StartValue, EndValue, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                        Measurement_Data_Copy = null;
+                        Measurement_Data_DateTime = null;
+                    }
+                    catch (Exception Ex)
+                    {
+                        Insert_Log(Ex.Message, 1);
+                        Insert_Log("Cannot create Tangent (N Samples) Math Waveform, try again.", 1);
+                    }
+                });
+            }
+            else
+            {
+                if (isValidGraphColor == false)
+                {
+                    Insert_Log("Cannot create Tangent (N Samples) Math Waveform. Check your Graph Color values.", 1);
+                }
+                if (IsValidRange == true)
+                {
+                    Insert_Log("Check N Samples Start and End input values.", 1);
+                }
+            }
+        }
+
+        private void Inverse_Sine_NSample_Button_Click(object sender, RoutedEventArgs e)
+        {
+            (bool IsValidRange, int StartValue, int EndValue) = MathNsamples_Range();
+            (bool isValidGraphColor, int Value_Red, int Value_Green, int Value_Blue) = GraphColor_Math_NSamples_Check();
+            if (isValidGraphColor == true & IsValidRange == true)
+            {
+                string Graph_Title = GraphTitle_TextBox_Math_NSamples.Text;
+                string Y_Axis_Title = YAxis_TextBox_Math_NSamples.Text;
+                bool inDegrees = Inverse_Sine_NSample_Degrees.IsSelected;
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        int Measurement_Count_Copy = (EndValue - StartValue) + 1;
+                        double[] Measurement_Data_Copy = new double[Measurement_Count_Copy];
+                        Array.Copy(Measurement_Data, StartValue, Measurement_Data_Copy, 0, Measurement_Count_Copy);
+
+                        DateTime[] Measurement_Data_DateTime = new DateTime[Measurement_Count_Copy];
+                        Array.Copy(Measurement_DateTime, StartValue, Measurement_Data_DateTime, 0, Measurement_Count_Copy);
+
+                        for (int i = 0; i < Measurement_Count_Copy; i++)
+                        {
+                            if (inDegrees == true)
+                            {
+                                Measurement_Data_Copy[i] = (Math.Asin(Measurement_Data_Copy[i]) * (180 / Math.PI));
+                            }
+                            else
+                            {
+                                Measurement_Data_Copy[i] = Math.Asin(Measurement_Data_Copy[i]);
+                            }
+                            if (double.IsNaN(Measurement_Data_Copy[i]) || double.IsInfinity(Measurement_Data_Copy[i]))
+                            {
+                                Measurement_Data_Copy[i] = 0;
+                            }
+                        }
+                        Create_Waveform_Window("Inverse Sine Math Waveform [" + StartValue + ", " + EndValue + "]", 0, StartValue, EndValue, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                        Measurement_Data_Copy = null;
+                        Measurement_Data_DateTime = null;
+                    }
+                    catch (Exception Ex)
+                    {
+                        Insert_Log(Ex.Message, 1);
+                        Insert_Log("Cannot create Inverse Sine (N Samples) Math Waveform, try again.", 1);
+                    }
+                });
+            }
+            else
+            {
+                if (isValidGraphColor == false)
+                {
+                    Insert_Log("Cannot create Inverse Sine (N Samples) Math Waveform. Check your Graph Color values.", 1);
+                }
+                if (IsValidRange == true)
+                {
+                    Insert_Log("Check N Samples Start and End input values.", 1);
+                }
+            }
+        }
+
+        private void Inverse_Cosine_NSample_Button_Click(object sender, RoutedEventArgs e)
+        {
+            (bool IsValidRange, int StartValue, int EndValue) = MathNsamples_Range();
+            (bool isValidGraphColor, int Value_Red, int Value_Green, int Value_Blue) = GraphColor_Math_NSamples_Check();
+            if (isValidGraphColor == true & IsValidRange == true)
+            {
+                string Graph_Title = GraphTitle_TextBox_Math_NSamples.Text;
+                string Y_Axis_Title = YAxis_TextBox_Math_NSamples.Text;
+                bool inDegrees = Inverse_Cosine_NSample_Degrees.IsSelected;
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        int Measurement_Count_Copy = (EndValue - StartValue) + 1;
+                        double[] Measurement_Data_Copy = new double[Measurement_Count_Copy];
+                        Array.Copy(Measurement_Data, StartValue, Measurement_Data_Copy, 0, Measurement_Count_Copy);
+
+                        DateTime[] Measurement_Data_DateTime = new DateTime[Measurement_Count_Copy];
+                        Array.Copy(Measurement_DateTime, StartValue, Measurement_Data_DateTime, 0, Measurement_Count_Copy);
+
+                        for (int i = 0; i < Measurement_Count_Copy; i++)
+                        {
+                            if (inDegrees == true)
+                            {
+                                Measurement_Data_Copy[i] = (Math.Acos(Measurement_Data_Copy[i]) * (180 / Math.PI));
+                            }
+                            else
+                            {
+                                Measurement_Data_Copy[i] = Math.Acos(Measurement_Data_Copy[i]);
+                            }
+                            if (double.IsNaN(Measurement_Data_Copy[i]) || double.IsInfinity(Measurement_Data_Copy[i]))
+                            {
+                                Measurement_Data_Copy[i] = 0;
+                            }
+                        }
+                        Create_Waveform_Window("Inverse Cosine Math Waveform [" + StartValue + ", " + EndValue + "]", 0, StartValue, EndValue, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                        Measurement_Data_Copy = null;
+                        Measurement_Data_DateTime = null;
+                    }
+                    catch (Exception Ex)
+                    {
+                        Insert_Log(Ex.Message, 1);
+                        Insert_Log("Cannot create Inverse Cosine (N Samples) Math Waveform, try again.", 1);
+                    }
+                });
+            }
+            else
+            {
+                if (isValidGraphColor == false)
+                {
+                    Insert_Log("Cannot create Inverse Cosine (N Samples) Math Waveform. Check your Graph Color values.", 1);
+                }
+                if (IsValidRange == true)
+                {
+                    Insert_Log("Check N Samples Start and End input values.", 1);
+                }
+            }
+        }
+
+        private void Inverse_Tangent_NSample_Button_Click(object sender, RoutedEventArgs e)
+        {
+            (bool IsValidRange, int StartValue, int EndValue) = MathNsamples_Range();
+            (bool isValidGraphColor, int Value_Red, int Value_Green, int Value_Blue) = GraphColor_Math_NSamples_Check();
+            if (isValidGraphColor == true & IsValidRange == true)
+            {
+                string Graph_Title = GraphTitle_TextBox_Math_NSamples.Text;
+                string Y_Axis_Title = YAxis_TextBox_Math_NSamples.Text;
+                bool inDegrees = Inverse_Tangent_NSample_Degrees.IsSelected;
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        int Measurement_Count_Copy = (EndValue - StartValue) + 1;
+                        double[] Measurement_Data_Copy = new double[Measurement_Count_Copy];
+                        Array.Copy(Measurement_Data, StartValue, Measurement_Data_Copy, 0, Measurement_Count_Copy);
+
+                        DateTime[] Measurement_Data_DateTime = new DateTime[Measurement_Count_Copy];
+                        Array.Copy(Measurement_DateTime, StartValue, Measurement_Data_DateTime, 0, Measurement_Count_Copy);
+
+                        for (int i = 0; i < Measurement_Count_Copy; i++)
+                        {
+                            if (inDegrees == true)
+                            {
+                                Measurement_Data_Copy[i] = (Math.Atan(Measurement_Data_Copy[i]) * (180 / Math.PI));
+                            }
+                            else
+                            {
+                                Measurement_Data_Copy[i] = Math.Atan(Measurement_Data_Copy[i]);
+                            }
+                            if (double.IsNaN(Measurement_Data_Copy[i]) || double.IsInfinity(Measurement_Data_Copy[i]))
+                            {
+                                Measurement_Data_Copy[i] = 0;
+                            }
+                        }
+                        Create_Waveform_Window("Inverse Tangent Math Waveform [" + StartValue + ", " + EndValue + "]", 0, StartValue, EndValue, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                        Measurement_Data_Copy = null;
+                        Measurement_Data_DateTime = null;
+                    }
+                    catch (Exception Ex)
+                    {
+                        Insert_Log(Ex.Message, 1);
+                        Insert_Log("Cannot create Inverse Tangent (N Samples) Math Waveform, try again.", 1);
+                    }
+                });
+            }
+            else
+            {
+                if (isValidGraphColor == false)
+                {
+                    Insert_Log("Cannot create Inverse Tangent (N Samples) Math Waveform. Check your Graph Color values.", 1);
+                }
+                if (IsValidRange == true)
+                {
+                    Insert_Log("Check N Samples Start and End input values.", 1);
+                }
+            }
+        }
+
+        private void Hyperbolic_Sine_NSample_Button_Click(object sender, RoutedEventArgs e)
+        {
+            (bool IsValidRange, int StartValue, int EndValue) = MathNsamples_Range();
+            (bool isValidGraphColor, int Value_Red, int Value_Green, int Value_Blue) = GraphColor_Math_NSamples_Check();
+            if (isValidGraphColor == true & IsValidRange == true)
+            {
+                string Graph_Title = GraphTitle_TextBox_Math_NSamples.Text;
+                string Y_Axis_Title = YAxis_TextBox_Math_NSamples.Text;
+                bool inDegrees = Hyperbolic_Sine_NSample_Degrees.IsSelected;
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        int Measurement_Count_Copy = (EndValue - StartValue) + 1;
+                        double[] Measurement_Data_Copy = new double[Measurement_Count_Copy];
+                        Array.Copy(Measurement_Data, StartValue, Measurement_Data_Copy, 0, Measurement_Count_Copy);
+
+                        DateTime[] Measurement_Data_DateTime = new DateTime[Measurement_Count_Copy];
+                        Array.Copy(Measurement_DateTime, StartValue, Measurement_Data_DateTime, 0, Measurement_Count_Copy);
+
+                        for (int i = 0; i < Measurement_Count_Copy; i++)
+                        {
+                            if (inDegrees == true)
+                            {
+                                Measurement_Data_Copy[i] = (Math.Sinh(Measurement_Data_Copy[i]) * (180 / Math.PI));
+                            }
+                            else
+                            {
+                                Measurement_Data_Copy[i] = Math.Sinh(Measurement_Data_Copy[i]);
+                            }
+                            if (double.IsNaN(Measurement_Data_Copy[i]) || double.IsInfinity(Measurement_Data_Copy[i]))
+                            {
+                                Measurement_Data_Copy[i] = 0;
+                            }
+                        }
+                        Create_Waveform_Window("Hyperbolic Sine Math Waveform [" + StartValue + ", " + EndValue + "]", 0, StartValue, EndValue, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                        Measurement_Data_Copy = null;
+                        Measurement_Data_DateTime = null;
+                    }
+                    catch (Exception Ex)
+                    {
+                        Insert_Log(Ex.Message, 1);
+                        Insert_Log("Cannot create Hyperbolic Sine (N Samples) Math Waveform, try again.", 1);
+                    }
+                });
+            }
+            else
+            {
+                if (isValidGraphColor == false)
+                {
+                    Insert_Log("Cannot create Hyperbolic Sine (N Samples) Math Waveform. Check your Graph Color values.", 1);
+                }
+                if (IsValidRange == true)
+                {
+                    Insert_Log("Check N Samples Start and End input values.", 1);
+                }
+            }
+        }
+
+        private void Hyperbolic_Cosine_NSample_Button_Click(object sender, RoutedEventArgs e)
+        {
+            (bool IsValidRange, int StartValue, int EndValue) = MathNsamples_Range();
+            (bool isValidGraphColor, int Value_Red, int Value_Green, int Value_Blue) = GraphColor_Math_NSamples_Check();
+            if (isValidGraphColor == true & IsValidRange == true)
+            {
+                string Graph_Title = GraphTitle_TextBox_Math_NSamples.Text;
+                string Y_Axis_Title = YAxis_TextBox_Math_NSamples.Text;
+                bool inDegrees = Hyperbolic_Cosine_NSample_Degrees.IsSelected;
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        int Measurement_Count_Copy = (EndValue - StartValue) + 1;
+                        double[] Measurement_Data_Copy = new double[Measurement_Count_Copy];
+                        Array.Copy(Measurement_Data, StartValue, Measurement_Data_Copy, 0, Measurement_Count_Copy);
+
+                        DateTime[] Measurement_Data_DateTime = new DateTime[Measurement_Count_Copy];
+                        Array.Copy(Measurement_DateTime, StartValue, Measurement_Data_DateTime, 0, Measurement_Count_Copy);
+
+                        for (int i = 0; i < Measurement_Count_Copy; i++)
+                        {
+                            if (inDegrees == true)
+                            {
+                                Measurement_Data_Copy[i] = (Math.Cosh(Measurement_Data_Copy[i]) * (180 / Math.PI));
+                            }
+                            else
+                            {
+                                Measurement_Data_Copy[i] = Math.Cosh(Measurement_Data_Copy[i]);
+                            }
+                            if (double.IsNaN(Measurement_Data_Copy[i]) || double.IsInfinity(Measurement_Data_Copy[i]))
+                            {
+                                Measurement_Data_Copy[i] = 0;
+                            }
+                        }
+                        Create_Waveform_Window("Hyperbolic Cosine Math Waveform [" + StartValue + ", " + EndValue + "]", 0, StartValue, EndValue, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                        Measurement_Data_Copy = null;
+                        Measurement_Data_DateTime = null;
+                    }
+                    catch (Exception Ex)
+                    {
+                        Insert_Log(Ex.Message, 1);
+                        Insert_Log("Cannot create Hyperbolic Cosine (N Samples) Math Waveform, try again.", 1);
+                    }
+                });
+            }
+            else
+            {
+                if (isValidGraphColor == false)
+                {
+                    Insert_Log("Cannot create Hyperbolic Cosine (N Samples) Math Waveform. Check your Graph Color values.", 1);
+                }
+                if (IsValidRange == true)
+                {
+                    Insert_Log("Check N Samples Start and End input values.", 1);
+                }
+            }
+        }
+
+        private void Hyperbolic_Tangent_NSample_Button_Click(object sender, RoutedEventArgs e)
+        {
+            (bool IsValidRange, int StartValue, int EndValue) = MathNsamples_Range();
+            (bool isValidGraphColor, int Value_Red, int Value_Green, int Value_Blue) = GraphColor_Math_NSamples_Check();
+            if (isValidGraphColor == true & IsValidRange == true)
+            {
+                string Graph_Title = GraphTitle_TextBox_Math_NSamples.Text;
+                string Y_Axis_Title = YAxis_TextBox_Math_NSamples.Text;
+                bool inDegrees = Hyperbolic_Tangent_NSample_Degrees.IsSelected;
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        int Measurement_Count_Copy = (EndValue - StartValue) + 1;
+                        double[] Measurement_Data_Copy = new double[Measurement_Count_Copy];
+                        Array.Copy(Measurement_Data, StartValue, Measurement_Data_Copy, 0, Measurement_Count_Copy);
+
+                        DateTime[] Measurement_Data_DateTime = new DateTime[Measurement_Count_Copy];
+                        Array.Copy(Measurement_DateTime, StartValue, Measurement_Data_DateTime, 0, Measurement_Count_Copy);
+
+                        for (int i = 0; i < Measurement_Count_Copy; i++)
+                        {
+                            if (inDegrees == true)
+                            {
+                                Measurement_Data_Copy[i] = (Math.Tanh(Measurement_Data_Copy[i]) * (180 / Math.PI));
+                            }
+                            else
+                            {
+                                Measurement_Data_Copy[i] = Math.Tanh(Measurement_Data_Copy[i]);
+                            }
+                            if (double.IsNaN(Measurement_Data_Copy[i]) || double.IsInfinity(Measurement_Data_Copy[i]))
+                            {
+                                Measurement_Data_Copy[i] = 0;
+                            }
+                        }
+                        Create_Waveform_Window("Hyperbolic Tangent Math Waveform [" + StartValue + ", " + EndValue + "]", 0, StartValue, EndValue, Graph_Title, Y_Axis_Title, Value_Red, Value_Green, Value_Blue, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                        Measurement_Data_Copy = null;
+                        Measurement_Data_DateTime = null;
+                    }
+                    catch (Exception Ex)
+                    {
+                        Insert_Log(Ex.Message, 1);
+                        Insert_Log("Cannot create Hyperbolic Tangent (N Samples) Math Waveform, try again.", 1);
+                    }
+                });
+            }
+            else
+            {
+                if (isValidGraphColor == false)
+                {
+                    Insert_Log("Cannot create Hyperbolic Tangent (N Samples) Math Waveform. Check your Graph Color values.", 1);
+                }
+                if (IsValidRange == true)
+                {
+                    Insert_Log("Check N Samples Start and End input values.", 1);
                 }
             }
         }

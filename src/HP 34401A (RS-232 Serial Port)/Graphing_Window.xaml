@@ -6,15 +6,15 @@
         xmlns:ScottPlot="clr-namespace:ScottPlot;assembly=ScottPlot.WPF"
         xmlns:local="clr-namespace:HP_34401A"
         mc:Ignorable="d"
-        Title="Graphing Module" Height="470" Width="805" Closed="Window_Closed">
+        Title="Graphing Module" Height="470" Width="820" Closed="Window_Closed">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="22"/>
+            <RowDefinition Height="25"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="2"/>
-            <RowDefinition Height="120" MinHeight="10"/>
+            <RowDefinition Height="125" MinHeight="10"/>
         </Grid.RowDefinitions>
-        <Menu Grid.Row="0" IsMainMenu="True" VerticalAlignment="Stretch" FontSize="15">
+        <Menu Grid.Row="0" IsMainMenu="True" VerticalAlignment="Stretch" FontSize="15" Height="25">
             <MenuItem Header="File" IsCheckable="False" IsChecked="False">
                 <MenuItem.ToolTip>
                     <ToolTip>Save Graph Data, and Save Graph as an Image</ToolTip>
@@ -815,7 +815,7 @@
                 <ScrollViewer HorizontalScrollBarVisibility="Auto">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="375"/>
+                            <ColumnDefinition Width="385"/>
                             <ColumnDefinition Width="320"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Orientation="Vertical" Grid.Column="0" VerticalAlignment="Top">
@@ -886,6 +886,104 @@
                                 <Label FontSize="12" Padding="0" Content=")"/>
                                 <Button x:Name="DBM_Button_Math_AllSamples" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="DBM_Button_Math_AllSamples_Click"/>
                             </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Label FontSize="13" Padding="0" Content="(Value)^(Samples): "/>
+                                <TextBox x:Name="Value_Power_AllSample_Text" FontSize="13" Padding="-1" Margin="0,1,0,1" HorizontalContentAlignment="Center" Width="79" Text=""/>
+                                <Button x:Name="Value_Power_AllSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Value_Power_AllSample_Button_Click"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Label FontSize="13" Padding="0" Content="(Samples)^(Value): "/>
+                                <TextBox x:Name="AllSample_Power_Value_Text" FontSize="13" Padding="-1" Margin="0,1,0,1" HorizontalContentAlignment="Center" Width="79" Text=""/>
+                                <Button x:Name="AllSample_Power_Value_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="AllSample_Power_Value_Button_Click"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Label FontSize="13" Padding="0" Content="ln (Samples)"/>
+                                <Button x:Name="Ln_AllSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Ln_AllSample_Button_Click"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Label FontSize="13" Padding="0" Content="Log (Samples)"/>
+                                <Button x:Name="Log_AllSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Log_AllSample_Button_Click"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Label FontSize="13" Padding="0" Content="Absolute Value: |Samples|"/>
+                                <Button x:Name="Abs_AllSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Abs_AllSample_Button_Click"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Label FontSize="13" Padding="0" Content="Square Root of √(Samples)"/>
+                                <Button x:Name="Square_AllSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Square_AllSample_Button_Click"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Label FontSize="13" Padding="0" Content="Sine (Samples): "/>
+                                <ComboBox FontSize="13" Padding="0,0,0,0" Margin="5,1,5,0">
+                                    <ComboBoxItem x:Name="Sine_AllSample_Radiance" Content="Radians" IsSelected="True"/>
+                                    <ComboBoxItem x:Name="Sine_AllSample_Degrees" Content="Degrees" IsSelected="False"/>
+                                </ComboBox>
+                                <Button x:Name="Sine_AllSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Sine_AllSample_Button_Click"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Label FontSize="13" Padding="0" Content="Cosine (Samples): "/>
+                                <ComboBox FontSize="13" Padding="0,0,0,0" Margin="5,1,5,0">
+                                    <ComboBoxItem x:Name="Cosine_AllSample_Radiance" Content="Radians" IsSelected="True"/>
+                                    <ComboBoxItem x:Name="Cosine_AllSample_Degrees" Content="Degrees" IsSelected="False"/>
+                                </ComboBox>
+                                <Button x:Name="Cosine_AllSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Cosine_AllSample_Button_Click"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Label FontSize="13" Padding="0" Content="Tangent (Samples): "/>
+                                <ComboBox FontSize="13" Padding="0,0,0,0" Margin="5,1,5,0">
+                                    <ComboBoxItem x:Name="Tangent_AllSample_Radiance" Content="Radians" IsSelected="True"/>
+                                    <ComboBoxItem x:Name="Tangent_AllSample_Degrees" Content="Degrees" IsSelected="False"/>
+                                </ComboBox>
+                                <Button x:Name="Tangent_AllSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Tangent_AllSample_Button_Click"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Label FontSize="13" Padding="0" Content="Inverse Sine (Samples): "/>
+                                <ComboBox FontSize="13" Padding="0,0,0,0" Margin="5,1,5,0">
+                                    <ComboBoxItem x:Name="Inverse_Sine_AllSample_Radiance" Content="Radians" IsSelected="True"/>
+                                    <ComboBoxItem x:Name="Inverse_Sine_AllSample_Degrees" Content="Degrees" IsSelected="False"/>
+                                </ComboBox>
+                                <Button x:Name="Inverse_Sine_AllSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Inverse_Sine_AllSample_Button_Click"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Label FontSize="13" Padding="0" Content="Inverse Cosine (Samples): "/>
+                                <ComboBox FontSize="13" Padding="0,0,0,0" Margin="5,1,5,0">
+                                    <ComboBoxItem x:Name="Inverse_Cosine_AllSample_Radiance" Content="Radians" IsSelected="True"/>
+                                    <ComboBoxItem x:Name="Inverse_Cosine_AllSample_Degrees" Content="Degrees" IsSelected="False"/>
+                                </ComboBox>
+                                <Button x:Name="Inverse_Cosine_AllSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Inverse_Cosine_AllSample_Button_Click"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Label FontSize="13" Padding="0" Content="Inverse Tangent (Samples): "/>
+                                <ComboBox FontSize="13" Padding="0,0,0,0" Margin="5,1,5,0">
+                                    <ComboBoxItem x:Name="Inverse_Tangent_AllSample_Radiance" Content="Radians" IsSelected="True"/>
+                                    <ComboBoxItem x:Name="Inverse_Tangent_AllSample_Degrees" Content="Degrees" IsSelected="False"/>
+                                </ComboBox>
+                                <Button x:Name="Inverse_Tangent_AllSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Inverse_Tangent_AllSample_Button_Click"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Label FontSize="13" Padding="0" Content="Hyperbolic Sine (Samples): "/>
+                                <ComboBox FontSize="13" Padding="0,0,0,0" Margin="5,1,5,0">
+                                    <ComboBoxItem x:Name="Hyperbolic_Sine_AllSample_Radiance" Content="Radians" IsSelected="True"/>
+                                    <ComboBoxItem x:Name="Hyperbolic_Sine_AllSample_Degrees" Content="Degrees" IsSelected="False"/>
+                                </ComboBox>
+                                <Button x:Name="Hyperbolic_Sine_AllSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Hyperbolic_Sine_AllSample_Button_Click"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Label FontSize="13" Padding="0" Content="Hyperbolic Cosine (Samples): "/>
+                                <ComboBox FontSize="13" Padding="0,0,0,0" Margin="5,1,5,0">
+                                    <ComboBoxItem x:Name="Hyperbolic_Cosine_AllSample_Radiance" Content="Radians" IsSelected="True"/>
+                                    <ComboBoxItem x:Name="Hyperbolic_Cosine_AllSample_Degrees" Content="Degrees" IsSelected="False"/>
+                                </ComboBox>
+                                <Button x:Name="Hyperbolic_Cosine_AllSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Hyperbolic_Cosine_AllSample_Button_Click"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Label FontSize="13" Padding="0" Content="Hyperbolic Tangent (Samples): "/>
+                                <ComboBox FontSize="13" Padding="0,0,0,0" Margin="5,1,5,0">
+                                    <ComboBoxItem x:Name="Hyperbolic_Tangent_AllSample_Radiance" Content="Radians" IsSelected="True"/>
+                                    <ComboBoxItem x:Name="Hyperbolic_Tangent_AllSample_Degrees" Content="Degrees" IsSelected="False"/>
+                                </ComboBox>
+                                <Button x:Name="Hyperbolic_Tangent_AllSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Hyperbolic_Tangent_AllSample_Button_Click"/>
+                            </StackPanel>
                         </StackPanel>
                         <StackPanel Orientation="Vertical" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right">
                             <StackPanel Orientation="Horizontal" Margin="7,0,0,0">
@@ -913,7 +1011,7 @@
                 <ScrollViewer HorizontalScrollBarVisibility="Auto">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="375"/>
+                            <ColumnDefinition Width="385"/>
                             <ColumnDefinition Width="380"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Orientation="Vertical" Grid.Column="0" VerticalAlignment="Top">
@@ -983,6 +1081,104 @@
                                 <TextBox x:Name="DBM_4_Math_NSamples" FontSize="12" Padding="-1" Margin="0,1,0,1" HorizontalContentAlignment="Center" Width="40" MaxWidth="40" Text="0.001"/>
                                 <Label FontSize="12" Padding="0" Content=")"/>
                                 <Button x:Name="DBM_Button_Math_NSamples" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="DBM_Button_Math_NSamples_Click"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Label FontSize="13" Padding="0" Content="(Value)^(Samples): "/>
+                                <TextBox x:Name="Value_Power_NSample_Text" FontSize="13" Padding="-1" Margin="0,1,0,1" HorizontalContentAlignment="Center" Width="79" Text=""/>
+                                <Button x:Name="Value_Power_NSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Value_Power_NSample_Button_Click"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Label FontSize="13" Padding="0" Content="(Samples)^(Value): "/>
+                                <TextBox x:Name="NSample_Power_Value_Text" FontSize="13" Padding="-1" Margin="0,1,0,1" HorizontalContentAlignment="Center" Width="79" Text=""/>
+                                <Button x:Name="NSample_Power_Value_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="NSample_Power_Value_Button_Click"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Label FontSize="13" Padding="0" Content="ln (Samples)"/>
+                                <Button x:Name="Ln_NSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Ln_NSample_Button_Click"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Label FontSize="13" Padding="0" Content="Log (Samples)"/>
+                                <Button x:Name="Log_NSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Log_NSample_Button_Click"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Label FontSize="13" Padding="0" Content="Absolute Value: |Samples|"/>
+                                <Button x:Name="Abs_NSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Abs_NSample_Button_Click"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Label FontSize="13" Padding="0" Content="Square Root of √(Samples)"/>
+                                <Button x:Name="Square_NSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Square_NSample_Button_Click"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Label FontSize="13" Padding="0" Content="Sine (Samples): "/>
+                                <ComboBox FontSize="13" Padding="0,0,0,0" Margin="5,1,5,0">
+                                    <ComboBoxItem x:Name="Sine_NSample_Radiance" Content="Radians" IsSelected="True"/>
+                                    <ComboBoxItem x:Name="Sine_NSample_Degrees" Content="Degrees" IsSelected="False"/>
+                                </ComboBox>
+                                <Button x:Name="Sine_NSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Sine_NSample_Button_Click"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Label FontSize="13" Padding="0" Content="Cosine (Samples): "/>
+                                <ComboBox FontSize="13" Padding="0,0,0,0" Margin="5,1,5,0">
+                                    <ComboBoxItem x:Name="Cosine_NSample_Radiance" Content="Radians" IsSelected="True"/>
+                                    <ComboBoxItem x:Name="Cosine_NSample_Degrees" Content="Degrees" IsSelected="False"/>
+                                </ComboBox>
+                                <Button x:Name="Cosine_NSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Cosine_NSample_Button_Click"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Label FontSize="13" Padding="0" Content="Tangent (Samples): "/>
+                                <ComboBox FontSize="13" Padding="0,0,0,0" Margin="5,1,5,0">
+                                    <ComboBoxItem x:Name="Tangent_NSample_Radiance" Content="Radians" IsSelected="True"/>
+                                    <ComboBoxItem x:Name="Tangent_NSample_Degrees" Content="Degrees" IsSelected="False"/>
+                                </ComboBox>
+                                <Button x:Name="Tangent_NSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Tangent_NSample_Button_Click"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Label FontSize="13" Padding="0" Content="Inverse Sine (Samples): "/>
+                                <ComboBox FontSize="13" Padding="0,0,0,0" Margin="5,1,5,0">
+                                    <ComboBoxItem x:Name="Inverse_Sine_NSample_Radiance" Content="Radians" IsSelected="True"/>
+                                    <ComboBoxItem x:Name="Inverse_Sine_NSample_Degrees" Content="Degrees" IsSelected="False"/>
+                                </ComboBox>
+                                <Button x:Name="Inverse_Sine_NSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Inverse_Sine_NSample_Button_Click"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Label FontSize="13" Padding="0" Content="Inverse Cosine (Samples): "/>
+                                <ComboBox FontSize="13" Padding="0,0,0,0" Margin="5,1,5,0">
+                                    <ComboBoxItem x:Name="Inverse_Cosine_NSample_Radiance" Content="Radians" IsSelected="True"/>
+                                    <ComboBoxItem x:Name="Inverse_Cosine_NSample_Degrees" Content="Degrees" IsSelected="False"/>
+                                </ComboBox>
+                                <Button x:Name="Inverse_Cosine_NSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Inverse_Cosine_NSample_Button_Click"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Label FontSize="13" Padding="0" Content="Inverse Tangent (Samples): "/>
+                                <ComboBox FontSize="13" Padding="0,0,0,0" Margin="5,1,5,0">
+                                    <ComboBoxItem x:Name="Inverse_Tangent_NSample_Radiance" Content="Radians" IsSelected="True"/>
+                                    <ComboBoxItem x:Name="Inverse_Tangent_NSample_Degrees" Content="Degrees" IsSelected="False"/>
+                                </ComboBox>
+                                <Button x:Name="Inverse_Tangent_NSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Inverse_Tangent_NSample_Button_Click"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Label FontSize="13" Padding="0" Content="Hyperbolic Sine (Samples): "/>
+                                <ComboBox FontSize="13" Padding="0,0,0,0" Margin="5,1,5,0">
+                                    <ComboBoxItem x:Name="Hyperbolic_Sine_NSample_Radiance" Content="Radians" IsSelected="True"/>
+                                    <ComboBoxItem x:Name="Hyperbolic_Sine_NSample_Degrees" Content="Degrees" IsSelected="False"/>
+                                </ComboBox>
+                                <Button x:Name="Hyperbolic_Sine_NSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Hyperbolic_Sine_NSample_Button_Click"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Label FontSize="13" Padding="0" Content="Hyperbolic Cosine (Samples): "/>
+                                <ComboBox FontSize="13" Padding="0,0,0,0" Margin="5,1,5,0">
+                                    <ComboBoxItem x:Name="Hyperbolic_Cosine_NSample_Radiance" Content="Radians" IsSelected="True"/>
+                                    <ComboBoxItem x:Name="Hyperbolic_Cosine_NSample_Degrees" Content="Degrees" IsSelected="False"/>
+                                </ComboBox>
+                                <Button x:Name="Hyperbolic_Cosine_NSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Hyperbolic_Cosine_NSample_Button_Click"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Label FontSize="13" Padding="0" Content="Hyperbolic Tangent (Samples): "/>
+                                <ComboBox FontSize="13" Padding="0,0,0,0" Margin="5,1,5,0">
+                                    <ComboBoxItem x:Name="Hyperbolic_Tangent_NSample_Radiance" Content="Radians" IsSelected="True"/>
+                                    <ComboBoxItem x:Name="Hyperbolic_Tangent_NSample_Degrees" Content="Degrees" IsSelected="False"/>
+                                </ComboBox>
+                                <Button x:Name="Hyperbolic_Tangent_NSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Hyperbolic_Tangent_NSample_Button_Click"/>
                             </StackPanel>
                         </StackPanel>
                         <StackPanel Orientation="Vertical" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right">
@@ -1091,7 +1287,7 @@
             <TabItem x:Name="Misc_Tab" Header="Misc">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="340"/>
+                        <ColumnDefinition Width="350"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0" Orientation="Vertical">

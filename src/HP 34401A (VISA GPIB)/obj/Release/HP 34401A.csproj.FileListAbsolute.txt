@@ -1,0 +1,41 @@
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\bin\Release\HP 34401A.exe.config
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\bin\Release\HP 34401A.exe
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\bin\Release\HP 34401A.pdb
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\bin\Release\Ivi.Visa.dll
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\bin\Release\MathNet.Numerics.dll
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\bin\Release\Ookii.Dialogs.Wpf.dll
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\bin\Release\ScottPlot.dll
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\bin\Release\ScottPlot.WPF.dll
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\bin\Release\System.Drawing.Common.dll
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\bin\Release\System.ValueTuple.dll
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\bin\Release\Ivi.Visa.xml
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\bin\Release\MathNet.Numerics.xml
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\bin\Release\Ookii.Dialogs.Wpf.pdb
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\bin\Release\Ookii.Dialogs.Wpf.xml
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\bin\Release\ScottPlot.xml
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\bin\Release\System.ValueTuple.xml
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\obj\Release\HP 34401A.csproj.AssemblyReference.cache
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\obj\Release\GPIB_Select_Window.g.cs
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\obj\Release\Graphing_Window.g.cs
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\obj\Release\Histogram_Waveform.g.cs
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\obj\Release\MainWindow.g.cs
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\obj\Release\Math_Waveform.g.cs
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\obj\Release\Measurement_Table.g.cs
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\obj\Release\N_Sample_Graph_Window.g.cs
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\obj\Release\App.g.cs
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\obj\Release\HP 34401A_MarkupCompile.cache
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\obj\Release\HP 34401A_MarkupCompile.lref
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\obj\Release\GPIB_Select_Window.baml
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\obj\Release\Graphing_Window.baml
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\obj\Release\Histogram_Waveform.baml
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\obj\Release\MainWindow.baml
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\obj\Release\Math_Waveform.baml
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\obj\Release\Measurement_Table.baml
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\obj\Release\N_Sample_Graph_Window.baml
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\obj\Release\HP 34401A.g.resources
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\obj\Release\HP_34401A.Properties.Resources.resources
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\obj\Release\HP 34401A.csproj.GenerateResource.cache
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\obj\Release\HP 34401A.csproj.CoreCompileInputs.cache
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\obj\Release\HP 34401A.csproj.CopyComplete
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\obj\Release\HP 34401A.exe
+C:\Users\nirav\Desktop\HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software\src\HP 34401A (VISA GPIB)\obj\Release\HP 34401A.pdb

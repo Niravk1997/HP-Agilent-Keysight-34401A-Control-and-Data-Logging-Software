@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HP_34401A"
         mc:Ignorable="d"
-        Title="HP 34401A COM Select" Height="520" Width="600" WindowStartupLocation="CenterOwner">
+        Title="HP 34401A COM Select" Height="530" Width="600" WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="225"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="280"/>
+            <RowDefinition Height="285"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <GroupBox Margin="2,2,2,2" Grid.Column="0" Grid.Row="0">
@@ -27,6 +27,7 @@
         <GroupBox Margin="2,2,2,2" Grid.Column="1" Grid.Row="0">
             <GroupBox.Header>
                 <StackPanel Orientation="Horizontal">
+                    <Button x:Name="COM_Config_Save" Content="Save" Width="50" Height="20" Margin="0,0,0,0" Click="COM_Config_Save_Click"/>
                     <TextBlock FontWeight="Bold" Margin="5,0,0,0">HP 34401A COM Info</TextBlock>
                 </StackPanel>
             </GroupBox.Header>
