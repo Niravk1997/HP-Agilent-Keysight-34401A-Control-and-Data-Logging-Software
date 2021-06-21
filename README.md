@@ -4,7 +4,7 @@
  Connect via Serial Port: You will need a USB to Serial Adapter as well as a Null Modem Adapter/Cable if you wish to connect via the 34401A's serial port. 
 
  Connect via GPIB Port: You will need an AR488 GPIB Arduino Adapter if you wish to connect via the 34401A's GPIB port. 
- 
+
  Connect via VISA GPIB Port: VISA Compatible GPIB Adapter/card, like Keysight 82357B or National Instruments GPIB-USB-HS.
 
 #### [Download](https://github.com/Niravk1997/HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software/releases)
@@ -14,7 +14,7 @@
 #### [AR488 Adapter](https://github.com/Twilight-Logic/AR488)
 
 
-#### [EEVblog forum post](https://github.com/Twilight-Logic/AR488)
+#### [EEVblog forum post](https://www.eevblog.com/forum/testgear/hp-34401a-standalone-software/)
 
 #### The main software window
 ![HP 34401A Software](https://github.com/Niravk1997/HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software/blob/main/Images/HP%2034401A%20Main%20Window%20(RS-232).gif)
