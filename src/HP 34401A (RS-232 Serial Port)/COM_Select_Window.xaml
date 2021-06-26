@@ -97,7 +97,7 @@
                     <ComboBoxItem Content="None" IsSelected="True" IsEnabled="True"/>
                 </ComboBox>
                 <Label Content="Write Timeout: "  Margin="0,0,0,0" Grid.Column="0" Grid.Row="7" HorizontalContentAlignment="Right"/>
-                <TextBox x:Name="COM_write_timeout" Margin="0,0,0,2" TextWrapping="Wrap" FontSize="14" Text="3000" Grid.Column="1" Grid.Row="7"/>
+                <TextBox x:Name="COM_write_timeout" Margin="0,0,0,2" TextWrapping="Wrap" FontSize="14" Text="4000" Grid.Column="1" Grid.Row="7"/>
                 <Label Content="Read Timeout: "  Margin="0,0,0,0" Grid.Column="0" Grid.Row="8" HorizontalContentAlignment="Right"/>
                 <TextBox x:Name="COM_read_timeout" Margin="0,0,0,2" TextWrapping="Wrap" FontSize="14" Text="9000" Grid.Column="1" Grid.Row="8"/>
                 <Label Content="Request to Send: "  Margin="0,0,0,0" Grid.Column="0" Grid.Row="9" HorizontalContentAlignment="Right"/>

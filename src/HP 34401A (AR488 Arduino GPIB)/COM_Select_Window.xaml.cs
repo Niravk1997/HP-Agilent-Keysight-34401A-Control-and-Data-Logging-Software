@@ -42,7 +42,7 @@ namespace HP_34401A
         int COM_StopBits_Value = 1;
         int COM_DataBits_Value = 8;
         int COM_Handshake_Value = 0;
-        int COM_WriteTimeout_Value = 3000;
+        int COM_WriteTimeout_Value = 4000;
         int COM_ReadTimeout_Value = 9000;
         bool COM_RtsEnable = false;
         int COM_GPIB_Address_Value = 22;
@@ -109,7 +109,7 @@ namespace HP_34401A
             }
             else
             {
-                COM_write_timeout.Text = "3000";
+                COM_write_timeout.Text = "4000";
                 insert_Log("Write Timeout must be a positive integer.", Error_Code);
                 return false;
             }
@@ -820,13 +820,13 @@ namespace HP_34401A
                 COM_Flow.SelectedIndex = 2;
             }
 
-            if (Write_Timeout >= 3000)
+            if (Write_Timeout >= 4000)
             {
                 COM_write_timeout.Text = Write_Timeout.ToString();
             }
             else
             {
-                insert_Log("Serial Config File: Write Timeout is invalid, must be 3000 or greater.", Error_Code);
+                insert_Log("Serial Config File: Write Timeout is invalid, must be 4000 or greater.", Error_Code);
             }
 
             if (Read_Timeout >= 9000)

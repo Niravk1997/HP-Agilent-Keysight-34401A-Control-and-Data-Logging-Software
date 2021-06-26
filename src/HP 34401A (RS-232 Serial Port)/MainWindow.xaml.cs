@@ -1268,6 +1268,9 @@ namespace HP_34401A
                 case "CONF:CONT":
                     Interlocked.Exchange(ref resetMinMaxAvg, 1);
                     HP34401A.WriteLine(Command);
+                    Thread.Sleep(500);
+                    HP34401A.WriteLine("READ?");
+                    HP34401A.ReadLine().Trim(); //The first sample must be discarded, as it may be from the previoud selected measurement
                     break;
                 case "TRIGger:DELay?":
                     HP34401A.WriteLine(Command);
