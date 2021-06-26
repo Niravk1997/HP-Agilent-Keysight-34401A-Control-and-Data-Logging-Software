@@ -168,6 +168,7 @@ namespace HP_34401A
             if (Graph_Reset == true) 
             {
                 clear_Arrays();
+                Thread.Sleep(1500);
                 while (Data_Queue.TryTake(out _)) { }
                 Update_Measurement_Unit();
                 Graph_Reset = false;
@@ -179,7 +180,7 @@ namespace HP_34401A
                 for (int i = 0; i < N_Sample_Value; i++)
                 {
                     string[] Data_Dequeue = Data_Queue.Take().Split(',');
-                    if (Data_Dequeue[1] == "+9.90000000E+37" || Data_Dequeue[1] == "-9.90000000E+37")
+                    if (Data_Dequeue[1].Contains("E+37"))
                     {
 
                     }
@@ -1443,13 +1444,25 @@ namespace HP_34401A
             Graph.Plot.Style(ScottPlot.Style.Default);
             Graph.Render();
             Theme_Select(0);
+            Grid_Color_Select(99);
+            YAxis_Color_Select(99);
+            XAxis_Color_Select(99);
+            Foreground_Color_Select(99);
+            Background_Color_Select(99);
         }
 
         private void Black_Theme_Click(object sender, RoutedEventArgs e)
         {
             Graph.Plot.Style(ScottPlot.Style.Black);
+            Graph.Plot.YAxis.Color(color: System.Drawing.ColorTranslator.FromHtml("#FFFFFFFF"));
+            Graph.Plot.XAxis.Color(color: System.Drawing.ColorTranslator.FromHtml("#FFFFFFFF"));
             Graph.Render();
             Theme_Select(1);
+            Grid_Color_Select(99);
+            YAxis_Color_Select(99);
+            XAxis_Color_Select(99);
+            Foreground_Color_Select(99);
+            Background_Color_Select(99);
         }
 
         private void Blue_Theme_Click(object sender, RoutedEventArgs e)
@@ -1457,6 +1470,11 @@ namespace HP_34401A
             Graph.Plot.Style(ScottPlot.Style.Blue1);
             Graph.Render();
             Theme_Select(2);
+            Grid_Color_Select(99);
+            YAxis_Color_Select(99);
+            XAxis_Color_Select(99);
+            Foreground_Color_Select(99);
+            Background_Color_Select(99);
         }
 
         private void Gray_Theme_Click(object sender, RoutedEventArgs e)
@@ -1464,6 +1482,11 @@ namespace HP_34401A
             Graph.Plot.Style(ScottPlot.Style.Gray1);
             Graph.Render();
             Theme_Select(3);
+            Grid_Color_Select(99);
+            YAxis_Color_Select(99);
+            XAxis_Color_Select(99);
+            Foreground_Color_Select(99);
+            Background_Color_Select(99);
         }
 
         private void GrayBlack_Theme_Click(object sender, RoutedEventArgs e)
@@ -1471,6 +1494,11 @@ namespace HP_34401A
             Graph.Plot.Style(ScottPlot.Style.Gray2);
             Graph.Render();
             Theme_Select(4);
+            Grid_Color_Select(99);
+            YAxis_Color_Select(99);
+            XAxis_Color_Select(99);
+            Foreground_Color_Select(99);
+            Background_Color_Select(99);
         }
 
         private void Theme_Select(int Selected)
@@ -1982,6 +2010,46 @@ namespace HP_34401A
         private void Reset_Graph_Click(object sender, RoutedEventArgs e)
         {
             Graph_Reset = true;
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            try
+            {
+                Add_to_Arrays.Stop();
+                Add_to_Arrays.Dispose();
+
+                Update_Screen.Stop();
+                Update_Screen = null;
+
+                waveform_1_Plot = null;
+                waveform_2_Plot = null;
+                waveform_3_Plot = null;
+                waveform_4_Plot = null;
+                waveform_5_Plot = null;
+                waveform_6_Plot = null;
+                waveform_7_Plot = null;
+                waveform_8_Plot = null;
+                waveform_9_Plot = null;
+                waveform_10_Plot = null;
+
+                waveform_1 = null;
+                waveform_2 = null;
+                waveform_3 = null;
+                waveform_4 = null;
+                waveform_5 = null;
+                waveform_6 = null;
+                waveform_7 = null;
+                waveform_8 = null;
+                waveform_9 = null;
+                waveform_10 = null;
+
+                Data_Queue.Dispose();
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }

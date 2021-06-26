@@ -1,4 +1,4 @@
-﻿<Window x:Class="HP_34401A.Math_Waveform"
+﻿<Window x:Class="HP_34401A.DateTime_Graph_Window"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,7 +6,7 @@
         xmlns:ScottPlot="clr-namespace:ScottPlot;assembly=ScottPlot.WPF"
         xmlns:local="clr-namespace:HP_34401A"
         mc:Ignorable="d"
-        Title="Math_Waveform" Height="455" Width="820" Closed="Window_Closed">
+        Title="DateTime Graphing Window" Height="470" Width="820" Closed="Window_Closed">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
@@ -32,6 +32,7 @@
                 </MenuItem.ToolTip>
                 <MenuItem Header="Auto Axis" IsCheckable="False" IsChecked="False">
                     <MenuItem x:Name="Force_Auto_Axis" Header="Force Auto Axis" IsCheckable="False" IsChecked="False" Click="Force_Auto_Axis_Click"/>
+                    <MenuItem x:Name="Auto_Axis_Enable" Header="Enable" IsCheckable="True" IsChecked="True" Click="Auto_Axis_Enable_Click"/>
                 </MenuItem>
                 <MenuItem Header="Axis Labels" IsCheckable="False" IsChecked="False">
                     <MenuItem Header="Title Label" IsCheckable="False" IsChecked="False">
@@ -56,38 +57,35 @@
                 <MenuItem Header="Axis Ticks" IsCheckable="False" IsChecked="False">
                     <MenuItem Header="X-Axis" IsCheckable="False" IsChecked="False">
                         <MenuItem x:Name="X_Axis_Show" Header="Show" IsCheckable="True" IsChecked="True" Click="X_Axis_Show_Click"/>
-                        <MenuItem Header="Tick Spacing" IsCheckable="False" IsChecked="False">
-                            <MenuItem x:Name="X_Axis_Default_Tick" Header="Default" IsCheckable="True" IsChecked="True" Click="X_Axis_Default_Tick_Click"/>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBox x:Name="X_Axis_Custom_Set_Tick" Text="" Width="50" Margin="0,0,5,0"/>
-                                <Button x:Name="X_Axis_Custom_Set_Tick_Button" Content="Set" Width="35" Click="X_Axis_Custom_Set_Tick_Button_Click"/>
-                            </StackPanel>
-                        </MenuItem>
+
                         <MenuItem Header="X-Tick Rotation" IsCheckable="False" IsChecked="False">
                             <MenuItem x:Name="X_Axis_Tick_Rotation_0" Header="0°" IsCheckable="True" IsChecked="False" Click="X_Axis_Tick_Rotation_0_Click"/>
                             <MenuItem x:Name="X_Axis_Tick_Rotation_45" Header="45°" IsCheckable="True" IsChecked="False" Click="X_Axis_Tick_Rotation_45_Click"/>
                         </MenuItem>
                         <MenuItem x:Name="X_Axis_Minor_Grid" Header="Minor Grid" IsCheckable="True" IsChecked="False" Click="X_Axis_Minor_Grid_Click"/>
-                        <MenuItem x:Name="X_Axis_Multiplier_Notation" Header="Multiplier Notation" IsCheckable="True" IsChecked="False" Click="X_Axis_Multiplier_Notation_Click"/>
                         <MenuItem x:Name="X_Axis_Tick_Ruler_Mode" Header="Tick Ruler Mode" IsCheckable="True" IsChecked="False" Click="X_Axis_Tick_Ruler_Mode_Click"/>
                     </MenuItem>
                     <MenuItem Header="Y-Axis" IsCheckable="False" IsChecked="False">
                         <MenuItem x:Name="Y_Axis_Show" Header="Show" IsCheckable="True" IsChecked="True" Click="Y_Axis_Show_Click"/>
-                        <MenuItem Header="Tick Spacing" IsCheckable="False" IsChecked="False">
-                            <MenuItem x:Name="Y_Axis_Default_Tick" Header="Default" IsCheckable="True" IsChecked="True" Click="Y_Axis_Default_Tick_Click"/>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBox x:Name="Y_Axis_Custom_Set_Tick" Text="" Width="50" Margin="0,0,5,0"/>
-                                <Button x:Name="Y_Axis_Custom_Set_Tick_Button" Content="Set" Width="35" Click="Y_Axis_Custom_Set_Tick_Button_Click"/>
-                            </StackPanel>
-                        </MenuItem>
                         <MenuItem Header="Y-Tick Rotation" IsCheckable="False" IsChecked="False">
                             <MenuItem x:Name="Y_Axis_Tick_Rotation_0" Header="0°" IsCheckable="True" IsChecked="False" Click="Y_Axis_Tick_Rotation_0_Click"/>
                             <MenuItem x:Name="Y_Axis_Tick_Rotation_45" Header="45°" IsCheckable="True" IsChecked="False" Click="Y_Axis_Tick_Rotation_45_Click"/>
                         </MenuItem>
                         <MenuItem x:Name="Y_Axis_Minor_Grid" Header="Minor Grid" IsCheckable="True" IsChecked="False" Click="Y_Axis_Minor_Grid_Click"/>
-                        <MenuItem x:Name="Y_Axis_Multiplier_Notation" Header="Multiplier Notation" IsCheckable="True" IsChecked="False" Click="Y_Axis_Multiplier_Notation_Click"/>
                         <MenuItem x:Name="Y_Axis_Tick_Ruler_Mode" Header="Tick Ruler Mode" IsCheckable="True" IsChecked="False" Click="Y_Axis_Tick_Ruler_Mode_Click"/>
                     </MenuItem>
+                </MenuItem>
+                <MenuItem Header="Date Time Format" IsCheckable="False" IsChecked="False">
+                    <MenuItem x:Name="DateTime_HH_mm_ss_fff" Header="MM/dd/yyyy HH:mm:ss.fff" IsCheckable="True" IsChecked="False" Click="DateTime_HH_mm_ss_fff_Click"/>
+                    <MenuItem x:Name="DateTime_H_mm_ss_fff" Header="MM/dd/yyyy H:mm:ss.fff" IsCheckable="True" IsChecked="False" Click="DateTime_H_mm_ss_fff_Click"/>
+                    <MenuItem x:Name="DateTime_HH_mm_ss" Header="MM/dd/yyyy HH:mm:ss" IsCheckable="True" IsChecked="False" Click="DateTime_HH_mm_ss_Click"/>
+                    <MenuItem x:Name="DateTime_HH_mm" Header="MM/dd/yyyy HH:mm" IsCheckable="True" IsChecked="False" Click="DateTime_HH_mm_Click"/>
+                    <MenuItem x:Name="DateTime_H_mm" Header="MM/dd/yyyy H:mm" IsCheckable="True" IsChecked="False" Click="DateTime_H_mm_Click"/>
+                    <MenuItem x:Name="DateTime_hh_mm_ss_fff_tt" Header="MM/dd/yyyy hh:mm:ss.fff tt" IsCheckable="True" IsChecked="False" Click="DateTime_hh_mm_ss_fff_tt_Click"/>
+                    <MenuItem x:Name="DateTime_h_mm_ss_fff_tt" Header="MM/dd/yyyy h:mm:ss.fff tt" IsCheckable="True" IsChecked="False" Click="DateTime_h_mm_ss_fff_tt_Click"/>
+                    <MenuItem x:Name="DateTime_hh_mm_ss_tt" Header="MM/dd/yyyy hh:mm:ss tt" IsCheckable="True" IsChecked="False" Click="DateTime_hh_mm_ss_tt_Click"/>
+                    <MenuItem x:Name="DateTime_hh_mm_tt" Header="MM/dd/yyyy hh:mm tt" IsCheckable="True" IsChecked="False" Click="DateTime_hh_mm_tt_Click"/>
+                    <MenuItem x:Name="DateTime_h_mm_tt" Header="MM/dd/yyyy h:mm tt" IsCheckable="True" IsChecked="False" Click="DateTime_h_mm_tt_Click"/>
                 </MenuItem>
                 <MenuItem Header="Font Size" IsCheckable="False" IsChecked="False">
                     <MenuItem x:Name="Font_12" Header="12" IsCheckable="True" IsChecked="False" Click="Font_Size_12_Click"/>
@@ -114,8 +112,41 @@
                         <MenuItem x:Name="Legend_BottomRight" Header="Bottom Right" IsCheckable="True" IsChecked="True" Click="Legend_BottomRight_Click"/>
                     </MenuItem>
                 </MenuItem>
+                <MenuItem Header="Moving AVG" IsCheckable="False" IsChecked="False">
+                    <MenuItem Header="Factor" IsCheckable="False" IsChecked="False">
+                        <MenuItem x:Name="AVG_Factor_50" Header="50" IsCheckable="True" IsChecked="True" Click="AVG_Factor_50_Click"/>
+                        <MenuItem x:Name="AVG_Factor_100" Header="100" IsCheckable="True" IsChecked="False" Click="AVG_Factor_100_Click"/>
+                        <MenuItem x:Name="AVG_Factor_200" Header="200" IsCheckable="True" IsChecked="False" Click="AVG_Factor_200_Click"/>
+                        <MenuItem x:Name="AVG_Factor_400" Header="400" IsCheckable="True" IsChecked="False" Click="AVG_Factor_400_Click"/>
+                        <MenuItem x:Name="AVG_Factor_800" Header="800" IsCheckable="True" IsChecked="False" Click="AVG_Factor_800_Click"/>
+                        <MenuItem x:Name="AVG_Factor_1000" Header="1000" IsCheckable="True" IsChecked="False" Click="AVG_Factor_1000_Click"/>
+                    </MenuItem>
+                    <MenuItem Header="Resolution" IsCheckable="False" IsChecked="False">
+                        <MenuItem x:Name="AVG_Resolution_2" Header="2" IsCheckable="True" IsChecked="False" Click="AVG_Resolution_2_Click"/>
+                        <MenuItem x:Name="AVG_Resolution_3" Header="3" IsCheckable="True" IsChecked="False" Click="AVG_Resolution_3_Click"/>
+                        <MenuItem x:Name="AVG_Resolution_4" Header="4" IsCheckable="True" IsChecked="False" Click="AVG_Resolution_4_Click"/>
+                        <MenuItem x:Name="AVG_Resolution_5" Header="5" IsCheckable="True" IsChecked="False" Click="AVG_Resolution_5_Click"/>
+                        <MenuItem x:Name="AVG_Resolution_6" Header="6" IsCheckable="True" IsChecked="False" Click="AVG_Resolution_6_Click"/>
+                        <MenuItem x:Name="AVG_Resolution_7" Header="7" IsCheckable="True" IsChecked="False" Click="AVG_Resolution_7_Click"/>
+                        <MenuItem x:Name="AVG_Resolution_8" Header="8" IsCheckable="True" IsChecked="True" Click="AVG_Resolution_8_Click"/>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="Refresh Rate" IsCheckable="False" IsChecked="False">
+                    <MenuItem x:Name="RefreshRate_1ms" Header="1 ms" IsCheckable="True" IsChecked="False" Click="RefreshRate_1ms_Click"/>
+                    <MenuItem x:Name="RefreshRate_5ms" Header="5 ms" IsCheckable="True" IsChecked="False" Click="RefreshRate_5ms_Click"/>
+                    <MenuItem x:Name="RefreshRate_10ms" Header="10 ms" IsCheckable="True" IsChecked="False" Click="RefreshRate_10ms_Click"/>
+                    <MenuItem x:Name="RefreshRate_50ms" Header="50 ms" IsCheckable="True" IsChecked="False" Click="RefreshRate_50ms_Click"/>
+                    <MenuItem x:Name="RefreshRate_100ms" Header="100 ms" IsCheckable="True" IsChecked="False" Click="RefreshRate_100ms_Click"/>
+                    <MenuItem x:Name="RefreshRate_200ms" Header="200 ms" IsCheckable="True" IsChecked="False" Click="RefreshRate_200ms_Click"/>
+                    <MenuItem x:Name="RefreshRate_500ms" Header="500 ms" IsCheckable="True" IsChecked="False" Click="RefreshRate_500ms_Click"/>
+                    <MenuItem x:Name="RefreshRate_1s" Header="1 s" IsCheckable="True" IsChecked="True" Click="RefreshRate_1s_Click"/>
+                    <MenuItem x:Name="RefreshRate_2s" Header="2 s" IsCheckable="True" IsChecked="False" Click="RefreshRate_2s_Click"/>
+                    <MenuItem x:Name="RefreshRate_5s" Header="5 s" IsCheckable="True" IsChecked="False" Click="RefreshRate_5s_Click"/>
+                </MenuItem>
+                <MenuItem x:Name="Clear_All_Text_onPlot" Header="Clear all Text" IsCheckable="False" Click="Clear_All_Text_onPlot_Click"/>
+                <MenuItem x:Name="Reset_Graph"  Header="Reset Graph" IsCheckable="False" IsChecked="False" Click="Reset_Graph_Click"/>
             </MenuItem>
-            <MenuItem x:Name="Graph_Color_Menu" Header="Graph Colors" IsCheckable="False" IsChecked="False">
+            <MenuItem Header="Graph Colors" IsCheckable="False" IsChecked="False">
                 <MenuItem.ToolTip>
                     <ToolTip>Customize Graph's Colors</ToolTip>
                 </MenuItem.ToolTip>
@@ -125,7 +156,7 @@
                             <Rectangle Fill="#FF00FF17" Width="16" Height="16"></Rectangle>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem x:Name="Blue_Measurements" Header="Blue" IsCheckable="True" IsChecked="False" Click="Blue_Measurements_Click">
+                    <MenuItem x:Name="Blue_Measurements" Header="Blue" IsCheckable="True" IsChecked="True" Click="Blue_Measurements_Click">
                         <MenuItem.Icon>
                             <Rectangle Fill="#FF00C0FF" Width="16" Height="16"></Rectangle>
                         </MenuItem.Icon>
@@ -434,91 +465,6 @@
                     </MenuItem>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="Markers" IsCheckable="False" IsChecked="False">
-                <MenuItem.ToolTip>
-                    <ToolTip>Add/Clear Horizontal/Vertical Markers</ToolTip>
-                </MenuItem.ToolTip>
-                <MenuItem Header="Horizontal Markers" IsCheckable="False" IsChecked="False">
-                    <MenuItem x:Name="Draggable_Horizontal_Marker_1" Header="Add Draggable Marker 1" IsCheckable="True" IsChecked="False" Click="Draggable_Horizontal_Marker_1_Click"/>
-                    <MenuItem x:Name="Draggable_Horizontal_Marker_2" Header="Add Draggable Marker 2" IsCheckable="True" IsChecked="False" Click="Draggable_Horizontal_Marker_2_Click"/>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBox x:Name="H_Marker_Number" Text="" Width="60" Margin="0,0,5,0"/>
-                        <Button x:Name="Add_H_Marker" Content="Add Marker" Width="85" Click="Add_H_Marker_Click"/>
-                    </StackPanel>
-                </MenuItem>
-                <MenuItem Header="Vertical Markers" IsCheckable="False" IsChecked="False">
-                    <MenuItem x:Name="Draggable_Vertical_Marker_1" Header="Add Draggable Marker 1" IsCheckable="True" IsChecked="False" Click="Draggable_Vertical_Marker_1_Click"/>
-                    <MenuItem x:Name="Draggable_Vertical_Marker_2" Header="Add Draggable Marker 2" IsCheckable="True" IsChecked="False" Click="Draggable_Vertical_Marker_2_Click"/>
-                    <MenuItem x:Name="Vertical_Markers_to_StartStop_text_field" Header="Write to N Samples Fields" IsCheckable="True" IsChecked="True"/>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBox x:Name="V_Marker_Number" Text="" Width="60" Margin="0,0,5,0"/>
-                        <Button x:Name="Add_V_Marker" Content="Add Marker" Width="85" Click="Add_V_Marker_Click"/>
-                    </StackPanel>
-                </MenuItem>
-                <MenuItem x:Name="Clear_Horizontal_Markers" Header="Clear Horizontal Markers" IsCheckable="False" IsChecked="False" Click="Clear_Horizontal_Markers_Click"/>
-                <MenuItem x:Name="Clear_Vertical_Markers" Header="Clear Vertical Markers" IsCheckable="False" IsChecked="False" Click="Clear_Vertical_Markers_Click"/>
-                <MenuItem x:Name="Clear_All_Markers" Header="Clear All Markers" IsCheckable="False" IsChecked="False" Click="Clear_All_Markers_Click"/>
-            </MenuItem>
-            <MenuItem Header="Mouse Tracker" IsCheckable="False" IsChecked="False">
-                <MenuItem.ToolTip>
-                    <ToolTip>Activate/Deactivate Mouse Tracker</ToolTip>
-                </MenuItem.ToolTip>
-                <MenuItem x:Name="Show_Tracker" Header="Show Tracker" IsCheckable="True" IsChecked="False" Click="Show_Tracker_Click"/>
-                <MenuItem x:Name="Show_XY_Coordinates_Tracker" Header="Show X,Y Coordinates" IsCheckable="True" IsChecked="False" Click="Show_XY_Coordinates_Tracker_Click"/>
-                <MenuItem x:Name="Show_Measurement_Data_Tracker" Header="Show Measurement Data" IsCheckable="True" IsChecked="False" Click="Show_Measurement_Data_Tracker_Click"/>
-                <MenuItem Header="Tracker Color" IsCheckable="False" IsChecked="False">
-                    <MenuItem x:Name="Green_Tracker" Header="Green" IsCheckable="True" IsChecked="False" Click="Green_Tracker_Click">
-                        <MenuItem.Icon>
-                            <Rectangle Fill="#FF00FF17" Width="16" Height="16"></Rectangle>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem x:Name="Blue_Tracker" Header="Blue" IsCheckable="True" IsChecked="False" Click="Blue_Tracker_Click">
-                        <MenuItem.Icon>
-                            <Rectangle Fill="#FF00C0FF" Width="16" Height="16"></Rectangle>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem x:Name="Red_Tracker" Header="Red" IsCheckable="True" IsChecked="True" Click="Red_Tracker_Click">
-                        <MenuItem.Icon>
-                            <Rectangle Fill="Red" Width="16" Height="16"></Rectangle>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem x:Name="Yellow_Tracker" Header="Yellow" IsCheckable="True" IsChecked="False" Click="Yellow_Tracker_Click">
-                        <MenuItem.Icon>
-                            <Rectangle Fill="#FFFFFF00" Width="16" Height="16"></Rectangle>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem x:Name="Orange_Tracker" Header="Orange" IsCheckable="True" IsChecked="False" Click="Orange_Tracker_Click">
-                        <MenuItem.Icon>
-                            <Rectangle Fill="DarkOrange" Width="16" Height="16"></Rectangle>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem x:Name="Black_Tracker" Header="Black" IsCheckable="True" IsChecked="False" Click="Black_Tracker_Click">
-                        <MenuItem.Icon>
-                            <Rectangle Fill="Black" Width="16" Height="16"></Rectangle>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem x:Name="Pink_Tracker" Header="Pink" IsCheckable="True" IsChecked="False" Click="Pink_Tracker_Click">
-                        <MenuItem.Icon>
-                            <Rectangle Fill="DeepPink" Width="16" Height="16"></Rectangle>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem x:Name="Violet_Tracker" Header="Violet" IsCheckable="True" IsChecked="False" Click="Violet_Tracker_Click">
-                        <MenuItem.Icon>
-                            <Rectangle Fill="DarkViolet" Width="16" Height="16"></Rectangle>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem x:Name="White_Tracker" Header="White" IsCheckable="True" IsChecked="False" Click="White_Tracker_Click">
-                        <MenuItem.Icon>
-                            <Rectangle Fill="White" Width="16" Height="16"></Rectangle>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                </MenuItem>
-                <MenuItem Header="Tracker Style" IsCheckable="False" IsChecked="False">
-                    <MenuItem x:Name="Tracker_Style_Dotted" Header="Dotted Lines" IsCheckable="True" IsChecked="False" Click="Tracker_Style_Dotted_Click"/>
-                    <MenuItem x:Name="Tracker_Style_Dot_Dash" Header="Dot-Dash Lines" IsCheckable="True" IsChecked="True" Click="Tracker_Style_Dot_Dash_Click"/>
-                    <MenuItem x:Name="Tracker_Style_Solid" Header="Solid Lines" IsCheckable="True" IsChecked="False" Click="Tracker_Style_Solid_Click"/>
-                </MenuItem>
-            </MenuItem>
             <MenuItem Header="Output Log" IsCheckable="False" IsChecked="False">
                 <MenuItem.ToolTip>
                     <ToolTip>Clear and/or Save Output Log</ToolTip>
@@ -541,7 +487,7 @@
                 <MenuItem x:Name="Credits" Header="Credits" IsCheckable="False" IsChecked="False" Click="Credits_Click"/>
             </MenuItem>
         </Menu>
-        <ScottPlot:WpfPlot Name="Graph" Grid.Row="1" MouseMove="Graph_MouseMove"/>
+        <ScottPlot:WpfPlot Name="Graph" Grid.Row="1"/>
         <GridSplitter Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
         <TabControl Grid.Row="3" Margin="2,2,2,2">
             <TabItem x:Name="Information_Tab" Header="Information">
@@ -552,32 +498,34 @@
                         <ColumnDefinition Width="145"/>
                         <ColumnDefinition MinWidth="120" MaxWidth="190"/>
                         <ColumnDefinition Width="90"/>
-                        <ColumnDefinition Width="12"/>
-                        <ColumnDefinition Width="70"/>
                         <ColumnDefinition MinWidth="155"/>
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center">
                         <Label FontSize="14" Padding="0" HorizontalAlignment="Right" Content="Total Samples: "/>
+                        <Label FontSize="14" Padding="0" HorizontalAlignment="Right" Content="Invalid Samples: "/>
                         <Label FontSize="14" Padding="0" HorizontalAlignment="Right" Content="Positive Samples: "/>
                         <Label FontSize="14" Padding="0" HorizontalAlignment="Right" Content="Negative Samples: "/>
-                        <Label FontSize="14" Padding="0" HorizontalAlignment="Right" Content="Start Sample #: "/>
                     </StackPanel>
                     <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left">
                         <Label x:Name="Total_Samples_Label" FontSize="14" Padding="0" Content="0"/>
+                        <Label x:Name="Invalid_Samples_Label" FontSize="14" Padding="0" Content="0"/>
                         <Label x:Name="Positive_Samples_Label" FontSize="14" Padding="0" Content="0"/>
                         <Label x:Name="Negative_Samples_Label" FontSize="14" Padding="0" Content="0"/>
-                        <Label x:Name="Start_SampleNumber_Label" FontSize="14" Padding="0" Content="0"/>
                     </StackPanel>
                     <StackPanel Grid.Column="2" Orientation="Vertical" VerticalAlignment="Center">
-                        <Label FontSize="14" Padding="0" HorizontalAlignment="Right" Content="Samples Average: "/>
+                        <Label FontSize="14" Padding="0" HorizontalAlignment="Right" Content="Latest Sample: "/>
+                        <Label FontSize="14" Padding="0" HorizontalAlignment="Right" Content="Exp Moving Average: "/>
                         <Label FontSize="14" Padding="0" HorizontalAlignment="Right" Content="Max Recorded Sample: "/>
                         <Label FontSize="14" Padding="0" HorizontalAlignment="Right" Content="Min Recorded Sample: "/>
-                        <Label FontSize="14" Padding="0" HorizontalAlignment="Right" Content="End Sample #: "/>
                     </StackPanel>
                     <StackPanel Grid.Column="3" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left">
                         <StackPanel Orientation="Horizontal">
-                            <Label x:Name="Sample_Average_Label" FontSize="14" Padding="0" Content="0"/>
-                            <Label x:Name="Sample_Average_Label_Unit" FontSize="14" Padding="0" Content=""/>
+                            <Label x:Name="Latest_Sample_Label" FontSize="14" Padding="0" Content="0"/>
+                            <Label x:Name="Latest_Sample_Label_Unit" FontSize="14" Padding="0" Content=""/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label x:Name="Moving_Average_Label" FontSize="14" Padding="0" Content="0"/>
+                            <Label x:Name="Moving_Average_Label_Unit" FontSize="14" Padding="0" Content=""/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label x:Name="Max_Recorded_Sample_Label" FontSize="14" Padding="0" Content="0"/>
@@ -587,28 +535,18 @@
                             <Label x:Name="Min_Recorded_Sample_Label" FontSize="14" Padding="0" Content="0"/>
                             <Label x:Name="Min_Recorded_Sample_Label_Unit" FontSize="14" Padding="0" Content=""/>
                         </StackPanel>
-                        <Label x:Name="End_SampleNumber_Label" FontSize="14" Padding="0" Content="0"/>
                     </StackPanel>
                     <StackPanel Grid.Column="4" Orientation="Vertical" VerticalAlignment="Center">
-                        <Label FontSize="14" Padding="0" HorizontalAlignment="Left" Content="Mouse Tracker"/>
-                        <Label FontSize="14" Padding="0" HorizontalAlignment="Left" Content="Hover over"/>
-                        <Label FontSize="14" Padding="0" HorizontalAlignment="Left" Content="Plot Info"/>
+                        <Label FontSize="14" Padding="0" HorizontalAlignment="Right" Content="Duration: "/>
+                        <Label FontSize="14" Padding="0" HorizontalAlignment="Right" Content="In Hours: "/>
+                        <Label FontSize="14" Padding="0" HorizontalAlignment="Right" Content="In Minutes: "/>
+                        <Label FontSize="14" Padding="0" HorizontalAlignment="Right" Content="In Seconds: "/>
                     </StackPanel>
-                    <StackPanel Grid.Column="5" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Rectangle x:Name="Tracker_Mouse_Status_Bar" Width="5" Height="55" Fill="Red"/>
-                    </StackPanel>
-                    <StackPanel Grid.Column="6" Orientation="Vertical" VerticalAlignment="Center">
-                        <Label FontSize="14" Padding="0" HorizontalAlignment="Right" Content="Sample: "/>
-                        <Label FontSize="14" Padding="0" HorizontalAlignment="Right" Content="Date Time: "/>
-                        <Label FontSize="14" Padding="0" HorizontalAlignment="Right" Content="Sample #: "/>
-                    </StackPanel>
-                    <StackPanel Grid.Column="7" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left">
-                        <StackPanel Orientation="Horizontal">
-                            <Label x:Name="Sample_Label" FontSize="14" Padding="0" Content="null"/>
-                            <Label x:Name="Sample_Label_Unit" FontSize="14" Padding="0" Content=""/>
-                        </StackPanel>
-                        <Label x:Name="Sample_DateTime_Label" FontSize="14" Padding="0" Content="null"/>
-                        <Label x:Name="Sample_Number_Label" FontSize="14" Padding="0" Content="null"/>
+                    <StackPanel Grid.Column="5" Orientation="Vertical" VerticalAlignment="Center">
+                        <Label x:Name="Time_Duration_Text"  FontSize="14" Padding="0" HorizontalAlignment="Left" Content="null"/>
+                        <Label x:Name="Hours_Duration_Text" FontSize="14" Padding="0" HorizontalAlignment="Left" Content="null"/>
+                        <Label x:Name="Minutes_Duration_Text" FontSize="14" Padding="0" HorizontalAlignment="Left" Content="null"/>
+                        <Label x:Name="Seconds_Duration_Text" FontSize="14" Padding="0" HorizontalAlignment="Left" Content="null"/>
                     </StackPanel>
                 </Grid>
             </TabItem>
@@ -617,7 +555,7 @@
                     <TextBlock x:Name="Output_Log" FontSize="12"/>
                 </ScrollViewer>
             </TabItem>
-            <TabItem x:Name="AllStatistics_Tab" Header="Statistics (All Samples)">
+            <TabItem x:Name="AllStatistics_Tab" Header="Statistics">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="170"/>
@@ -691,89 +629,7 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="NStatistics_Tab" Header="Statistics (N Samples)">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="170"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                    </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Top">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <Label FontSize="13" Padding="0" Content="N Samples [Start , End]"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="0,1,0,0" HorizontalAlignment="Center">
-                            <TextBox x:Name="Start_Statistics_NSamples_TextBox" FontSize="13" Padding="0" HorizontalContentAlignment="Center" Width="79" Text=""/>
-                            <Label FontSize="13" Padding="0" Content=" , "/>
-                            <TextBox x:Name="End_Statistics_NSamples_TextBox" FontSize="13" Padding="0" HorizontalContentAlignment="Center" Width="79" Text=""/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="0,2,0,0" HorizontalAlignment="Right">
-                            <Label FontSize="13" Padding="0" Content="Mean (Average):"/>
-                            <Button x:Name="Mean_NSamples_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Mean_NSamples_Button_Click"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Label FontSize="13" Padding="0" Content="Std Deviation:"/>
-                            <Button x:Name="StdDeviation_NSamples_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="StdDeviation_NSamples_Button_Click"/>
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Top">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Label FontSize="13" Padding="0" Content="Max Sample:"/>
-                            <Button x:Name="Max_NSamples_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Find" Click="Max_NSamples_Button_Click"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Label FontSize="13" Padding="0" Content="Min Sample:"/>
-                            <Button x:Name="Min_NSamples_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Find" Click="Min_NSamples_Button_Click"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Label FontSize="13" Padding="0" Content="|Max| Sample:"/>
-                            <Button x:Name="AbsMax_NSamples_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="AbsMax_NSamples_Button_Click"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Label FontSize="13" Padding="0" Content="|Min| Sample:"/>
-                            <Button x:Name="AbsMin_NSamples_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="AbsMin_NSamples_Button_Click"/>
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel Grid.Column="2" Orientation="Vertical" VerticalAlignment="Top">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Label FontSize="13" Padding="0" Content="Root Mean Square:"/>
-                            <Button x:Name="RMS_NSamples_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="RMS_NSamples_Button_Click"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Label FontSize="13" Padding="0" Content="Variance:"/>
-                            <Button x:Name="Variance_NSamples_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Variance_NSamples_Button_Click"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Label FontSize="13" Padding="0" Content="Geometric Mean:"/>
-                            <Button x:Name="GeometricMean_NSamples_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="GeometricMean_NSamples_Button_Click"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Label FontSize="13" Padding="0" Content="Harmonic Mean:"/>
-                            <Button x:Name="HarmonicMean_NSamples_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="HarmonicMean_NSamples_Button_Click"/>
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel Grid.Column="3" Orientation="Vertical" VerticalAlignment="Top">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Label FontSize="13" Padding="0" Content="Pop Variance:"/>
-                            <Button x:Name="PopulationVariance_NSamples_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="PopulationVariance_NSamples_Button_Click"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Label FontSize="13" Padding="0" Content="Pop Std Deviation:"/>
-                            <Button x:Name="PopulationStdDeviation_NSamples_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="PopulationStdDeviation_NSamples_Button_Click"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Label FontSize="13" Padding="0" Content="Mean Std Deviation:"/>
-                            <Button x:Name="MeanStdDeviation_NSamples_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="MeanStdDeviation_NSamples_Button_Click"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Label FontSize="13" Padding="0" Content="Mean Variance:"/>
-                            <Button x:Name="MeanVariance_NSamples_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="MeanVariance_NSamples_Button_Click"/>
-                        </StackPanel>
-                    </StackPanel>
-                </Grid>
-            </TabItem>
-            <TabItem x:Name="AllMath_Tab" Header="Math (All Samples)">
+            <TabItem x:Name="AllMath_Tab" Header="Math">
                 <ScrollViewer HorizontalScrollBarVisibility="Auto">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -969,208 +825,6 @@
                     </Grid>
                 </ScrollViewer>
             </TabItem>
-            <TabItem x:Name="NMath_Tab" Header="Math (N Samples)">
-                <ScrollViewer HorizontalScrollBarVisibility="Auto">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="385"/>
-                            <ColumnDefinition Width="380"/>
-                        </Grid.ColumnDefinitions>
-                        <StackPanel Orientation="Vertical" Grid.Column="0" VerticalAlignment="Top">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Label FontSize="13" Padding="0" Content="Addition ( "/>
-                                <ComboBox FontSize="13" Padding="0,0,0,0" Margin="0,1,0,0">
-                                    <ComboBoxItem x:Name="Addition_NSamples_Samples_Value" Content=" Samples + Value" IsSelected="True"/>
-                                    <ComboBoxItem x:Name="Addition_NSamples_Value_Samples" Content=" Value + Samples" IsSelected="False"/>
-                                </ComboBox>
-                                <Label FontSize="13" Padding="0" Content=" ): "/>
-                                <TextBox x:Name="Addition_TextBox_Math_NSamples" FontSize="13" Padding="-1" Margin="0,1,0,1" HorizontalContentAlignment="Center" Width="79" Text=""/>
-                                <Button x:Name="Addition_Button_Math_NSamples" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Addition_Button_Math_NSamples_Click"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Label FontSize="13" Padding="0" Content="Subtraction ( "/>
-                                <ComboBox FontSize="13" Padding="3,0,0,0" Margin="0,1,0,0">
-                                    <ComboBoxItem x:Name="Subtraction_NSamples_Samples_Value" Content=" Samples - Value" IsSelected="True"/>
-                                    <ComboBoxItem x:Name="Subtraction_NSamples_Value_Samples" Content=" Value - Samples" IsSelected="False"/>
-                                </ComboBox>
-                                <Label FontSize="13" Padding="0" Content=" ): "/>
-                                <TextBox x:Name="Subtraction_TextBox_Math_NSamples" FontSize="13" Padding="-1" Margin="0,1,0,1" HorizontalContentAlignment="Center" Width="79" Text=""/>
-                                <Button x:Name="Subtraction_Button_Math_NSamples" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Subtraction_Button_Math_NSamples_Click"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Label FontSize="13" Padding="0" Content="Multiplication ( "/>
-                                <ComboBox FontSize="13" Padding="3,0,0,0" Margin="0,1,0,0">
-                                    <ComboBoxItem x:Name="Multiplication_NSamples_Samples_Value" Content=" Samples * Value" IsSelected="True"/>
-                                    <ComboBoxItem x:Name="Multiplication_NSamples_Value_Samples" Content=" Value * Samples" IsSelected="False"/>
-                                </ComboBox>
-                                <Label FontSize="13" Padding="0" Content=" ): "/>
-                                <TextBox x:Name="Multiplication_TextBox_Math_NSamples" FontSize="13" Padding="-1" Margin="0,1,0,1" HorizontalContentAlignment="Center" Width="79" Text=""/>
-                                <Button x:Name="Multiplication_Button_Math_NSamples" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Multiplication_Button_Math_NSamples_Click"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Label FontSize="13" Padding="0" Content="Division ( "/>
-                                <ComboBox FontSize="13" Padding="3,0,0,0" Margin="0,1,0,0">
-                                    <ComboBoxItem x:Name="Division_NSamples_Samples_Value" Content=" Samples / Value" IsSelected="True"/>
-                                    <ComboBoxItem x:Name="Division_NSamples_Value_Samples" Content=" Value / Samples" IsSelected="False"/>
-                                </ComboBox>
-                                <Label FontSize="13" Padding="0" Content=" ): "/>
-                                <TextBox x:Name="Division_TextBox_Math_NSamples" FontSize="13" Padding="-1" Margin="0,1,0,1" HorizontalContentAlignment="Center" Width="79" Text=""/>
-                                <Button x:Name="Division_Button_Math_NSamples" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Division_Button_Math_NSamples_Click"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Label Content="% Error = |(Samples - Y) / Y| x 100: " FontSize="13" Padding="0"/>
-                                <TextBox x:Name="Percentage_Error_TextBox_NSamples" FontSize="13" Padding="-1" Margin="0,1,0,1" HorizontalContentAlignment="Center" Width="79" Text=""/>
-                                <Button x:Name="Percentage_Error_Button_NSamples" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Percentage_Error_Button_NSamples_Click"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Label FontSize="13" Padding="0" Content="DB: "/>
-                                <TextBox x:Name="DB_1_Math_NSamples" FontSize="13" Padding="-1" Margin="0,1,0,1" HorizontalContentAlignment="Center" Width="35" MaxWidth="35" Text="20"/>
-                                <Label FontSize="13" Padding="0" Content=" x log "/>
-                                <TextBox x:Name="DB_2_Math_NSamples" FontSize="13" Padding="-1" Margin="0,1,0,1" HorizontalContentAlignment="Center" Width="35" MaxWidth="35" Text="10"/>
-                                <Label FontSize="13" Padding="0" Content=" (Samples / "/>
-                                <TextBox x:Name="DB_3_Math_NSamples" FontSize="13" Padding="-1" Margin="0,1,0,1" HorizontalContentAlignment="Center" Width="40" MaxWidth="40" Text="1"/>
-                                <Label FontSize="13" Padding="0" Content=")"/>
-                                <Button x:Name="DB_Button_Math_NSamples" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="DB_Button_Math_NSamples_Click"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Label FontSize="13" Padding="0" Content="DBM: "/>
-                                <TextBox x:Name="DBM_1_Math_NSamples" FontSize="12" Padding="-1" Margin="0,1,0,1" HorizontalContentAlignment="Center" Width="25" MaxWidth="25" Text="10"/>
-                                <Label FontSize="12" Padding="0" Content=" x log "/>
-                                <TextBox x:Name="DBM_2_Math_NSamples" FontSize="12" Padding="-1" Margin="0,1,0,1" HorizontalContentAlignment="Center" Width="25" MaxWidth="25" Text="10"/>
-                                <Label FontSize="12" Padding="0" Content=" ((Samples^2 / "/>
-                                <TextBox x:Name="DBM_3_Math_NSamples" FontSize="12" Padding="-1" Margin="0,1,0,1" HorizontalContentAlignment="Center" Width="40" MaxWidth="40" Text="50"/>
-                                <Label FontSize="12" Padding="0" Content=") / "/>
-                                <TextBox x:Name="DBM_4_Math_NSamples" FontSize="12" Padding="-1" Margin="0,1,0,1" HorizontalContentAlignment="Center" Width="40" MaxWidth="40" Text="0.001"/>
-                                <Label FontSize="12" Padding="0" Content=")"/>
-                                <Button x:Name="DBM_Button_Math_NSamples" FontSize="12" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="DBM_Button_Math_NSamples_Click"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Label FontSize="13" Padding="0" Content="(Value)^(Samples): "/>
-                                <TextBox x:Name="Value_Power_NSample_Text" FontSize="13" Padding="-1" Margin="0,1,0,1" HorizontalContentAlignment="Center" Width="79" Text=""/>
-                                <Button x:Name="Value_Power_NSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Value_Power_NSample_Button_Click"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Label FontSize="13" Padding="0" Content="(Samples)^(Value): "/>
-                                <TextBox x:Name="NSample_Power_Value_Text" FontSize="13" Padding="-1" Margin="0,1,0,1" HorizontalContentAlignment="Center" Width="79" Text=""/>
-                                <Button x:Name="NSample_Power_Value_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="NSample_Power_Value_Button_Click"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Label FontSize="13" Padding="0" Content="ln (Samples)"/>
-                                <Button x:Name="Ln_NSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Ln_NSample_Button_Click"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Label FontSize="13" Padding="0" Content="Log (Samples)"/>
-                                <Button x:Name="Log_NSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Log_NSample_Button_Click"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Label FontSize="13" Padding="0" Content="Absolute Value: |Samples|"/>
-                                <Button x:Name="Abs_NSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Abs_NSample_Button_Click"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Label FontSize="13" Padding="0" Content="Square Root of √(Samples)"/>
-                                <Button x:Name="Square_NSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Square_NSample_Button_Click"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Label FontSize="13" Padding="0" Content="Sine (Samples): "/>
-                                <ComboBox FontSize="13" Padding="0,0,0,0" Margin="5,1,5,0">
-                                    <ComboBoxItem x:Name="Sine_NSample_Radiance" Content="Radians" IsSelected="True"/>
-                                    <ComboBoxItem x:Name="Sine_NSample_Degrees" Content="Degrees" IsSelected="False"/>
-                                </ComboBox>
-                                <Button x:Name="Sine_NSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Sine_NSample_Button_Click"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Label FontSize="13" Padding="0" Content="Cosine (Samples): "/>
-                                <ComboBox FontSize="13" Padding="0,0,0,0" Margin="5,1,5,0">
-                                    <ComboBoxItem x:Name="Cosine_NSample_Radiance" Content="Radians" IsSelected="True"/>
-                                    <ComboBoxItem x:Name="Cosine_NSample_Degrees" Content="Degrees" IsSelected="False"/>
-                                </ComboBox>
-                                <Button x:Name="Cosine_NSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Cosine_NSample_Button_Click"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Label FontSize="13" Padding="0" Content="Tangent (Samples): "/>
-                                <ComboBox FontSize="13" Padding="0,0,0,0" Margin="5,1,5,0">
-                                    <ComboBoxItem x:Name="Tangent_NSample_Radiance" Content="Radians" IsSelected="True"/>
-                                    <ComboBoxItem x:Name="Tangent_NSample_Degrees" Content="Degrees" IsSelected="False"/>
-                                </ComboBox>
-                                <Button x:Name="Tangent_NSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Tangent_NSample_Button_Click"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Label FontSize="13" Padding="0" Content="Inverse Sine (Samples): "/>
-                                <ComboBox FontSize="13" Padding="0,0,0,0" Margin="5,1,5,0">
-                                    <ComboBoxItem x:Name="Inverse_Sine_NSample_Radiance" Content="Radians" IsSelected="True"/>
-                                    <ComboBoxItem x:Name="Inverse_Sine_NSample_Degrees" Content="Degrees" IsSelected="False"/>
-                                </ComboBox>
-                                <Button x:Name="Inverse_Sine_NSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Inverse_Sine_NSample_Button_Click"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Label FontSize="13" Padding="0" Content="Inverse Cosine (Samples): "/>
-                                <ComboBox FontSize="13" Padding="0,0,0,0" Margin="5,1,5,0">
-                                    <ComboBoxItem x:Name="Inverse_Cosine_NSample_Radiance" Content="Radians" IsSelected="True"/>
-                                    <ComboBoxItem x:Name="Inverse_Cosine_NSample_Degrees" Content="Degrees" IsSelected="False"/>
-                                </ComboBox>
-                                <Button x:Name="Inverse_Cosine_NSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Inverse_Cosine_NSample_Button_Click"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Label FontSize="13" Padding="0" Content="Inverse Tangent (Samples): "/>
-                                <ComboBox FontSize="13" Padding="0,0,0,0" Margin="5,1,5,0">
-                                    <ComboBoxItem x:Name="Inverse_Tangent_NSample_Radiance" Content="Radians" IsSelected="True"/>
-                                    <ComboBoxItem x:Name="Inverse_Tangent_NSample_Degrees" Content="Degrees" IsSelected="False"/>
-                                </ComboBox>
-                                <Button x:Name="Inverse_Tangent_NSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Inverse_Tangent_NSample_Button_Click"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Label FontSize="13" Padding="0" Content="Hyperbolic Sine (Samples): "/>
-                                <ComboBox FontSize="13" Padding="0,0,0,0" Margin="5,1,5,0">
-                                    <ComboBoxItem x:Name="Hyperbolic_Sine_NSample_Radiance" Content="Radians" IsSelected="True"/>
-                                    <ComboBoxItem x:Name="Hyperbolic_Sine_NSample_Degrees" Content="Degrees" IsSelected="False"/>
-                                </ComboBox>
-                                <Button x:Name="Hyperbolic_Sine_NSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Hyperbolic_Sine_NSample_Button_Click"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Label FontSize="13" Padding="0" Content="Hyperbolic Cosine (Samples): "/>
-                                <ComboBox FontSize="13" Padding="0,0,0,0" Margin="5,1,5,0">
-                                    <ComboBoxItem x:Name="Hyperbolic_Cosine_NSample_Radiance" Content="Radians" IsSelected="True"/>
-                                    <ComboBoxItem x:Name="Hyperbolic_Cosine_NSample_Degrees" Content="Degrees" IsSelected="False"/>
-                                </ComboBox>
-                                <Button x:Name="Hyperbolic_Cosine_NSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Hyperbolic_Cosine_NSample_Button_Click"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Label FontSize="13" Padding="0" Content="Hyperbolic Tangent (Samples): "/>
-                                <ComboBox FontSize="13" Padding="0,0,0,0" Margin="5,1,5,0">
-                                    <ComboBoxItem x:Name="Hyperbolic_Tangent_NSample_Radiance" Content="Radians" IsSelected="True"/>
-                                    <ComboBoxItem x:Name="Hyperbolic_Tangent_NSample_Degrees" Content="Degrees" IsSelected="False"/>
-                                </ComboBox>
-                                <Button x:Name="Hyperbolic_Tangent_NSample_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Hyperbolic_Tangent_NSample_Button_Click"/>
-                            </StackPanel>
-                        </StackPanel>
-                        <StackPanel Orientation="Vertical" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right">
-                            <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
-                                <Label FontSize="13" Padding="0" Content="N Samples (Start, End): "/>
-                                <TextBox x:Name="Start_Math_NSamples_TextBox" FontSize="13" Padding="0" HorizontalContentAlignment="Center" Width="79" Text=""/>
-                                <Label FontSize="13" Padding="0" Content=" , "/>
-                                <TextBox x:Name="End_Math_NSamples_TextBox" FontSize="13" Padding="0" HorizontalContentAlignment="Center" Width="79" Text=""/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="64,0,0,0">
-                                <Label FontSize="13" Padding="0" Content="Graph Title: "/>
-                                <TextBox x:Name="GraphTitle_TextBox_Math_NSamples" FontSize="13" Padding="-1" Margin="0,1,0,1" HorizontalContentAlignment="Center" Width="115" Text=""/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="57,0,0,0">
-                                <Label FontSize="13" Padding="0" Content="Y-Axis Label: "/>
-                                <TextBox x:Name="YAxis_TextBox_Math_NSamples" FontSize="13" Padding="-1" Margin="0,1,0,1" HorizontalContentAlignment="Center" Width="115" Text=""/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="57,1,0,0">
-                                <Label FontSize="13" Padding="0" Content="Graph Color: "/>
-                                <Rectangle x:Name="GraphColor_Preview_Math_NSamples" Width="25" Fill="DodgerBlue" Margin="0,0,0,0"/>
-                                <TextBox x:Name="Red_GraphColor_TextBox_Math_NSamples" Padding="0" Text="30"  HorizontalContentAlignment="Center" Width="25" Margin="5,0,0,0"/>
-                                <TextBox x:Name="Green_GraphColor_TextBox_Math_NSamples" Padding="0" Text="144"  HorizontalContentAlignment="Center" Width="25" Margin="5,0,0,0"/>
-                                <TextBox x:Name="Blue_GraphColor_TextBox_Math_NSamples" Padding="0" Text="255"  HorizontalContentAlignment="Center" Width="25"  Margin="5,0,0,0"/>
-                                <Button x:Name="GraphColor_SetButton_Math_NSamples" FontSize="13" Padding="0" Content="Set" Margin="5,0,0,0" BorderBrush="White" Width="30" Click="GraphColor_SetButton_Math_NSamples_Click"/>
-                                <Button x:Name="GraphColor_RandomizeButton_Math_NSamples" FontSize="13" Padding="0" Content="Randomize" BorderBrush="White" Margin="5,0,0,0" Width="70" Click="GraphColor_RandomizeButton_Math_NSamples_Click"/>
-                            </StackPanel>
-                        </StackPanel>
-                    </Grid>
-                </ScrollViewer>
-            </TabItem>
             <TabItem x:Name="Histogram_Tab" Header="Histogram">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -1182,15 +836,6 @@
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                             <Label FontSize="13" Padding="0" Content="[All Samples]: "/>
                             <Button x:Name="Calculate_Histogram_AllSamples_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Calculate_Histogram_AllSamples_Button_Click"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Label FontSize="13" Padding="0" Content="[N Samples (Start, End)]: "/>
-                            <Button x:Name="Calculate_Histogram_NSamples_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Calculate_Histogram_NSamples_Button_Click"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                            <TextBox x:Name="Start_Histogram_NSamples_TextBox" FontSize="13" Padding="0" HorizontalContentAlignment="Center" Width="75" Text=""/>
-                            <Label FontSize="13" Padding="0" Content=" , "/>
-                            <TextBox x:Name="End_Histogram_NSamples_TextBox" FontSize="13" Padding="0" HorizontalContentAlignment="Center" Width="75" Text=""/>
                         </StackPanel>
                     </StackPanel>
                     <Rectangle Margin="0,2,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Column="1" Width="1" Height="75" Fill="Black"/>
@@ -1246,43 +891,35 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="Misc_Tab" Header="Misc">
+            <TabItem Header="Misc">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="350"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0" Orientation="Vertical">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Label FontSize="13" Padding="0" Content="∆ Time [All Samples]: "/>
-                            <ComboBox FontSize="13" Padding="3,0,0,0" Margin="0,1,0,0">
-                                <ComboBoxItem x:Name="TimeDifference_S_All" Content="Seconds" IsSelected="True"/>
-                                <ComboBoxItem x:Name="TimeDifference_M_All" Content="Minutes" IsSelected="False"/>
-                                <ComboBoxItem x:Name="TimeDifference_H_All" Content="Hours" IsSelected="False"/>
-                            </ComboBox>
-                            <Button x:Name="Calculate_TimeDifference_AllSamples_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Calculate_TimeDifference_AllSamples_Button_Click"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Label FontSize="13" Padding="0" Content="∆ Time  [N Samples (Start, End)]: "/>
-                            <ComboBox FontSize="13" Padding="3,0,0,0" Margin="0,1,0,0">
-                                <ComboBoxItem x:Name="TimeDifference_S_N" Content="Seconds" IsSelected="True"/>
-                                <ComboBoxItem x:Name="TimeDifference_M_N" Content="Minutes" IsSelected="False"/>
-                                <ComboBoxItem x:Name="TimeDifference_H_N" Content="Hours" IsSelected="False"/>
-                            </ComboBox>
-                            <Button x:Name="Calculate_TimeDifference_NSamples_Button" FontSize="13" Padding="0" Margin="5,0,0,0" Width="70"  BorderBrush="White" Content="Calculate" Click="Calculate_TimeDifference_NSamples_Button_Click"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="20,0,0,0">
-                            <TextBox x:Name="Start_TimeDifference_NSamples_TextBox" FontSize="13" Padding="0" HorizontalContentAlignment="Center" Width="80" Text=""/>
-                            <Label FontSize="13" Padding="0" Content=" , "/>
-                            <TextBox x:Name="End_TimeDifference_NSamples_TextBox" FontSize="13" Padding="0" HorizontalContentAlignment="Center" Width="80" Text=""/>
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center">
+                    <Grid Grid.Row="0" Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="Math Waveform Window (Date Time X-Axis): " FontSize="14" Margin="0,0,0,0"/>
-                            <Button x:Name="Plot_Data_in_MathWaveform_DateTime_Button" Content="Plot" Width="50" Margin="1,2,0,2" BorderThickness="0" Click="Plot_Data_in_MathWaveform_DateTime_Button_Click"/>
+                            <Label Content="Place Text: " FontSize="14"/>
+                            <TextBox x:Name="Place_Text" Text="" Width="200" VerticalContentAlignment="Center" Margin="0,2,0,2"/>
+                            <Button Content="Clear" Width="50" Margin="10,2,0,2" BorderThickness="0" Click="PlaceTextGraph_Clear_Click"/>
+                            <Rectangle x:Name="PlaceText_GraphColor_Preview" Width="25" Fill="#FF32FF1E" Margin="10,2,0,2"/>
+                            <TextBox x:Name="PlaceTextRed_GraphColor_TextBox" Padding="0" Text="50"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="25" Margin="5,2,0,2"/>
+                            <TextBox x:Name="PlaceTextGreen_GraphColor_TextBox" Padding="0" Text="255"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="25" Margin="5,2,0,2"/>
+                            <TextBox x:Name="PlaceTextBlue_GraphColor_TextBox" Padding="0" Text="30"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="25" Margin="5,2,0,2"/>
+                            <Button x:Name="PlaceTextGraphColor_SetButton" FontSize="13" Padding="0" Content="Set" Margin="5,2,0,2" BorderBrush="White" Width="30" Click="PlaceTextGraphColor_SetButton_Click"/>
+                            <Button x:Name="PlaceTextGraphColor_Randomize" FontSize="13" Padding="0" Content="Randomize" BorderBrush="White" Margin="5,2,0,2" Width="70" Click="PlaceTextGraphColor_Randomize_Click"/>
+                            <Label Content="Font Size: " FontSize="14" Margin="10,0,0,0"/>
+                            <TextBox x:Name="Font_Size_Place_Text" Text="12" Width="40" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="-5,2,0,2"/>
                         </StackPanel>
-                    </StackPanel>
+                        <StackPanel Grid.Row="1" Orientation="Horizontal">
+                            <Label Content="Math Waveform Window (N Sample X-Axis): " FontSize="14"/>
+                            <Button x:Name="Plot_Data_in_MathWaveform_NSample_Button" Content="Plot" Width="50" Margin="1,2,0,2" BorderThickness="0" Click="Plot_Data_in_MathWaveform_NSample_Button_Click"/>
+                        </StackPanel>
+                    </Grid>
                 </Grid>
             </TabItem>
         </TabControl>

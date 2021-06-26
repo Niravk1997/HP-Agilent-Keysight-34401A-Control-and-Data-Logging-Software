@@ -144,7 +144,7 @@ namespace HP_34401A
                 Measurement_Plot.Ys = Measurement_Data;
 
                 Update_Measurement_Unit();
-
+                Thread.Sleep(1500);
                 while (Data_Queue.TryTake(out _)) { }
 
                 Insert_Log("Graph has been reset.", 0);
@@ -166,9 +166,10 @@ namespace HP_34401A
                 try
                 {
                     string[] Data_Dequeue = Data_Queue.Take().Split(',');
-                    if (Data_Dequeue[1] == "+9.90000000E+37" || Data_Dequeue[1] == "-9.90000000E+37")
+                    if (Data_Dequeue[1].Contains("E+37"))
                     {
                         Data_Dequeue = null;
+                        ++Invalid_Samples;
                     }
                     else 
                     {
@@ -176,7 +177,7 @@ namespace HP_34401A
 
                         if (isValidMeasurement == true)
                         {
-                            Measurement_DateTime[Measurement_Count] = DateTime.ParseExact(Data_Dequeue[0], "yyyy-MM-dd h:mm:ss tt", null);
+                            Measurement_DateTime[Measurement_Count] = DateTime.ParseExact(Data_Dequeue[0], "yyyy-MM-dd h:mm:ss.fff tt", null);
                             Measurement_Data[Measurement_Count] = Measurement;
                             Measurement_Plot.MaxRenderIndex = Measurement_Count;
                             Measurement_Count += 1;
@@ -225,26 +226,29 @@ namespace HP_34401A
         {
             try
             {
-                Total_Samples_Label.Content = Total_Samples;
-                Invalid_Samples_Label.Content = Invalid_Samples;
-                Positive_Samples_Label.Content = Positive_Samples;
-                Negative_Samples_Label.Content = Negative_Samples;
-                Latest_Sample_Label.Content = (decimal)Latest_Sample;
-                Max_Recorded_Sample_Label.Content = (decimal)Max_Recorded_Sample;
-                Min_Recorded_Sample_Label.Content = (decimal)Min_Recorded_Sample;
-                Moving_Average_Label.Content = (decimal)Math.Round(Moving_Average, Moving_average_resolution);
-
-                if (Auto_Axis_Enable.IsChecked == true)
+                if (Measurement_Count > 0)
                 {
-                    Graph.Plot.AxisAuto();
-                }
+                    Total_Samples_Label.Content = Total_Samples;
+                    Invalid_Samples_Label.Content = Invalid_Samples;
+                    Positive_Samples_Label.Content = Positive_Samples;
+                    Negative_Samples_Label.Content = Negative_Samples;
+                    Latest_Sample_Label.Content = (decimal)Latest_Sample;
+                    Max_Recorded_Sample_Label.Content = (decimal)Max_Recorded_Sample;
+                    Min_Recorded_Sample_Label.Content = (decimal)Min_Recorded_Sample;
+                    Moving_Average_Label.Content = (decimal)Math.Round(Moving_Average, Moving_average_resolution);
 
-                Graph.Render();
+                    if (Auto_Axis_Enable.IsChecked == true)
+                    {
+                        Graph.Plot.AxisAuto();
+                    }
+
+                    Graph.Render();
+                }
             }
             catch (Exception Ex) 
             {
                 Insert_Log(Ex.Message, 1);
-                Insert_Log("Graph Auto Axis Failed. Don't worry, trying again.", 1);
+                Insert_Log("Graph Renderer Failed. Don't worry, trying again.", 1);
             }
         }
 
@@ -358,7 +362,7 @@ namespace HP_34401A
                     {
                         for (int i = 0; i < Measurement_Count; i++)
                         {
-                            datatotxt.WriteLine(Measurement_DateTime[i].ToString("yyyy-MM-dd h:mm:ss tt") + "," + Measurement_Data[i]);
+                            datatotxt.WriteLine(Measurement_DateTime[i].ToString("yyyy-MM-dd h:mm:ss.fff tt") + "," + Measurement_Data[i]);
                         }
                     }
                 }
@@ -387,7 +391,7 @@ namespace HP_34401A
                     {
                         for (int i = 0; i < Measurement_Count; i++)
                         {
-                            datatotxt.WriteLine(Measurement_DateTime[i].ToString("yyyy-MM-dd h:mm:ss tt") + "," + Measurement_Data[i]);
+                            datatotxt.WriteLine(Measurement_DateTime[i].ToString("yyyy-MM-dd h:mm:ss.fff tt") + "," + Measurement_Data[i]);
                         }
                     }
                 }
@@ -426,6 +430,14 @@ namespace HP_34401A
             {
                 Insert_Log("Graph's Auto-Axis feature is disabled.", 2);
             }
+        }
+
+        private void Title_Text_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Graph.Plot.Title(Title_Set_Text.Text);
+            Graph.Render();
+            Insert_Log("Graph's Title Label changed to " + Title_Set_Text.Text, 0);
+            Title_Set_Text.Text = string.Empty;
         }
 
         private void X_Axis_Text_Button_Click(object sender, RoutedEventArgs e)
@@ -496,9 +508,6 @@ namespace HP_34401A
             Insert_Log("Graph's X-Axis Ticks rotated to 0°", 0);
             X_Axis_Tick_Rotation_0.IsChecked = true;
             X_Axis_Tick_Rotation_45.IsChecked = false;
-            X_Axis_Tick_Rotation_90.IsChecked = false;
-            X_Axis_Tick_Rotation_135.IsChecked = false;
-            X_Axis_Tick_Rotation_180.IsChecked = false;
         }
 
         private void X_Axis_Tick_Rotation_45_Click(object sender, RoutedEventArgs e)
@@ -508,45 +517,6 @@ namespace HP_34401A
             Insert_Log("Graph's X-Axis Ticks rotated to 45°", 0);
             X_Axis_Tick_Rotation_0.IsChecked = false;
             X_Axis_Tick_Rotation_45.IsChecked = true;
-            X_Axis_Tick_Rotation_90.IsChecked = false;
-            X_Axis_Tick_Rotation_135.IsChecked = false;
-            X_Axis_Tick_Rotation_180.IsChecked = false;
-        }
-
-        private void X_Axis_Tick_Rotation_90_Click(object sender, RoutedEventArgs e)
-        {
-            Graph.Plot.XAxis.TickLabelStyle(rotation: 90);
-            Graph.Render();
-            Insert_Log("Graph's X-Axis Ticks rotated to 90°", 0);
-            X_Axis_Tick_Rotation_0.IsChecked = false;
-            X_Axis_Tick_Rotation_45.IsChecked = false;
-            X_Axis_Tick_Rotation_90.IsChecked = true;
-            X_Axis_Tick_Rotation_135.IsChecked = false;
-            X_Axis_Tick_Rotation_180.IsChecked = false;
-        }
-
-        private void X_Axis_Tick_Rotation_135_Click(object sender, RoutedEventArgs e)
-        {
-            Graph.Plot.XAxis.TickLabelStyle(rotation: 135);
-            Graph.Render();
-            Insert_Log("Graph's X-Axis Ticks rotated to 135°", 0);
-            X_Axis_Tick_Rotation_0.IsChecked = false;
-            X_Axis_Tick_Rotation_45.IsChecked = false;
-            X_Axis_Tick_Rotation_90.IsChecked = false;
-            X_Axis_Tick_Rotation_135.IsChecked = true;
-            X_Axis_Tick_Rotation_180.IsChecked = false;
-        }
-
-        private void X_Axis_Tick_Rotation_180_Click(object sender, RoutedEventArgs e)
-        {
-            Graph.Plot.XAxis.TickLabelStyle(rotation: 180);
-            Graph.Render();
-            Insert_Log("Graph's X-Axis Ticks rotated to 180°", 0);
-            X_Axis_Tick_Rotation_0.IsChecked = false;
-            X_Axis_Tick_Rotation_45.IsChecked = false;
-            X_Axis_Tick_Rotation_90.IsChecked = false;
-            X_Axis_Tick_Rotation_135.IsChecked = false;
-            X_Axis_Tick_Rotation_180.IsChecked = true;
         }
 
         private void X_Axis_Minor_Grid_Click(object sender, RoutedEventArgs e)
@@ -594,22 +564,6 @@ namespace HP_34401A
                 Graph.Plot.XAxis.RulerMode(false);
                 Graph.Render();
                 Insert_Log("Graph's X-Axis Ruler Mode is Disabled.", 0);
-            }
-        }
-
-        private void X_Axis_Tick_Offset_Click(object sender, RoutedEventArgs e)
-        {
-            if (X_Axis_Tick_Offset.IsChecked == true)
-            {
-                Graph.Plot.XAxis.TickLabelNotation(offset: true);
-                Graph.Render();
-                Insert_Log("Graph's X-Axis Tick Offset is Enabled.", 0);
-            }
-            else
-            {
-                Graph.Plot.XAxis.TickLabelNotation(offset: false);
-                Graph.Render();
-                Insert_Log("Graph's X-Axis Tick Offset is Disabled.", 0);
             }
         }
 
@@ -664,9 +618,6 @@ namespace HP_34401A
             Insert_Log("Graph's Y-Axis Ticks rotated to 0°", 0);
             Y_Axis_Tick_Rotation_0.IsChecked = true;
             Y_Axis_Tick_Rotation_45.IsChecked = false;
-            Y_Axis_Tick_Rotation_90.IsChecked = false;
-            Y_Axis_Tick_Rotation_135.IsChecked = false;
-            Y_Axis_Tick_Rotation_180.IsChecked = false;
         }
 
         private void Y_Axis_Tick_Rotation_45_Click(object sender, RoutedEventArgs e)
@@ -676,45 +627,6 @@ namespace HP_34401A
             Insert_Log("Graph's Y-Axis Ticks rotated to 45°", 0);
             Y_Axis_Tick_Rotation_0.IsChecked = false;
             Y_Axis_Tick_Rotation_45.IsChecked = true;
-            Y_Axis_Tick_Rotation_90.IsChecked = false;
-            Y_Axis_Tick_Rotation_135.IsChecked = false;
-            Y_Axis_Tick_Rotation_180.IsChecked = false;
-        }
-
-        private void Y_Axis_Tick_Rotation_90_Click(object sender, RoutedEventArgs e)
-        {
-            Graph.Plot.YAxis.TickLabelStyle(rotation: 90);
-            Graph.Render();
-            Insert_Log("Graph's Y-Axis Ticks rotated to 90°", 0);
-            Y_Axis_Tick_Rotation_0.IsChecked = false;
-            Y_Axis_Tick_Rotation_45.IsChecked = false;
-            Y_Axis_Tick_Rotation_90.IsChecked = true;
-            Y_Axis_Tick_Rotation_135.IsChecked = false;
-            Y_Axis_Tick_Rotation_180.IsChecked = false;
-        }
-
-        private void Y_Axis_Tick_Rotation_135_Click(object sender, RoutedEventArgs e)
-        {
-            Graph.Plot.YAxis.TickLabelStyle(rotation: 135);
-            Graph.Render();
-            Insert_Log("Graph's Y-Axis Ticks rotated to 135°", 0);
-            Y_Axis_Tick_Rotation_0.IsChecked = false;
-            Y_Axis_Tick_Rotation_45.IsChecked = false;
-            Y_Axis_Tick_Rotation_90.IsChecked = false;
-            Y_Axis_Tick_Rotation_135.IsChecked = true;
-            Y_Axis_Tick_Rotation_180.IsChecked = false;
-        }
-
-        private void Y_Axis_Tick_Rotation_180_Click(object sender, RoutedEventArgs e)
-        {
-            Graph.Plot.YAxis.TickLabelStyle(rotation: 180);
-            Graph.Render();
-            Insert_Log("Graph's Y-Axis Ticks rotated to 180°", 0);
-            Y_Axis_Tick_Rotation_0.IsChecked = false;
-            Y_Axis_Tick_Rotation_45.IsChecked = false;
-            Y_Axis_Tick_Rotation_90.IsChecked = false;
-            Y_Axis_Tick_Rotation_135.IsChecked = false;
-            Y_Axis_Tick_Rotation_180.IsChecked = true;
         }
 
         private void Y_Axis_Minor_Grid_Click(object sender, RoutedEventArgs e)
@@ -762,22 +674,6 @@ namespace HP_34401A
                 Graph.Plot.YAxis.RulerMode(false);
                 Graph.Render();
                 Insert_Log("Graph's Y-Axis Ruler Mode is Disabled.", 0);
-            }
-        }
-
-        private void Y_Axis_Tick_Offset_Click(object sender, RoutedEventArgs e)
-        {
-            if (Y_Axis_Tick_Offset.IsChecked == true)
-            {
-                Graph.Plot.YAxis.TickLabelNotation(offset: true);
-                Graph.Render();
-                Insert_Log("Graph's Y-Axis Tick Offset is Enabled.", 0);
-            }
-            else
-            {
-                Graph.Plot.YAxis.TickLabelNotation(offset: false);
-                Graph.Render();
-                Insert_Log("Graph's Y-Axis Tick Offset is Disabled.", 0);
             }
         }
 
@@ -2208,13 +2104,25 @@ namespace HP_34401A
             Graph.Plot.Style(ScottPlot.Style.Default);
             Graph.Render();
             Theme_Select(0);
+            Grid_Color_Select(99);
+            YAxis_Color_Select(99);
+            XAxis_Color_Select(99);
+            Foreground_Color_Select(99);
+            Background_Color_Select(99);
         }
 
         private void Black_Theme_Click(object sender, RoutedEventArgs e)
         {
             Graph.Plot.Style(ScottPlot.Style.Black);
+            Graph.Plot.YAxis.Color(color: System.Drawing.ColorTranslator.FromHtml("#FFFFFFFF"));
+            Graph.Plot.XAxis.Color(color: System.Drawing.ColorTranslator.FromHtml("#FFFFFFFF"));
             Graph.Render();
             Theme_Select(1);
+            Grid_Color_Select(99);
+            YAxis_Color_Select(99);
+            XAxis_Color_Select(99);
+            Foreground_Color_Select(99);
+            Background_Color_Select(99);
         }
 
         private void Blue_Theme_Click(object sender, RoutedEventArgs e)
@@ -2222,6 +2130,11 @@ namespace HP_34401A
             Graph.Plot.Style(ScottPlot.Style.Blue1);
             Graph.Render();
             Theme_Select(2);
+            Grid_Color_Select(99);
+            YAxis_Color_Select(99);
+            XAxis_Color_Select(99);
+            Foreground_Color_Select(99);
+            Background_Color_Select(99);
         }
 
         private void Gray_Theme_Click(object sender, RoutedEventArgs e)
@@ -2229,6 +2142,11 @@ namespace HP_34401A
             Graph.Plot.Style(ScottPlot.Style.Gray1);
             Graph.Render();
             Theme_Select(3);
+            Grid_Color_Select(99);
+            YAxis_Color_Select(99);
+            XAxis_Color_Select(99);
+            Foreground_Color_Select(99);
+            Background_Color_Select(99);
         }
 
         private void GrayBlack_Theme_Click(object sender, RoutedEventArgs e)
@@ -2236,6 +2154,11 @@ namespace HP_34401A
             Graph.Plot.Style(ScottPlot.Style.Gray2);
             Graph.Render();
             Theme_Select(4);
+            Grid_Color_Select(99);
+            YAxis_Color_Select(99);
+            XAxis_Color_Select(99);
+            Foreground_Color_Select(99);
+            Background_Color_Select(99);
         }
 
         private void Theme_Select(int Selected)
@@ -6739,15 +6662,15 @@ namespace HP_34401A
                 {
                     if (Value_Red > 255)
                     {
-                        Red_GraphColor_TextBox_Math_NSamples.Text = string.Empty;
+                        Red_Histogram_TextBox.Text = string.Empty;
                     }
                     if (Value_Green > 255)
                     {
-                        Green_GraphColor_TextBox_Math_NSamples.Text = string.Empty;
+                        Green_Histogram_TextBox.Text = string.Empty;
                     }
                     if (Value_Blue > 255)
                     {
-                        Blue_GraphColor_TextBox_Math_NSamples.Text = string.Empty;
+                        Blue_Histogram_TextBox.Text = string.Empty;
                     }
                     Insert_Log("Histogram Graph Color values must be positive integers and must be between 0 and 255.", 1);
                     return (false, 0, 0, 0);
@@ -6757,15 +6680,15 @@ namespace HP_34401A
             {
                 if (isValid_Red == false)
                 {
-                    Red_GraphColor_TextBox_Math_NSamples.Text = string.Empty;
+                    Red_Histogram_TextBox.Text = string.Empty;
                 }
                 if (isValid_Green == false)
                 {
-                    Green_GraphColor_TextBox_Math_NSamples.Text = string.Empty;
+                    Green_Histogram_TextBox.Text = string.Empty;
                 }
                 if (isValid_Blue == false)
                 {
-                    Blue_GraphColor_TextBox_Math_NSamples.Text = string.Empty;
+                    Blue_Histogram_TextBox.Text = string.Empty;
                 }
                 Insert_Log("Histogram Graph Color values must be positive integers and must be between 0 and 255.", 1);
                 return (false, 0, 0, 0);
@@ -7028,6 +6951,60 @@ namespace HP_34401A
                 Insert_Log(Ex.Message, 1);
                 Insert_Log("Math Waveform Window creation failed.", 1);
             }
+        }
+
+        //Creates DateTime Math Waveform Windows
+        private void Create_Waveform_Window(string Window_Title, double Value, int Start_Sample, int End_Sample, string Graph_Title, string Y_Axis_Label, int Red, int Green, int Blue, double[] Measurement_Data, int Measurement_Count, double[] Measurement_DateTime)
+        {
+            try
+            {
+                Thread Waveform_Thread = new Thread(new ThreadStart(() =>
+                {
+                    DateTime_Math_Waveform Calculate_Waveform = new DateTime_Math_Waveform(Graph_Owner, Window_Title, Value, Start_Sample, End_Sample, Graph_Title, Y_Axis_Label, Red, Green, Blue, Measurement_Data, Measurement_Count, Measurement_DateTime);
+                    Calculate_Waveform.Show();
+                    Calculate_Waveform.Closed += (sender2, e2) => Calculate_Waveform.Dispatcher.InvokeShutdown();
+                    Dispatcher.Run();
+                }));
+                Waveform_Thread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
+                Waveform_Thread.CurrentUICulture = CultureInfo.CreateSpecificCulture("en-US");
+                Waveform_Thread.SetApartmentState(ApartmentState.STA);
+                Waveform_Thread.IsBackground = true;
+                Waveform_Thread.Start();
+            }
+            catch (Exception Ex)
+            {
+                Insert_Log(Ex.Message, 1);
+                Insert_Log("DateTime Math Waveform Window creation failed.", 1);
+            }
+        }
+
+        private void Plot_Data_in_MathWaveform_DateTime_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Task.Run(() =>
+            {
+                try
+                {
+                    int Measurement_Count_Copy = Measurement_Count;
+                    double[] Measurement_Data_Copy = new double[Measurement_Count_Copy];
+                    Array.Copy(Measurement_Data, Measurement_Data_Copy, Measurement_Count_Copy);
+
+                    double[] Measurement_Data_DateTime = new double[Measurement_Count_Copy];
+
+                    for (int i = 0; i < Measurement_Count_Copy; i++)
+                    {
+                        Measurement_Data_DateTime[i] = this.Measurement_DateTime[i].ToOADate();
+                    }
+
+                    Create_Waveform_Window("N Sample to Date Time Waveform: " + Measurement_Unit, 0, 0, Measurement_Count_Copy - 1, "", Measurement_Unit, 30, 144, 255, Measurement_Data_Copy, Measurement_Count_Copy, Measurement_Data_DateTime);
+                    Measurement_Data_Copy = null;
+                    Measurement_Data_DateTime = null;
+                }
+                catch (Exception Ex)
+                {
+                    Insert_Log(Ex.Message, 1);
+                    Insert_Log("Cannot create Math Waveform (Date Time X-Axis), try again.", 1);
+                }
+            });
         }
 
         //Creates Histogram Windows

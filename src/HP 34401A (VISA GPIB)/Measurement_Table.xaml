@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HP_34401A"
         mc:Ignorable="d"
-        Title="Measurement_Table" Height="450" Width="315">
+        Title="Measurement_Table" Height="450" Width="320" Closed="Window_Closed">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>

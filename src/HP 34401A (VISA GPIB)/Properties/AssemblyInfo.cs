@@ -8,7 +8,7 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("HP 34401A")]
-[assembly: AssemblyDescription("Control and Data Logging Software")]
+[assembly: AssemblyDescription("DMM Control and Logging Software")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Nirav Patel, niravkp97@gmail.com")]
 [assembly: AssemblyProduct("HP 34401A Software by Nirav Patel")]

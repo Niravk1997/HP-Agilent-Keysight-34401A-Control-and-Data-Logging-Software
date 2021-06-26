@@ -130,9 +130,8 @@ namespace HP_34401A
         {
             try
             {
-                using (IVisaSession Instrument = GlobalResourceManager.Open(GPIB_Address, AccessModes.ExclusiveLock, 2000))
+                using (IVisaSession Instrument = GlobalResourceManager.Open(GPIB_Address, AccessModes.None, 2000))
                 {
-                    Instrument.UnlockResource();
                     Instrument.Dispose();
                 }
                 return true;
@@ -203,6 +202,7 @@ namespace HP_34401A
 
         private void HP34401A_Reset_Button_Click(object sender, RoutedEventArgs e)
         {
+            GPIB_Address = GPIB_Port.Text.Trim();
             GPIB_Write("*RST");
         }
 
@@ -283,6 +283,7 @@ namespace HP_34401A
 
         private void Verify_34401A_Click(object sender, RoutedEventArgs e)
         {
+            GPIB_Address = GPIB_Port.Text.Trim();
             (bool Query_status, string Message) = GPIB_Query("*IDN?");
             if (Query_status == true)
             {
@@ -296,7 +297,7 @@ namespace HP_34401A
 
         private bool Connect_verify_34401A()
         {
-            GPIB_Port.Text = GPIB_Address;
+            GPIB_Address = GPIB_Port.Text.Trim();
             (bool Query_status, string Message) = GPIB_Query("*IDN?");
             if (Query_status == true)
             {
@@ -318,6 +319,7 @@ namespace HP_34401A
 
         private void Connect_Click(object sender, RoutedEventArgs e)
         {
+            GPIB_Address = GPIB_Port.Text.Trim();
             if (folderCreation(folder_Directory) == 0)
             {
                 folderCreation(folder_Directory + @"\" + "VDC");

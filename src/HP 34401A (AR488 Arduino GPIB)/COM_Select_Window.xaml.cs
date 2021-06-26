@@ -109,7 +109,7 @@ namespace HP_34401A
             }
             else
             {
-                COM_write_timeout.Text = "1000";
+                COM_write_timeout.Text = "3000";
                 insert_Log("Write Timeout must be a positive integer.", Error_Code);
                 return false;
             }
@@ -122,7 +122,7 @@ namespace HP_34401A
             }
             else
             {
-                COM_read_timeout.Text = "1000";
+                COM_read_timeout.Text = "9000";
                 insert_Log("Read Timeout must be a positive integer.", Error_Code);
                 return false;
             }

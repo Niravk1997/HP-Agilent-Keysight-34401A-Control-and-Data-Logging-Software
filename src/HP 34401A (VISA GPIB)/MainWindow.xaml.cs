@@ -40,6 +40,9 @@ namespace HP_34401A
     public partial class MainWindow : Window
     {
         //Reference to the graph window
+        DateTime_Graph_Window HP34401A_DateTime_Graph_Window;
+
+        //Reference to the graph window
         Graphing_Window HP34401A_Graph_Window;
 
         //Reference to the N graph Window
@@ -52,9 +55,8 @@ namespace HP_34401A
         //HP34401A GPIB connection
         public IMessageBasedSession session;
         public MessageBasedFormattedIO formattedIO;
-        public GpibInstrumentRemoteLocalMode Ren_Mode;
 
-        public int GPIB_Lock = 1;
+        public int GPIB_Lock = 0;
 
         //Which Measurement is currently selected
         int Measurement_Selected = 0;
@@ -94,6 +96,7 @@ namespace HP_34401A
         //to add data to graphs
         bool save_to_Graph = false;
         bool Save_to_N_Graph = false;
+        bool Save_to_DateTime_Graph = false;
 
         //Data is stored in these queues, waiting for it to be written to text files
         BlockingCollection<string> save_data_VDC = new BlockingCollection<string>();
@@ -668,13 +671,14 @@ namespace HP_34401A
         private void GPIB_Connect()
         {
             session = GlobalResourceManager.Open(GPIB_Address_Info.GPIB_Address, (AccessModes)GPIB_Lock, 10000) as IMessageBasedSession;
-            session.TimeoutMilliseconds = 10000;
+            session.TimeoutMilliseconds = 15000;
+            session.TerminationCharacterEnabled = true;
             formattedIO = new MessageBasedFormattedIO(session);
             formattedIO.ReadBufferSize = 8192;
             formattedIO.WriteBufferSize = 8192;
         }
 
-        private void GPIB_Reconnect() 
+        private void GPIB_Reconnect()
         {
             try
             {
@@ -687,15 +691,16 @@ namespace HP_34401A
                 session.Dispose();
                 Thread.Sleep(10000);
                 session = GlobalResourceManager.Open(GPIB_Address_Info.GPIB_Address, (AccessModes)GPIB_Lock, 10000) as IMessageBasedSession;
-                session.TimeoutMilliseconds = 10000;
+                session.TimeoutMilliseconds = 15000;
+                session.TerminationCharacterEnabled = true;
                 formattedIO = new MessageBasedFormattedIO(session);
                 formattedIO.ReadBufferSize = 8192;
                 formattedIO.WriteBufferSize = 8192;
                 insert_Log("GPIB Reconnect successful.", 0);
             }
-            catch (Exception Ex) 
+            catch (Exception Ex)
             {
-                insert_Log(Ex.Message, 1); 
+                insert_Log(Ex.Message, 1);
                 insert_Log("GPIB Reconnect failed.", 1);
             }
         }
@@ -1111,7 +1116,7 @@ namespace HP_34401A
                     Measurement_Type_Select();
                     unlockControls();
                     isUserSendCommand = false;
-                    if (UpdateSpeed > 1000)
+                    if (UpdateSpeed > 2000)
                     {
                         Restore_Interval();
                     }
@@ -1154,7 +1159,7 @@ namespace HP_34401A
                 GPIB_Reconnect();
                 DataTimer.Enabled = true;
             }
-            finally 
+            finally
             {
                 DataTimer.Enabled = true;
             }
@@ -1162,13 +1167,12 @@ namespace HP_34401A
 
         private void Read_Measurement()
         {
-            string data = Query("READ?").Trim();            
-            int Length = data.Length;
-            if (Length == 15)
+            string data = Query("READ?").Trim();
+            if (data.Length == 15)
             {
                 measurements.Add(data);
                 Total_Samples++;
-                if (saveMeasurements == true || save_to_Table == true || save_to_Graph == true || Save_to_N_Graph == true)
+                if (saveMeasurements == true || save_to_Table == true || save_to_Graph == true || Save_to_N_Graph == true || Save_to_DateTime_Graph == true)
                 {
                     Process_Measurement_Data(data);
                 }
@@ -1183,7 +1187,7 @@ namespace HP_34401A
 
         private void Process_Measurement_Data(string data)
         {
-            string Date = DateTime.Now.ToString("yyyy-MM-dd h:mm:ss tt");
+            string Date = DateTime.Now.ToString("yyyy-MM-dd h:mm:ss.fff tt");
             if (saveMeasurements == true)
             {
                 switch (Selected_Measurement_type)
@@ -1250,7 +1254,7 @@ namespace HP_34401A
                 }
             }
 
-            if (Save_to_N_Graph == true) 
+            if (Save_to_N_Graph == true)
             {
                 try
                 {
@@ -1260,6 +1264,19 @@ namespace HP_34401A
                 {
                     insert_Log("Could not add data to N Sample Graph Window.", 2);
                     insert_Log("This could happen if the N Sample Graph Window was opened or closed recently.", 2);
+                }
+            }
+
+            if (Save_to_DateTime_Graph == true)
+            {
+                try
+                {
+                    HP34401A_DateTime_Graph_Window.Data_Queue.Add(Date + "," + data);
+                }
+                catch (Exception)
+                {
+                    insert_Log("Could not add data to DateTime Graph Window.", 2);
+                    insert_Log("This could happen if the DateTime Graph Window was opened or closed recently.", 2);
                 }
             }
         }
@@ -1905,7 +1922,7 @@ namespace HP_34401A
             else
             {
                 GPIB_Select.Show();
-                insert_Log("COM Select Window is already open.", 2);
+                insert_Log("GPIB Select Window is already open.", 2);
             }
         }
 
@@ -2186,6 +2203,7 @@ namespace HP_34401A
                 ShowMeasurementGraph.IsChecked = true;
                 AddDataGraph.IsChecked = true;
                 save_to_Graph = true;
+                Enable_AddDatatoGraph();
                 insert_Log("HP34401A Graph Module has been opened.", 0);
             }
             else
@@ -2230,9 +2248,12 @@ namespace HP_34401A
         {
             this.Dispatcher.Invoke(() =>
             {
-                if (HP34401A_Graph_Window == null & HP34401A_N_Graph_Window == null)
+                if (HP34401A_Graph_Window == null & HP34401A_N_Graph_Window == null & HP34401A_DateTime_Graph_Window == null)
                 {
+                    Save_to_N_Graph = false;
+                    Save_to_DateTime_Graph = false;
                     AddDataGraph.IsChecked = false;
+                    insert_Log("No Graphs are opened, unchecking Add Data to Graphs option.", 2);
                 }
                 save_to_Graph = false;
                 ShowMeasurementGraph.IsChecked = false;
@@ -2251,16 +2272,22 @@ namespace HP_34401A
                     HP34401A_Graph_Window.Graph_Y_Axis_Label = Graph_Y_Axis_Label;
                     HP34401A_Graph_Window.Graph_Reset = true;
                 }
-                if (HP34401A_N_Graph_Window != null) 
+                if (HP34401A_N_Graph_Window != null)
                 {
                     HP34401A_N_Graph_Window.Measurement_Unit = Measurement_Unit;
                     HP34401A_N_Graph_Window.Graph_Y_Axis_Label = Graph_Y_Axis_Label;
                     HP34401A_N_Graph_Window.Graph_Reset = true;
                 }
+                if (HP34401A_DateTime_Graph_Window != null)
+                {
+                    HP34401A_DateTime_Graph_Window.Measurement_Unit = Measurement_Unit;
+                    HP34401A_DateTime_Graph_Window.Graph_Y_Axis_Label = Graph_Y_Axis_Label;
+                    HP34401A_DateTime_Graph_Window.Graph_Reset = true;
+                }
             }
             catch (Exception)
             {
-
+                insert_Log("Graph Reset may have failed, do a manual reset through the graph window.", 2);
             }
         }
 
@@ -2269,27 +2296,59 @@ namespace HP_34401A
             if (AddDataGraph.IsChecked == true & HP34401A_Graph_Window != null)
             {
                 save_to_Graph = true;
-                insert_Log("Data will be added to graph.", 0);
+                insert_Log("Data will be added to Graph.", 0);
                 AddDataGraph.IsChecked = true;
             }
-            else 
+            else
             {
                 save_to_Graph = false;
             }
-            if (AddDataGraph.IsChecked == true & HP34401A_N_Graph_Window != null) 
+            if (AddDataGraph.IsChecked == true & HP34401A_N_Graph_Window != null)
             {
                 Save_to_N_Graph = true;
+                insert_Log("Data will be added to N Sample Waveform Graph.", 0);
                 AddDataGraph.IsChecked = true;
             }
             else
             {
                 Save_to_N_Graph = false;
             }
-            if (HP34401A_Graph_Window == null & HP34401A_N_Graph_Window == null) 
+            if (AddDataGraph.IsChecked == true & HP34401A_DateTime_Graph_Window != null)
+            {
+                Save_to_DateTime_Graph = true;
+                insert_Log("Data will be added to DateTime Graph.", 0);
+                AddDataGraph.IsChecked = true;
+            }
+            else
+            {
+                Save_to_DateTime_Graph = false;
+            }
+            if (HP34401A_Graph_Window == null & HP34401A_N_Graph_Window == null & HP34401A_DateTime_Graph_Window == null)
             {
                 save_to_Graph = false;
                 Save_to_N_Graph = false;
+                Save_to_DateTime_Graph = false;
                 AddDataGraph.IsChecked = false;
+                insert_Log("No Graphs are opened, unchecking Add Data to Graphs option.", 2);
+            }
+        }
+
+        private void Enable_AddDatatoGraph()
+        {
+            if (HP34401A_Graph_Window != null)
+            {
+                save_to_Graph = true;
+                AddDataGraph.IsChecked = true;
+            }
+            if (HP34401A_N_Graph_Window != null)
+            {
+                Save_to_N_Graph = true;
+                AddDataGraph.IsChecked = true;
+            }
+            if (HP34401A_DateTime_Graph_Window != null)
+            {
+                Save_to_DateTime_Graph = true;
+                AddDataGraph.IsChecked = true;
             }
         }
 
@@ -2306,15 +2365,16 @@ namespace HP_34401A
                         Show_N_Sample_Graph.IsChecked = true;
                         AddDataGraph.IsChecked = true;
                         Save_to_N_Graph = true;
+                        Enable_AddDatatoGraph();
                         insert_Log("HP34401A N Sample Graph Module has been opened.", 0);
                     }
                 }
-                else 
+                else
                 {
                     insert_Log("N Sample Graph Creation Value must be a positive integer greater than 10.", 2);
                 }
             }
-            else 
+            else
             {
                 insert_Log("N Sample Graph Creation Value must be a positive integer greater than 10.", 2);
             }
@@ -2356,13 +2416,82 @@ namespace HP_34401A
         {
             this.Dispatcher.Invoke(() =>
             {
-                if (HP34401A_Graph_Window == null & HP34401A_N_Graph_Window == null)
+                if (HP34401A_Graph_Window == null & HP34401A_N_Graph_Window == null & HP34401A_DateTime_Graph_Window == null)
                 {
+                    save_to_Graph = false;
+                    Save_to_DateTime_Graph = false;
                     AddDataGraph.IsChecked = false;
+                    insert_Log("No Graphs are opened, unchecking Add Data to Graphs option.", 2);
                 }
                 Save_to_N_Graph = false;
                 Show_N_Sample_Graph.IsChecked = false;
                 insert_Log("HP34401A N Sample Graph Module has been closed.", 0);
+            });
+        }
+
+        private void Show_DateTime_Graph_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (HP34401A_DateTime_Graph_Window == null)
+            {
+                Create_HP34401A_DateTime_Graph_Window();
+                ShowDateTimeGraph.IsChecked = true;
+                AddDataGraph.IsChecked = true;
+                Save_to_DateTime_Graph = true;
+                Enable_AddDatatoGraph();
+                insert_Log("HP34401A DateTime Graph Module has been opened.", 0);
+            }
+            else
+            {
+                ShowDateTimeGraph.IsChecked = true;
+            }
+        }
+
+        private void Create_HP34401A_DateTime_Graph_Window()
+        {
+            try
+            {
+                (string Measurement_Unit, string Graph_Y_Axis_Label) = MeasurementUnit_String();
+                Thread Waveform_Thread = new Thread(new ThreadStart(() =>
+                {
+                    HP34401A_DateTime_Graph_Window = new DateTime_Graph_Window(Measurement_Unit, Graph_Y_Axis_Label, "HP 34401A " + GPIB_Address_Info.GPIB_Address);
+                    HP34401A_DateTime_Graph_Window.Show();
+                    HP34401A_DateTime_Graph_Window.Closed += Close_DateTime_Graph_Event;
+                    Dispatcher.Run();
+                }));
+                Waveform_Thread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
+                Waveform_Thread.CurrentUICulture = CultureInfo.CreateSpecificCulture("en-US");
+                Waveform_Thread.SetApartmentState(ApartmentState.STA);
+                Waveform_Thread.IsBackground = true;
+                Waveform_Thread.Start();
+            }
+            catch (Exception Ex)
+            {
+                insert_Log(Ex.Message, 1);
+                insert_Log("HP34401A Graph Window creation failed.", 1);
+            }
+        }
+
+        private void Close_DateTime_Graph_Event(object sender, EventArgs e)
+        {
+            HP34401A_DateTime_Graph_Window.Dispatcher.InvokeShutdown();
+            HP34401A_DateTime_Graph_Window = null;
+            Close_DateTime_Graph_Module();
+        }
+
+        private void Close_DateTime_Graph_Module()
+        {
+            this.Dispatcher.Invoke(() =>
+            {
+                if (HP34401A_Graph_Window == null & HP34401A_N_Graph_Window == null & HP34401A_DateTime_Graph_Window == null)
+                {
+                    save_to_Graph = false;
+                    Save_to_N_Graph = false;
+                    AddDataGraph.IsChecked = false;
+                    insert_Log("No Graphs are opened, unchecking Add Data to Graphs option.", 2);
+                }
+                Save_to_DateTime_Graph = false;
+                ShowDateTimeGraph.IsChecked = false;
+                insert_Log("HP34401A DateTime Graph Module has been closed.", 0);
             });
         }
 
@@ -6464,7 +6593,7 @@ namespace HP_34401A
             }
         }
 
-        private void Choose_GPIB_Lock(string Set) 
+        private void Choose_GPIB_Lock(string Set)
         {
             if (Set == "TRUE")
             {
@@ -6476,10 +6605,10 @@ namespace HP_34401A
                 insert_Log("No GPIB Lock set. Other software can communicate with HP34401A.", 0);
                 GPIB_Lock = 0;
             }
-            else 
+            else
             {
-                insert_Log("Bad String: " + "GPIB Lock set to Exlusive Lock. Other software cannot communicate with HP34401A.", 2);
-                GPIB_Lock = 1;
+                insert_Log("Bad String: " + "No GPIB Lock set. Other software can communicate with HP34401A.", 2);
+                GPIB_Lock = 0;
             }
         }
 

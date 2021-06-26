@@ -271,6 +271,7 @@
                     <ToolTip>Show Measurement Data on the Graph.</ToolTip>
                 </MenuItem.ToolTip>
                 <MenuItem x:Name="ShowMeasurementGraph" Header="Show Graph" IsCheckable="True" IsChecked="False" Click="ShowMeasurementGraph_Click"/>
+                <MenuItem x:Name="ShowDateTimeGraph" Header="Show DateTime Graph" IsCheckable="True" IsChecked="False" Click="Show_DateTime_Graph_Button_Click"/>
                 <MenuItem Header="N Sample Graph" IsCheckable="False">
                     <MenuItem x:Name="Show_N_Sample_Graph" IsCheckable="True" IsChecked="False">
                         <MenuItem.Header>

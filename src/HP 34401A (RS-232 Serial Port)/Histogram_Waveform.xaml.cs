@@ -180,7 +180,7 @@ namespace HP_34401A
                     {
                         for (int i = 0; i < Measurement_Count; i++)
                         {
-                            datatotxt.WriteLine(Measurement_DateTime[i].ToString("yyyy-MM-dd h:mm:ss tt") + "," + Measurement_Data[i]);
+                            datatotxt.WriteLine(Measurement_DateTime[i].ToString("yyyy-MM-dd h:mm:ss.fff tt") + "," + Measurement_Data[i]);
                         }
                     }
                 }
@@ -208,7 +208,7 @@ namespace HP_34401A
                     {
                         for (int i = 0; i < Measurement_Count; i++)
                         {
-                            datatotxt.WriteLine(Measurement_DateTime[i].ToString("yyyy-MM-dd h:mm:ss tt") + "," + Measurement_Data[i]);
+                            datatotxt.WriteLine(Measurement_DateTime[i].ToString("yyyy-MM-dd h:mm:ss.fff tt") + "," + Measurement_Data[i]);
                         }
                     }
                 }
@@ -955,13 +955,25 @@ namespace HP_34401A
             Graph.Plot.Style(ScottPlot.Style.Default);
             Graph.Render();
             Theme_Select(0);
+            Grid_Color_Select(99);
+            YAxis_Color_Select(99);
+            XAxis_Color_Select(99);
+            Foreground_Color_Select(99);
+            Background_Color_Select(99);
         }
 
         private void Black_Theme_Click(object sender, RoutedEventArgs e)
         {
             Graph.Plot.Style(ScottPlot.Style.Black);
+            Graph.Plot.YAxis.Color(color: System.Drawing.ColorTranslator.FromHtml("#FFFFFFFF"));
+            Graph.Plot.XAxis.Color(color: System.Drawing.ColorTranslator.FromHtml("#FFFFFFFF"));
             Graph.Render();
             Theme_Select(1);
+            Grid_Color_Select(99);
+            YAxis_Color_Select(99);
+            XAxis_Color_Select(99);
+            Foreground_Color_Select(99);
+            Background_Color_Select(99);
         }
 
         private void Blue_Theme_Click(object sender, RoutedEventArgs e)
@@ -969,6 +981,11 @@ namespace HP_34401A
             Graph.Plot.Style(ScottPlot.Style.Blue1);
             Graph.Render();
             Theme_Select(2);
+            Grid_Color_Select(99);
+            YAxis_Color_Select(99);
+            XAxis_Color_Select(99);
+            Foreground_Color_Select(99);
+            Background_Color_Select(99);
         }
 
         private void Gray_Theme_Click(object sender, RoutedEventArgs e)
@@ -976,6 +993,11 @@ namespace HP_34401A
             Graph.Plot.Style(ScottPlot.Style.Gray1);
             Graph.Render();
             Theme_Select(3);
+            Grid_Color_Select(99);
+            YAxis_Color_Select(99);
+            XAxis_Color_Select(99);
+            Foreground_Color_Select(99);
+            Background_Color_Select(99);
         }
 
         private void GrayBlack_Theme_Click(object sender, RoutedEventArgs e)
@@ -983,6 +1005,11 @@ namespace HP_34401A
             Graph.Plot.Style(ScottPlot.Style.Gray2);
             Graph.Render();
             Theme_Select(4);
+            Grid_Color_Select(99);
+            YAxis_Color_Select(99);
+            XAxis_Color_Select(99);
+            Foreground_Color_Select(99);
+            Background_Color_Select(99);
         }
 
         private void Theme_Select(int Selected)

@@ -85,7 +85,7 @@ namespace HP_34401A
                 while (Table_Data_Queue.Count > 0)
                 {
                     string[] Data_Dequeue = Table_Data_Queue.Take().Split(',');
-                    if (Data_Dequeue[1] == "+9.90000000E+37" || Data_Dequeue[1] == "-9.90000000E+37")
+                    if (Data_Dequeue[1].Contains("E+37"))
                     {
                         Data_Dequeue = null;
                     }

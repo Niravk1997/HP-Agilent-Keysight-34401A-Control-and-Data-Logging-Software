@@ -34,6 +34,12 @@
                     <MenuItem x:Name="Force_Auto_Axis" Header="Force Auto Axis" IsCheckable="False" IsChecked="False" Click="Force_Auto_Axis_Click"/>
                 </MenuItem>
                 <MenuItem Header="Axis Labels" IsCheckable="False" IsChecked="False">
+                    <MenuItem Header="Title Label" IsCheckable="False" IsChecked="False">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox x:Name="Title_Set_Text" Text="" Width="100" Margin="0,0,5,0"/>
+                            <Button x:Name="Title_Text_Button" Content="Set" Width="35" Click="Title_Text_Button_Click"/>
+                        </StackPanel>
+                    </MenuItem>
                     <MenuItem Header="X-Axis Label" IsCheckable="False" IsChecked="False">
                         <StackPanel Orientation="Horizontal">
                             <TextBox x:Name="X_Axis_Set_Text" Text="" Width="100" Margin="0,0,5,0"/>
@@ -60,14 +66,10 @@
                         <MenuItem Header="X-Tick Rotation" IsCheckable="False" IsChecked="False">
                             <MenuItem x:Name="X_Axis_Tick_Rotation_0" Header="0°" IsCheckable="True" IsChecked="False" Click="X_Axis_Tick_Rotation_0_Click"/>
                             <MenuItem x:Name="X_Axis_Tick_Rotation_45" Header="45°" IsCheckable="True" IsChecked="False" Click="X_Axis_Tick_Rotation_45_Click"/>
-                            <MenuItem x:Name="X_Axis_Tick_Rotation_90" Header="90°" IsCheckable="True" IsChecked="False" Click="X_Axis_Tick_Rotation_90_Click"/>
-                            <MenuItem x:Name="X_Axis_Tick_Rotation_135" Header="135°" IsCheckable="True" IsChecked="False" Click="X_Axis_Tick_Rotation_135_Click"/>
-                            <MenuItem x:Name="X_Axis_Tick_Rotation_180" Header="180°" IsCheckable="True" IsChecked="False" Click="X_Axis_Tick_Rotation_180_Click"/>
                         </MenuItem>
                         <MenuItem x:Name="X_Axis_Minor_Grid" Header="Minor Grid" IsCheckable="True" IsChecked="False" Click="X_Axis_Minor_Grid_Click"/>
                         <MenuItem x:Name="X_Axis_Multiplier_Notation" Header="Multiplier Notation" IsCheckable="True" IsChecked="False" Click="X_Axis_Multiplier_Notation_Click"/>
                         <MenuItem x:Name="X_Axis_Tick_Ruler_Mode" Header="Tick Ruler Mode" IsCheckable="True" IsChecked="False" Click="X_Axis_Tick_Ruler_Mode_Click"/>
-                        <MenuItem x:Name="X_Axis_Tick_Offset" Header="Tick Offset" IsCheckable="True" IsChecked="False" Click="X_Axis_Tick_Offset_Click"/>
                     </MenuItem>
                     <MenuItem Header="Y-Axis" IsCheckable="False" IsChecked="False">
                         <MenuItem x:Name="Y_Axis_Show" Header="Show" IsCheckable="True" IsChecked="True" Click="Y_Axis_Show_Click"/>
@@ -81,14 +83,10 @@
                         <MenuItem Header="Y-Tick Rotation" IsCheckable="False" IsChecked="False">
                             <MenuItem x:Name="Y_Axis_Tick_Rotation_0" Header="0°" IsCheckable="True" IsChecked="False" Click="Y_Axis_Tick_Rotation_0_Click"/>
                             <MenuItem x:Name="Y_Axis_Tick_Rotation_45" Header="45°" IsCheckable="True" IsChecked="False" Click="Y_Axis_Tick_Rotation_45_Click"/>
-                            <MenuItem x:Name="Y_Axis_Tick_Rotation_90" Header="90°" IsCheckable="True" IsChecked="False" Click="Y_Axis_Tick_Rotation_90_Click"/>
-                            <MenuItem x:Name="Y_Axis_Tick_Rotation_135" Header="135°" IsCheckable="True" IsChecked="False" Click="Y_Axis_Tick_Rotation_135_Click"/>
-                            <MenuItem x:Name="Y_Axis_Tick_Rotation_180" Header="180°" IsCheckable="True" IsChecked="False" Click="Y_Axis_Tick_Rotation_180_Click"/>
                         </MenuItem>
                         <MenuItem x:Name="Y_Axis_Minor_Grid" Header="Minor Grid" IsCheckable="True" IsChecked="False" Click="Y_Axis_Minor_Grid_Click"/>
                         <MenuItem x:Name="Y_Axis_Multiplier_Notation" Header="Multiplier Notation" IsCheckable="True" IsChecked="False" Click="Y_Axis_Multiplier_Notation_Click"/>
                         <MenuItem x:Name="Y_Axis_Tick_Ruler_Mode" Header="Tick Ruler Mode" IsCheckable="True" IsChecked="False" Click="Y_Axis_Tick_Ruler_Mode_Click"/>
-                        <MenuItem x:Name="Y_Axis_Tick_Offset" Header="Tick Offset" IsCheckable="True" IsChecked="False" Click="Y_Axis_Tick_Offset_Click"/>
                     </MenuItem>
                 </MenuItem>
                 <MenuItem Header="Font Size" IsCheckable="False" IsChecked="False">
@@ -127,7 +125,7 @@
                             <Rectangle Fill="#FF00FF17" Width="16" Height="16"></Rectangle>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem x:Name="Blue_Measurements" Header="Blue" IsCheckable="True" IsChecked="True" Click="Blue_Measurements_Click">
+                    <MenuItem x:Name="Blue_Measurements" Header="Blue" IsCheckable="True" IsChecked="False" Click="Blue_Measurements_Click">
                         <MenuItem.Icon>
                             <Rectangle Fill="#FF00C0FF" Width="16" Height="16"></Rectangle>
                         </MenuItem.Icon>
@@ -1277,6 +1275,12 @@
                             <TextBox x:Name="Start_TimeDifference_NSamples_TextBox" FontSize="13" Padding="0" HorizontalContentAlignment="Center" Width="80" Text=""/>
                             <Label FontSize="13" Padding="0" Content=" , "/>
                             <TextBox x:Name="End_TimeDifference_NSamples_TextBox" FontSize="13" Padding="0" HorizontalContentAlignment="Center" Width="80" Text=""/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Math Waveform Window (Date Time X-Axis): " FontSize="14" Margin="0,0,0,0"/>
+                            <Button x:Name="Plot_Data_in_MathWaveform_DateTime_Button" Content="Plot" Width="50" Margin="1,2,0,2" BorderThickness="0" Click="Plot_Data_in_MathWaveform_DateTime_Button_Click"/>
                         </StackPanel>
                     </StackPanel>
                 </Grid>

@@ -89,6 +89,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="DateTime_Graph_Window.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DateTime_Math_Waveform.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="GPIB_Select_Window.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -108,6 +116,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DateTime_Graph_Window.xaml.cs">
+      <DependentUpon>DateTime_Graph_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DateTime_Math_Waveform.xaml.cs">
+      <DependentUpon>DateTime_Math_Waveform.xaml</DependentUpon>
     </Compile>
     <Compile Include="GPIB_Select_Window.xaml.cs">
       <DependentUpon>GPIB_Select_Window.xaml</DependentUpon>
