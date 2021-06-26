@@ -37,6 +37,9 @@
 - Measurement table allows users to collect and display the measurement data into a table.
 - Capture up to 280 measurement samples in 2 seconds (GPIB Port). Serial Port can only capture up to 60 measurement samples in 2 seconds.
 
+#### Date Time Graph
+![HP 34401A  Date Time Graph](https://github.com/Niravk1997/HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software/blob/main/Images/DateTime_Graph.gif)
+
 #### Create Math Waveform
 ![HP 34401A  Math Waveform](https://github.com/Niravk1997/HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software/blob/main/Images/Math%20Waveform.gif)
 
