@@ -1,0 +1,577 @@
+﻿<UserControl x:Class="HP_34401A_User_Controls.Measurement_Config"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns:local="clr-namespace:HP_34401A_User_Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="270" 
+             d:DesignWidth="530">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="85"/>
+            <RowDefinition Height="85"/>
+        </Grid.RowDefinitions>
+        <Grid.Resources>
+            <Style TargetType="GroupBox">
+                <Setter Property="Padding" Value="0,0,0,0"/>
+                <Setter Property="Margin" Value="5,0,5,0"/>
+                <Setter Property="MinHeight" Value="0,0,0,0"/>
+                <Setter Property="MinWidth" Value="0,0,0,0"/>
+            </Style>
+            <Style TargetType="Button" BasedOn="{StaticResource MahApps.Styles.Button.Flat}">
+                <Setter Property="Padding" Value="0,0,0,0"/>
+                <Setter Property="Margin" Value="2,2,2,2"/>
+                <Setter Property="MinHeight" Value="0"/>
+                <Setter Property="MinWidth" Value="0"/>
+                <Setter Property="mah:ControlsHelper.CornerRadius" Value="5"/>
+                <Setter Property="BorderThickness" Value="2"/>
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Setter Property="Background" Value="LimeGreen"/>
+                    </Trigger>
+                    <Trigger Property="IsMouseDirectlyOver" Value="True">
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Setter Property="Background" Value="Lime"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="Padding" Value="0,0,0,0"/>
+                <Setter Property="Margin" Value="0,0,0,0"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="StackPanel">
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="Orientation" Value="Horizontal"/>
+            </Style>
+        </Grid.Resources>
+        <GroupBox Grid.Row="0" Header="Measurements">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Row="0" Grid.Column="0" x:Name="VDC_Button">
+                    <StackPanel>
+                        <Label Content="&#x2393;" FontSize="30" Margin="0,-5,0,0"/>
+                        <Label Content="DC V"/>
+                    </StackPanel>
+                </Button>
+                <Button Grid.Row="1" Grid.Column="0" x:Name="ADC_Button">
+                    <StackPanel>
+                        <Label Content="&#x2393;" FontSize="30" Margin="0,-5,0,0"/>
+                        <Label Content="DC I"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Grid.Row="0" Grid.Column="1" x:Name="VAC_Button">
+                    <StackPanel>
+                        <Label Content="~" FontSize="30" Margin="0,-7,0,0"/>
+                        <Label Content="AC V"/>
+                    </StackPanel>
+                </Button>
+                <Button Grid.Row="1" Grid.Column="1" x:Name="AAC_Button">
+                    <StackPanel>
+                        <Label Content="~" FontSize="30" Margin="0,-7,0,0"/>
+                        <Label Content="AC I"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Grid.Row="0" Grid.Column="2" x:Name="TwoOhms_Button">
+                    <StackPanel>
+                        <Label Content="2 Wire "/>
+                        <Label Content="Ω" FontSize="18"/>
+                    </StackPanel>
+                </Button>
+                <Button Grid.Row="1" Grid.Column="2" x:Name="FourOhms_Button">
+                    <StackPanel>
+                        <Label Content="4 Wire "/>
+                        <Label Content="Ω" FontSize="18"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Grid.Row="0" Grid.Column="3" x:Name="FREQ_Button">
+                    <StackPanel>
+                        <Label Content="ƒ" FontSize="22" Margin="0,-5,0,0"/>
+                        <Label Content="FREQ"/>
+                    </StackPanel>
+                </Button>
+                <Button Grid.Row="1" Grid.Column="3" x:Name="PER_Button">
+                    <StackPanel>
+                        <Label Content="T" FontSize="22" Margin="0,-4,0,0"/>
+                        <Label Content="PERIOD"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Grid.Row="0" Grid.Column="4" x:Name="DIODE_Button">
+                    <StackPanel>
+                        <Label Content="−" FontSize="20" Margin="0,-5,0,0" Padding="0"/>
+                        <Label Content="ᐅ" FontSize="20" Margin="-4,-3,-3,0" Padding="0"/>
+                        <Label Content="|" FontSize="13" Margin="0,-4,-2,0" Padding="0"/>
+                        <Label Content="−" FontSize="21" Margin="-2,-5,0,0" Padding="0"/>
+                        <Label Content="Diode"/>
+                    </StackPanel>
+                </Button>
+                <Button Grid.Row="1" Grid.Column="4" x:Name="CONT_Button">
+                    <StackPanel>
+                        <Label Content="🕪" FontSize="22" Margin="0,-2,0,0"/>
+                        <Label Content="Cont"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Row="1" Header="Range">
+            <GroupBox.Resources>
+                <Style TargetType="TabControl" BasedOn="{StaticResource MahApps.Styles.TabControl}">
+                    <Setter Property="mah:HeaderedControlHelper.HeaderFontSize" Value="12"/>
+                    <Setter Property="FontSize" Value="12"/>
+                    <Setter Property="Padding" Value="0,0,0,0"/>
+                    <Setter Property="MinHeight" Value="0"/>
+                    <Setter Property="MinWidth" Value="0"/>
+                </Style>
+            </GroupBox.Resources>
+            <TabControl>
+                <TabItem Header="&#x2393;DC V">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" Grid.Column="0" Content="Auto"/>
+                        <Button Grid.Row="0" Grid.Column="1" Content="100 mV"/>
+                        <Button Grid.Row="0" Grid.Column="2" Content="1 V"/>
+                        <Button Grid.Row="0" Grid.Column="3" Content="10 V"/>
+                        <Button Grid.Row="0" Grid.Column="4" Content="100 V"/>
+                        <Button Grid.Row="0" Grid.Column="5" Content="1000 V"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="&#x2393;DC I">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" Grid.Column="0" Content="Auto"/>
+                        <Button Grid.Row="0" Grid.Column="1" Content="10 mA"/>
+                        <Button Grid.Row="0" Grid.Column="2" Content="100 mA"/>
+                        <Button Grid.Row="0" Grid.Column="3" Content="1 A"/>
+                        <Button Grid.Row="0" Grid.Column="4" Content="3 A"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="~AC V">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" Grid.Column="0" Content="Auto"/>
+                        <Button Grid.Row="0" Grid.Column="1" Content="100 mV"/>
+                        <Button Grid.Row="0" Grid.Column="2" Content="1 V"/>
+                        <Button Grid.Row="0" Grid.Column="3" Content="10 V"/>
+                        <Button Grid.Row="0" Grid.Column="4" Content="100 V"/>
+                        <Button Grid.Row="0" Grid.Column="5" Content="1000 V"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="~AC I">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" Grid.Column="0" Content="Auto"/>
+                        <Button Grid.Row="0" Grid.Column="1" Content="1 A"/>
+                        <Button Grid.Row="0" Grid.Column="2" Content="3 A"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="2/4 Wire Ω">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" Grid.Column="0" Content="Auto"/>
+                        <Button Grid.Row="0" Grid.Column="1" Content="100 Ω"/>
+                        <Button Grid.Row="0" Grid.Column="2" Content="1K Ω"/>
+                        <Button Grid.Row="0" Grid.Column="3" Content="10K Ω"/>
+                        <Button Grid.Row="0" Grid.Column="4" Content="100K Ω"/>
+                        <Button Grid.Row="0" Grid.Column="5" Content="1M Ω"/>
+                        <Button Grid.Row="0" Grid.Column="6" Content="10M Ω"/>
+                        <Button Grid.Row="0" Grid.Column="7" Content="100M Ω"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="FREQ/PER">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" Grid.Column="0" Content="Auto"/>
+                        <Button Grid.Row="0" Grid.Column="1" Content="100 mV"/>
+                        <Button Grid.Row="0" Grid.Column="2" Content="1 V"/>
+                        <Button Grid.Row="0" Grid.Column="3" Content="10 V"/>
+                        <Button Grid.Row="0" Grid.Column="4" Content="100 V"/>
+                        <Button Grid.Row="0" Grid.Column="5" Content="1000 V"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Range ?">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" Grid.Column="0" Content="Current Range ?"/>
+                        <Button Grid.Row="0" Grid.Column="1" Content="Range Auto ?"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Meas ?">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" Grid.Column="0" Content="Measurement ?"/>
+                        <Button Grid.Row="0" Grid.Column="1" Content="Measurement Config ?"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Null">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="65"/>
+                            <ColumnDefinition Width="65"/>
+                            <ColumnDefinition Width="65"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="65"/>
+                            <ColumnDefinition Width="65"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" Grid.Column="0" Content="Null On"/>
+                        <Button Grid.Row="0" Grid.Column="1" Content="Null Off"/>
+                        <Button Grid.Row="0" Grid.Column="2" Content="Null ?"/>
+                        <TextBox Grid.Row="0" Grid.Column="3" Margin="2,2,2,2"/>
+                        <Button Grid.Row="0" Grid.Column="4" Content="Set"/>
+                        <Button Grid.Row="0" Grid.Column="5" Content="Value ?"/>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </GroupBox>
+        <GroupBox Grid.Row="2" Header="Configuration">
+            <GroupBox.Resources>
+                <Style TargetType="TabControl" BasedOn="{StaticResource MahApps.Styles.TabControl}">
+                    <Setter Property="mah:HeaderedControlHelper.HeaderFontSize" Value="12"/>
+                    <Setter Property="FontSize" Value="12"/>
+                    <Setter Property="Padding" Value="0,0,0,0"/>
+                    <Setter Property="MinHeight" Value="0"/>
+                    <Setter Property="MinWidth" Value="0"/>
+                </Style>
+                <Style TargetType="Button" BasedOn="{StaticResource MahApps.Styles.Button.Flat}">
+                    <Setter Property="Padding" Value="0,0,0,0"/>
+                    <Setter Property="Margin" Value="2,2,2,2"/>
+                    <Setter Property="MinHeight" Value="0"/>
+                    <Setter Property="MinWidth" Value="0"/>
+                    <Setter Property="mah:ControlsHelper.CornerRadius" Value="5"/>
+                    <Setter Property="BorderThickness" Value="2"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseDirectlyOver" Value="True">
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+                <Style TargetType="TextBox" BasedOn="{StaticResource MahApps.Styles.TextBox}">
+                    <Setter Property="Padding" Value="0,0,0,0"/>
+                    <Setter Property="Margin" Value="2,2,2,2"/>
+                    <Setter Property="FontSize" Value="16"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                </Style>
+            </GroupBox.Resources>
+            <TabControl>
+                <TabItem Header="RES">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="95"/>
+                            <ColumnDefinition Width="95"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="90"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" Grid.Column="0">
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="N Digit "/>
+                                <Label Content="▼" Foreground="Red"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Grid.Row="0" Grid.Column="1">
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="N Digit "/>
+                                <Label Content="▲" Foreground="LimeGreen"/>
+                            </StackPanel>
+                        </Button>
+                        <TextBox Grid.Row="0" Grid.Column="2" Margin="2,2,2,2"/>
+                        <Button Grid.Row="0" Grid.Column="3" Content="Set"/>
+                        <Button Grid.Row="0" Grid.Column="4" Content="Resolution?"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="NPLC">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" Grid.Column="0" Content="0.02"/>
+                        <Button Grid.Row="0" Grid.Column="1" Content="0.2"/>
+                        <Button Grid.Row="0" Grid.Column="2" Content="1"/>
+                        <Button Grid.Row="0" Grid.Column="3" Content="10"/>
+                        <Button Grid.Row="0" Grid.Column="4" Content="100"/>
+                        <Button Grid.Row="0" Grid.Column="5" Content="NPLC?"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Auto Zero">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" Grid.Column="0" Content="Auto Zero On"/>
+                        <Button Grid.Row="0" Grid.Column="1" Content="Auto Zero Off"/>
+                        <Button Grid.Row="0" Grid.Column="2" Content="Auto Zero Once"/>
+                        <Button Grid.Row="0" Grid.Column="3" Content="Auto Zero ?"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Impedance">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="1.2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" Grid.Column="0" Content="Impedance On"/>
+                        <Button Grid.Row="0" Grid.Column="1" Content="Impedance Off"/>
+                        <Button Grid.Row="0" Grid.Column="2" Content="Input Impedance ?"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="AC:BAND">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="1.4*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" Grid.Column="0" Content="3"/>
+                        <Button Grid.Row="0" Grid.Column="1" Content="20"/>
+                        <Button Grid.Row="0" Grid.Column="2" Content="200"/>
+                        <Button Grid.Row="0" Grid.Column="3" Content="Detector Bandwidth ?"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="FREQ">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="1.4*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" Grid.Column="0" Content="0.01"/>
+                        <Button Grid.Row="0" Grid.Column="1" Content="0.1"/>
+                        <Button Grid.Row="0" Grid.Column="2" Content="1"/>
+                        <Button Grid.Row="0" Grid.Column="3" Content="Frequency Aperture ?"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="PER">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="1.4*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" Grid.Column="0" Content="0.01"/>
+                        <Button Grid.Row="0" Grid.Column="1" Content="0.1"/>
+                        <Button Grid.Row="0" Grid.Column="2" Content="1"/>
+                        <Button Grid.Row="0" Grid.Column="3" Content="Period Aperture ?"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Trig">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.6*"/>
+                            <ColumnDefinition Width="0.6*"/>
+                            <ColumnDefinition Width="0.6*"/>
+                            <ColumnDefinition Width="0.62*"/>
+                            <ColumnDefinition Width="0.62*"/>
+                            <ColumnDefinition Width="0.8*"/>
+                            <ColumnDefinition Width="0.9*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" Grid.Column="0" Content="IMM"/>
+                        <Button Grid.Row="0" Grid.Column="1" Content="EXT"/>
+                        <Button Grid.Row="0" Grid.Column="2" Content="TRIG?"/>
+                        <Button Grid.Row="0" Grid.Column="3" Content="Delay 0"/>
+                        <Button Grid.Row="0" Grid.Column="4" Content="Delay ?"/>
+                        <Button Grid.Row="0" Grid.Column="5" Content="Delay ON"/>
+                        <Button Grid.Row="0" Grid.Column="6" Content="Delay ON ?"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Disp">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="65"/>
+                            <ColumnDefinition Width="65"/>
+                            <ColumnDefinition Width="75"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" Grid.Column="0" Content="On"/>
+                        <Button Grid.Row="0" Grid.Column="1" Content="Off"/>
+                        <Button Grid.Row="0" Grid.Column="2" Content="Disp?"/>
+                        <TextBox Grid.Row="0" Grid.Column="3" Margin="2,2,2,2"/>
+                        <Button Grid.Row="0" Grid.Column="4" Content="Set"/>
+                        <Button Grid.Row="0" Grid.Column="5" Content="Clear"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Queries">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1.2*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="0.9*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="0.9*"/>
+                            <ColumnDefinition Width="1.3*"/>
+                            <ColumnDefinition Width="0.7*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" Grid.Column="0" Content="ERROR?"/>
+                        <Button Grid.Row="0" Grid.Column="1" Content="TERM?"/>
+                        <Button Grid.Row="0" Grid.Column="2" Content="BEEP"/>
+                        <Button Grid.Row="0" Grid.Column="3" Content="IDN?"/>
+                        <Button Grid.Row="0" Grid.Column="4" Content="STB?"/>
+                        <Button Grid.Row="0" Grid.Column="5" Content="SCPI:VER?"/>
+                        <Button Grid.Row="0" Grid.Column="6" Content="CLS"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Cal">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" Grid.Column="0" Content="CAL Count ?"/>
+                        <Button Grid.Row="0" Grid.Column="1" Content="Secure State ?"/>
+                        <Button Grid.Row="0" Grid.Column="2" Content="CAL Message ?"/>
+                        <Button Grid.Row="0" Grid.Column="3" Content="CAL Value ?"/>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </GroupBox>
+    </Grid>
+</UserControl>
