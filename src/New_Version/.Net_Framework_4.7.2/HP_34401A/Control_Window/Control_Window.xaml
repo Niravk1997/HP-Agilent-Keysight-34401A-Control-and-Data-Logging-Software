@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"        
     xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+    xmlns:Options_Menu="clr-namespace:Options_Menu"
     xmlns:local="clr-namespace:HP_34401A"
     mc:Ignorable="d"
     Title="HP 34401A" 
@@ -19,7 +20,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="100"/>
             <RowDefinition Height="270"/>
-            <RowDefinition Height="150"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Menu Grid.Row="0">
@@ -95,10 +96,11 @@
         </Grid>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="85"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            
+            <Options_Menu:Options_Menu_Window Grid.Row="0" Grid.Column="0"/>
+            <ContentPresenter x:Name="Load_Option_Menu_Selection"  Grid.Column="1"/>
         </Grid>
         <Grid Grid.Row="2">
 

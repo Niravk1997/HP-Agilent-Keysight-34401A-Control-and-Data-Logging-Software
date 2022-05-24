@@ -191,11 +191,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Control_Window\User_Controls\Options_Menu\Options_Menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Control_Window\Select_Option_Menu.cs" />
     <Compile Include="Control_Window\User_Controls\Measurement_Config\Measurement_Config.xaml.cs">
       <DependentUpon>Measurement_Config.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control_Window\User_Controls\Options_Menu\Options_Menu.xaml.cs">
+      <DependentUpon>Options_Menu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control_Window\ViewModels\Control_Window_Main_ViewModel.cs" />
+    <Compile Include="Control_Window\ViewModels\Option_Menu_ViewModel.cs" />
+    <Compile Include="Misc\RelayCommand_Class.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -226,7 +237,6 @@
   <ItemGroup>
     <Folder Include="Advance_Windows\NodeEditor_Math\" />
     <Folder Include="Advance_Windows\Web_Server\" />
-    <Folder Include="Control_Window\ViewModels\" />
     <Folder Include="Graphs\Histogram_Graphs\" />
     <Folder Include="Graphs\YT_Graphs\" />
   </ItemGroup>

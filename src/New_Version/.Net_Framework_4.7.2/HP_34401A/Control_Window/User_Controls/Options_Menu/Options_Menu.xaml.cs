@@ -1,5 +1,4 @@
-﻿using MahApps.Metro.Controls;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,14 +13,13 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HP_34401A
+namespace Options_Menu
 {
-    public partial class Control_Window : MetroWindow
+    public partial class Options_Menu_Window : UserControl
     {
-        public Control_Window()
+        public Options_Menu_Window()
         {
             InitializeComponent();
-            DataContext = this;
         }
     }
 }
